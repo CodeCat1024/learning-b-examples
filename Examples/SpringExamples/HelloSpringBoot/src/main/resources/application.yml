@@ -1,0 +1,21 @@
+# 系统配置
+server:
+  port: 9090
+
+# 自定义配置
+my:
+  properties: hello world
+
+# 对象写法1
+student:
+  id: 1
+  name: 张三
+  age: 18
+
+# 对象写法2
+student2: { id: 2, name: 李四, age: 20}
+
+# 集合
+dbtypes: {name: [ mysql, sqlserver, db2 ]}
+
+
