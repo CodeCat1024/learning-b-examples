@@ -11,8 +11,8 @@
 	<groupId>com.example</groupId>
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>HelloSpringBoot</name>
-	<description>My Spring Boot testing project</description>
+	<name>Test</name>
+	<description>Test File</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
