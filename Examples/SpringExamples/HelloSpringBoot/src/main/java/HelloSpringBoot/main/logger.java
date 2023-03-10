@@ -16,6 +16,7 @@ public class logger {
 
     @RequestMapping("/logger")
     public void sayHi() {
+        // 打印日志信息
         log.trace("我是 trace");
         log.debug("我是 debug");
         log.info("我是 info");

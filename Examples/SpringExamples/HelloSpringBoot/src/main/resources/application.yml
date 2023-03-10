@@ -18,4 +18,9 @@ student2: { id: 2, name: 李四, age: 20}
 # 集合
 dbtypes: {name: [ mysql, sqlserver, db2 ]}
 
+# 日志信息持久化
+logging:
+  file:
+    path: D:\Users\27208\Desktop\All\Codes\Leanring
+
 
