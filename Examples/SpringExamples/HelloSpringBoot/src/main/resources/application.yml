@@ -18,9 +18,26 @@ student2: { id: 2, name: 李四, age: 20}
 # 集合
 dbtypes: {name: [ mysql, sqlserver, db2 ]}
 
-# 日志信息持久化
+# 设置日志级别
 logging:
+  level:
+    # 全局日志级别
+    root: trace
+
+    # 局部文件夹级别
+    HelloSpringBoot:
+      main: warn
+
   file:
-    path: D:\Users\27208\Desktop\All\Codes\Leanring
+    # 设置日志保存的目录
+    path: C:/Users/27208/Desktop/All/Codes/Learning
+    # path: C:\\Users\\27208\\Desktop\\All\\Codes\\Learning
+
+    # 设置日志保存的名称
+    name: C:/Users/27208/Desktop/All/Codes/Learning/spring-boot.log
+
+
+
+
 
 
