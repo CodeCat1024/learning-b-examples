@@ -1,0 +1,7 @@
+logging:
+  level:
+    com.example.demo: error
+  file:
+    package: com.example.demo
+    path: D:/
+
