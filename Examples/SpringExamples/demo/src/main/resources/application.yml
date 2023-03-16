@@ -1,7 +1,7 @@
 logging:
   level:
     com.example.demo: error
+    com.example.hello: info
   file:
-    package: com.example.demo
     path: D:/
 
