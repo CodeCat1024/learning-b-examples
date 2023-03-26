@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="">
-<head th:replace="_fragments :: head(~{::title})">
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +17,7 @@
 <body>
     
     <!-- 导航栏 -->
-    <nav th:replace="_fragments :: menu(1)" class="ui inverted attached segment m-padded-tb-mini ">
+    <nav class="ui inverted attached segment m-padded-tb-mini ">
         <div class="ui container">
             <div class="ui inverted secondary stackable menu">
                 <h2 class="ui teal header item">博客</h2>
@@ -681,7 +681,7 @@ h5,h6{font-size:1em;}
     <br>
     <br>
     <!-- 底部 -->
-    <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+    <footer class="ui inverted vertical segment m-padded-tb-massive">
         <div class="ui center aligned container">
             <div class="ui inverted divided stackable grid">
 
@@ -730,90 +730,78 @@ h5,h6{font-size:1em;}
     </footer>
 
 
-    <th:block th:replace="_fragments :: script">
-    </th:block>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script src="../static/lib/prism/prism.js"></script>
+    <script src="../static/lib/tocbot/tocbot.js"></script>
+    <script src="../static/lib/qrcode/qrcode.js"></script>
+    <script src="../static/lib/scrollto/scrollto.js"></script>
+    <script src="../static/lib/waypoints/jquery.waypoints.min.js"></script>
+    <script>
+    // 响应式导航栏按钮
+    $('.menu.toggle').click(function (){
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
 
+    // 赞赏二维码
+    $('#payButton').popup({
+        popup: $('.payQR.popup'),
+        on: 'click',
+        position: 'bottom center'
+    });
 
-    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.2/dist/semantic.min.js"></script>
-    <!--CDN引入平滑滚动的JS-->
-    <script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
+    // 目录初始化
+    tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.js-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.js-toc-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
 
-    <!--引入代码高亮JS-->
-    <!--    <script src="../static/lib/prism/prism.js"></script>-->
-    <script src="/lib/prism/prism.js"></script>
-    <!--引入生成目录JS-->
-    <!--    <script src="../static/lib/tocbot/tocbot.min.js"></script>-->
-    <script src="/lib/tocbot/tocbot.js"></script>
-    <!--引入二维码生成插件-->
-    <!--    <script src="../static/lib/qrcode/qrcode.min.js"></script>-->
-    <script src="/lib/qrcode/qrcode.min.js"></script>
-    <!--引入滚动侦测JS-->
-    <!--    <script src="../static/lib/waypoints/jquery.waypoints.min.js"></script>-->
-    <script src="/lib/waypoints/jquery.waypoints.min.js"></script>
-    <!--/*/</th:block>/*/-->
+    // 目录弹出
+    $('.toc.button').popup({
+        popup: $('.toc-container'),
+        on: 'click',
+        position: 'bottom center'
+    });
 
-    <script th:inline="javascript">
-        //<!--jQuery获取这个元素-->
-        $('.menu.toggle').click(function () {//toggleClass开关一样的样式
-            $('.m-item').toggleClass('m-mobile-hide');//m-item:获取那几个列表，点击的时候处理m-mobile-hide
-        });
-        //<!--jQuery:按钮之后触发，执行JS组件-->
-        $('#payButton').popup({         //获得按钮、.popup:没有为什么，调用组件
-            popup : $('.payQR.popup'),  //拿到二维码对象，定位到这个元素
-            //on : 'click',               //点击的时候触发
-            position: 'bottom center'   //position位置：在中下的位置触发
-        });
+    // 微信二维码弹出
+    $('.wechat').popup({
+        popup: $('.wechat-qr'),
+        position: 'left center'
+    });
 
-        tocbot.init({
-            // Where to render the table of contents.
-            tocSelector: '.js-toc',     //显示目录的区域的CSS
-            // Where to grab the headings to build the table of contents.
-            contentSelector: '.js-toc-content', //要生成目录的内容，对应内容元素，放在要生成目录的地方
-            // Which headings to grab inside of the contentSelector element.
-            headingSelector: 'h1, h2, h3, h4,h5,h6',      //生成目录的级别
-        });
+    // 二维码生成
+    var qrcode = new QRCode("qrcode", {
+        text: "http://jindo.dev.naver.com/collie",
+        width: 110,
+        height: 110,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
 
-        $('.toc.button').popup({
-            popup : $('.toc-container.popup'),//出来生成的目录
-            on : 'click',
-            position: 'left center'
-        });
-        //点击的时候调用平滑滚动里的方法
-        $('#toTop-button').click(function () {
-            $(window).scrollTo(0,500);      //0最顶端，500速度
-        });
-        //微信
-        $('.wechat').popup({                //获取wechat，鼠标控制他的时候发生事件
-            popup : $('.wechat-qr'),        //获取wechat-qr，弹出来
-            position: 'left center'       //position位置：在中下的位置触发
-        });
-        $('.qq').popup();
-        //生成二维码的JS插件，直接复制
-        var serurl = /*[[#{blog.serurl}]]*/"127.0.0.1:8080";//域名
-        var url = /*[[@{/blog/{id}(id=${blog.id})}]]*/"";
-        var qrcode = new QRCode("qrcode", {
-            text: serurl+url,
-            width: 110,
-            height: 110,
-            colorDark : "#000000",
-            colorLight : "#ffffff",
-            correctLevel : QRCode.CorrectLevel.H
-        });
+    // 返回顶部
+    $('#toTop-button').click(function(){
+        $(window).scrollTo(0, 500);
+    });
 
-        //滚动侦测JS，根据滚动的位置显示
-        var waypoint = new Waypoint({
-            element: document.getElementById('waypoint'),   //监测对象
-            handler: function(direction) {                  //当滚动的时候触发；direction；方向，模板里直接用
-                if (direction == 'down') {                  //(direction == 'down')向下滚动；control里可以看
-                    $('#toolbar').show(100);
-                } else {
-                    $('#toolbar').hide(500);
-                }
-                console.log('Scrolled to waypoint!  ' + direction);
+    // 滚动检测
+    var waypoint = new Waypoint({
+        element: document.getElementById('waypoint'),
+        handler: function(direction) {
+            if (direction == 'down') {
+                $('#toolbar').show(100);
+            }else {
+                $('#toolbar').hide(500);
             }
-        })
-
-    </script>
+        }
+    })
+</script>
 
 </body>
 </html>

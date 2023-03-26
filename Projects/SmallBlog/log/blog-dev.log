@@ -3875,3 +3875,43 @@ org.thymeleaf.exceptions.TemplateInputException: Error resolving fragment: "~{_f
 2023-03-26 23:02:21.225  INFO 12212 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
 2023-03-26 23:02:21.253  INFO 12212 --- [http-nio-8080-exec-1] com.lrm.aspect.LogAspect                 : Request : {url='http://127.0.0.1:8080/', ip='127.0.0.1', classMethod='com.lrm.web.IndexController.index', args=[]} 
 2023-03-26 23:02:21.262  INFO 12212 --- [http-nio-8080-exec-1] com.lrm.aspect.LogAspect                 : Result: index
+2023-03-26 23:28:39.888  INFO 23048 --- [restartedMain] com.lrm.DemoApplication                  : Starting DemoApplication using Java 1.8.0_192 on LAPTOP-0S6P54MQ with PID 23048 (C:\Users\27208\Desktop\计算机科学\Learning\Projects\SmallBlog\target\classes started by 27208 in C:\Users\27208\Desktop\计算机科学\Learning\Projects\SmallBlog)
+2023-03-26 23:28:39.888  INFO 23048 --- [restartedMain] com.lrm.DemoApplication                  : The following 1 profile is active: "develop"
+2023-03-26 23:28:39.930  INFO 23048 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-03-26 23:28:39.930  INFO 23048 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-03-26 23:28:41.226  INFO 23048 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-03-26 23:28:41.242  INFO 23048 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-03-26 23:28:41.242  INFO 23048 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-03-26 23:28:41.323  INFO 23048 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-03-26 23:28:41.323  INFO 23048 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1393 ms
+2023-03-26 23:28:41.684  INFO 23048 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-03-26 23:28:42.047  INFO 23048 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-03-26 23:28:42.079  INFO 23048 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-03-26 23:28:42.079  INFO 23048 --- [restartedMain] com.lrm.DemoApplication                  : Started DemoApplication in 2.663 seconds (JVM running for 3.108)
+2023-03-26 23:28:45.006  INFO 23048 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-03-26 23:28:45.007  INFO 23048 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-03-26 23:28:45.007  INFO 23048 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2023-03-26 23:28:45.037  INFO 23048 --- [http-nio-8080-exec-1] com.lrm.aspect.LogAspect                 : Request : {url='http://127.0.0.1:8080/', ip='127.0.0.1', classMethod='com.lrm.web.IndexController.index', args=[]} 
+2023-03-26 23:28:45.052  INFO 23048 --- [http-nio-8080-exec-1] com.lrm.aspect.LogAspect                 : Result: index
+2023-03-26 23:28:53.932  INFO 23048 --- [http-nio-8080-exec-7] com.lrm.aspect.LogAspect                 : Request : {url='http://127.0.0.1:8080/blog', ip='127.0.0.1', classMethod='com.lrm.web.IndexController.blog', args=[]} 
+2023-03-26 23:28:53.932  INFO 23048 --- [http-nio-8080-exec-7] com.lrm.aspect.LogAspect                 : Result: blog
+2023-03-26 23:31:27.328  INFO 18788 --- [restartedMain] com.lrm.DemoApplication                  : Starting DemoApplication using Java 1.8.0_192 on LAPTOP-0S6P54MQ with PID 18788 (C:\Users\27208\Desktop\计算机科学\Learning\Projects\SmallBlog\target\classes started by 27208 in C:\Users\27208\Desktop\计算机科学\Learning\Projects\SmallBlog)
+2023-03-26 23:31:27.337  INFO 18788 --- [restartedMain] com.lrm.DemoApplication                  : The following 1 profile is active: "develop"
+2023-03-26 23:31:27.376  INFO 18788 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-03-26 23:31:27.376  INFO 18788 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-03-26 23:31:28.675  INFO 18788 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-03-26 23:31:28.683  INFO 18788 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-03-26 23:31:28.683  INFO 18788 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-03-26 23:31:28.771  INFO 18788 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-03-26 23:31:28.771  INFO 18788 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1395 ms
+2023-03-26 23:31:29.164  INFO 18788 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-03-26 23:31:29.501  INFO 18788 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-03-26 23:31:29.531  INFO 18788 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-03-26 23:31:29.531  INFO 18788 --- [restartedMain] com.lrm.DemoApplication                  : Started DemoApplication in 2.682 seconds (JVM running for 3.16)
+2023-03-26 23:31:30.631  INFO 18788 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-03-26 23:31:30.631  INFO 18788 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-03-26 23:31:30.633  INFO 18788 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2023-03-26 23:31:30.663  INFO 18788 --- [http-nio-8080-exec-1] com.lrm.aspect.LogAspect                 : Request : {url='http://127.0.0.1:8080/', ip='127.0.0.1', classMethod='com.lrm.web.IndexController.index', args=[]} 
+2023-03-26 23:31:30.674  INFO 18788 --- [http-nio-8080-exec-1] com.lrm.aspect.LogAspect                 : Result: index
+2023-03-26 23:31:36.440  INFO 18788 --- [http-nio-8080-exec-5] com.lrm.aspect.LogAspect                 : Request : {url='http://127.0.0.1:8080/blog', ip='127.0.0.1', classMethod='com.lrm.web.IndexController.blog', args=[]} 
+2023-03-26 23:31:36.440  INFO 18788 --- [http-nio-8080-exec-5] com.lrm.aspect.LogAspect                 : Result: blog

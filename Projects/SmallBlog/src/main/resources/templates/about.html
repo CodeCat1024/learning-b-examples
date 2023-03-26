@@ -134,7 +134,23 @@
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
-<script src="../static/scripts/me.js"></script>
+<script>
+    // 响应式导航栏按钮
+    $('.menu.toggle').click(function (){
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+    $('.wechat').popup({
+        popup: $('.wechat-qr'),
+        on: 'click',
+        position: 'bottom center'
+    });
+
+    $('.qq').popup({
+        on: 'click',
+        position: 'bottom center'
+    });
+</script>
 
 </body>
 </html>
