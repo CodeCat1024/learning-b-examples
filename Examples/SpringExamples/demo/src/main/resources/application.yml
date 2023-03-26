@@ -1,7 +1,0 @@
-logging:
-  level:
-    com.example.demo: error
-    com.example.hello: info
-  file:
-    path: D:/
-

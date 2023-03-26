@@ -1,0 +1,21 @@
+spring:
+  # 数据库连接配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Drvier
+    url: jdbc:mysql://loaclhost:3306/smallblog?userUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 1111
+
+  #
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+# 日志配置
+logging:
+  level:
+    root: info
+    com.example: debug
+  file: log/blog-dev.log
+

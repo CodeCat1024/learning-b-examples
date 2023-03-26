@@ -1,0 +1,8 @@
+spring:
+  # HTML模板
+  thymeleaf:
+    mode: HTML
+  profiles:
+    active: develop
+
+
