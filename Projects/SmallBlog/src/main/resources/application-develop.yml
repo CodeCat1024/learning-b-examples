@@ -17,5 +17,5 @@ logging:
   level:
     root: info
     com.example: debug
-  file: log/blog-dev.log
-
+  file:
+    name: log\blog-dev.log
