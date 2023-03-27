@@ -20,4 +20,7 @@ public class IndexController {
     public String blog() {
         return "blog";
     }
+
+    @GetMapping("/about")
+    public String about() { return "about"; }
 }
