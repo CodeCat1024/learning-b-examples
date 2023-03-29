@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="admin/_fragments :: head(~{::title})">
+<head th:fragment="head(title)">
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>博客管理</title>
+    <title th:replace="${title}">模板</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
-    <link rel="stylesheet" href="../../static/styles/me.css">
+
+    <link rel="stylesheet" href="../static/lib/typo/typo.css" th:href="@{/lib/typo/typo.css}">
+    <link rel="stylesheet" href="../static/lib/animate/animate.css" th:href="@{/lib/animate/animate.css}">
+    <link rel="stylesheet" href="../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}">
+    <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css" th:href="@{/lib/tocbot/tocbot.css}">
+
+    <link rel="stylesheet" href="../static/styles/me.css" th:href="@{/styles/me.css}">
 </head>
 <body>
-    
     <!-- 导航栏 -->
-    <nav th:replace="admin/_fragments :: menu(0)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+    <nav th:fragment="menu(n)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
         <div class="ui container">
             <div class="ui inverted secondary stackable menu">
                 <h2 class="ui teal header item">管理后台</h2>
-                <a href="#" class="active m-item item m-mobile-hide"><i class="home icon"></i>博客</a>
-                <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>分类</a>
-                <a href="#" class="m-item item m-mobile-hide"><i class="tags icon"></i>标签</a>
+                <a href="#" th:href="@{/admin/blogs}" class="m-item item m-mobile-hide" th:classappend="${n==1} ? 'active'"><i class="home icon"></i>博客</a>
+                <a href="#" th:href="@{/admin/types}" class="m-item item m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="idea icon"></i>分类</a>
+                <a href="#" th:href="@{/admin/tags}" class="m-item item m-mobile-hide" th:classappend="${n==1} ? 'active'"><i class="tags icon"></i>标签</a>
                 <div class="right menu">
                     <div class="ui dropdown m-item item m-mobile-hide">
                         <div class="text">
@@ -37,23 +40,17 @@
             <i class="sidebar icon"></i>
         </a>
     </nav>
-
-    <!-- 中间部分 -->
-    <div class="m-container-small m-padded-tb-big">
+    <!-- 二级导航 -->
+    <div class="ui attached pointing menu">
         <div class="ui container">
-            <div class="ui success large message ">
-                <h3>CodeCat，欢迎登录！</h3>
+            <div class="right menu">
+                <a href="#" class="item">发布</a>
+                <a href="#" class="teal active item">列表</a>
             </div>
-
-            <img src="https://picsum.photos/id/17/1000/500" alt="" class="ui rounded bordered fluid image">
         </div>
     </div>
-
-    <br>
-    <br>
-
     <!-- 底部 -->
-    <footer th:replace="admin/_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+    <footer th:fragment="footer" class="ui inverted vertical segment m-padded-tb-massive">
         <div class="ui center aligned container">
             <div class="ui inverted divided stackable grid">
 
@@ -61,7 +58,7 @@
                 <div class="three wide column">
                     <div class="ui inverted link list">
                         <div class="item">
-                            <img src="./static/images/Arts-Stream-Subjects.png" class="ui rounded image" style="width:150px;" alt="">
+                            <img src="../static/images/Arts-Stream-Subjects.png" class="ui rounded image" style="width:150px;" alt="">
                         </div>
                     </div>
                 </div>
@@ -75,7 +72,7 @@
                         <a href="#" class="item">blog3</a>
                     </div>
                 </div>
-                
+
                 <!-- 联系我 -->
                 <div class="three wide column">
                     <h4 class="ui inverted header">联系我</h4>
@@ -84,7 +81,7 @@
                         <a href="#" class="item">QQ: 2720883600</a>
                     </div>
                 </div>
-                
+
                 <!-- 介绍 -->
                 <div class="seven wide column">
                     <h4 class="ui inverted header">介绍</h4>
@@ -98,23 +95,15 @@
         </div>
 
         <!-- 分割线 -->
-        
+
     </footer>
 
-    <!--/*/<th:block th:replace="_fragments :: script">/*/-->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
-    <!--/*/</th:block>/*/-->
-<script>
-        // 响应式导航栏按钮
-    $('.menu.toggle').click(function (){
-        $('.m-item').toggleClass('m-mobile-hide');
-    });
+    <!-- 引入的js-->
+    <th:block th:fragment="script">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+        <script src="../../static/lib/editormd/editormd.min.js" th:src="@{/lib/editormd/editormd.min.js}"></script>
+    </th:block>
 
-    // 账户注销
-    $('.ui.dropdown').dropdown({
-        on: 'hover'
-    });
-</script>
 </body>
 </html>

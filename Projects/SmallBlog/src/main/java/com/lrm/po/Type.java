@@ -1,5 +1,7 @@
 package com.lrm.po;
 
+import javax.validation.constraints.NotEmpty;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,7 @@ public class Type {
     @GeneratedValue
     private Long id;
 
+    @NotEmpty(message = "分类名称不能为空")
     private String name;
 
     @OneToMany(mappedBy = "type")
@@ -40,9 +43,8 @@ public class Type {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name; }
+
     public List<Blog> getBlogs() {
         return blogs;
     }

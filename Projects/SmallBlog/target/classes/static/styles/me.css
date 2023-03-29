@@ -1,6 +1,21 @@
 body {
     background: url("../images/leaves.png");
 }
+/*------display------*/
+.m-inline-block {
+    display: inline-block !important;
+}
+
+
+.m-container {
+    max-width: 72em !important;
+    margin: auto !important;
+}
+
+.m-container-small {
+    max-width: 60em !important;
+    margin: auto !important;
+}
 
 /* padding */
 .m-padded-mini {
@@ -66,9 +81,16 @@ body {
     margin-bottom: 3em !important;
 }
 
+.m-margin-tb-massive {
+    margin-top: 10em !important;
+    margin-bottom: 10em !important;
+}
+
 .m-margin-bottom-small {
     margin-bottom: 0.5em !important;
 }
+
+
 
 /* ------------ position ---------------*/
 .m-right-top {
@@ -114,21 +136,6 @@ body {
     opacity: 0.6 !important;
 }
 
-/*------display------*/
-.m-inline-block {
-    display: inline-block !important;
-}
-
-
-.m-container {
-    max-width: 72em !important;
-    margin: auto !important;
-}
-
-.m-container-small {
-    max-width: 60em !important;
-    margin: auto !important;
-}
 
 /* ---------------- color -----------*/
 .m-black {
