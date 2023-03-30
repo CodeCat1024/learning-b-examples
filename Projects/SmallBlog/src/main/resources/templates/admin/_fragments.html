@@ -4,13 +4,8 @@
     <meta charset="UTF-8">
     <title th:replace="${title}">模板</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
-
-    <link rel="stylesheet" href="../static/lib/typo/typo.css" th:href="@{/lib/typo/typo.css}">
-    <link rel="stylesheet" href="../static/lib/animate/animate.css" th:href="@{/lib/animate/animate.css}">
-    <link rel="stylesheet" href="../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}">
-    <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css" th:href="@{/lib/tocbot/tocbot.css}">
-
-    <link rel="stylesheet" href="../static/styles/me.css" th:href="@{/styles/me.css}">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css" th:href="@{/lib/editormd/css/editormd.min.css}">
+    <link rel="stylesheet" href="../../static/styles/me.css" th:href="@{/styles/me.css}">
 </head>
 <body>
     <!-- 导航栏 -->
@@ -58,7 +53,7 @@
                 <div class="three wide column">
                     <div class="ui inverted link list">
                         <div class="item">
-                            <img src="../static/images/Arts-Stream-Subjects.png" class="ui rounded image" style="width:150px;" alt="">
+                            <img src="../static/images/Arts-Stream-Subjects.png" th:src="@{/images/Arts-Stream-Subjects.png}" class="ui rounded image" style="width:150px;" alt="">
                         </div>
                     </div>
                 </div>

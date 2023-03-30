@@ -15,7 +15,7 @@
         <div class="ui container">
             <div class="ui inverted secondary stackable menu">
                 <h2 class="ui teal header item">管理后台</h2>
-                <a href="#" class="active m-item item m-mobile-hide"><i class="home icon"></i>博客</a>
+                <a href="#" class="m-item item m-mobile-hide"><i class="home icon"></i>博客</a>
                 <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>分类</a>
                 <a href="#" class="m-item item m-mobile-hide"><i class="tags icon"></i>标签</a>
                 <div class="right menu">
@@ -51,23 +51,31 @@
     <div class="m-container-small m-padded-tb-big">
         <div class="ui container">
             <!-- 搜索 -->
-            <form action="#" method="post" class="ui segment form">
+            <div class="ui secondary segment form">
+                <input type="hidden" name="page">
                 <div class="inline fields">
                     <!-- 标题 -->
                     <div class="inline field">
                         <input type="text" name="title" placeholder="标题">
                     </div>
                     <!-- 类型 -->
-                    <div class="inline field">    
-                        <div class="ui selection dropdown">
-                            <input type="hidden" name="type">
-                            <i class="dropdown icon"></i>
-                            <div class="default text">分类</div>
-                            <div class="menu">
-                                <div class="item" data-value="1">错误日志</div>
-                                <div class="item" data-value="1">开发者手册</div>
+                    <div class="field">
+                        <div class="ui labeled action input">
+                            <div class="ui type selection dropdown">
+                                <input type="hidden" name="typeId">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">分类</div>
+                                <div class="menu">
+                                    <div th:each="type: ${types}" class="item" data-value="1" th:data-value="${type.id}" th:text="${type.name}">错误日志</div>
+                                    <!--                                只在模板下拿掉-->
+                                    <!--/*-->
+                                    <div class="item" data-value="1">开发者手册</div>
+                                    <!--*/-->
+                                </div>
                             </div>
+                            <button id="clear-btn" class="ui compact button">clear</button>
                         </div>
+
                     </div>
                     <!-- 推荐 -->
                     <div class="field">
@@ -78,19 +86,20 @@
                     </div>
                     <!-- 搜索 -->
                     <div class="field">
-                        <button class="ui mini teal basic button"><i class="search icon"></i>搜索</button>
+                        <button type="button" id="search-btn" class="ui mini teal basic button"><i class="search icon"></i>搜索</button>
                     </div>
                 </div>
-            </form>
-
+            </div>
             <!-- 博客列表 -->
-            <table class="ui celled table">
-                <thead>
+            <div id="table-container">
+                <table th:fragment="blogList" class="ui compact teal table">
+                    <thead>
                     <tr>
                         <th></th>
                         <th>标题</th>
                         <th>类型</th>
                         <th>推荐</th>
+                        <th>状态</th>
                         <th>更新时间</th>
                         <th>
                             <div class="center aligned">
@@ -98,32 +107,43 @@
                             </div>
                         </th>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>刻意练习清单</td>
-                        <td>认知升级</td>
-                        <td>是</td>
-                        <td>20220-10-20 08:34</td>
+                    </thead>
+                    <tbody>
+                    <tr th:each="blog, iterStat : ${page.content}">
+                        <td th:text="${iterStat.count}">1</td>
+                        <td th:text="${blog.title}">刻意练习清单</td>
+                        <td th:text="${blog.type.name}">认知升级</td>
+                        <td th:text="${blog.recommend} ? '是' : '否'">是</td>
+                        <td th:text="${blog.published} ? '草稿' : '发布'">草稿</td>
+                        <td th:text="${blog.updateTime}">20220-10-20 08:34</td>
                         <td>
-                            <a href="#" class="ui mini basic teal button">编辑</a>
-                            <a href="#" class="ui mini basic red button">删除</a>
+                            <a href="#" th:href="@{/admin/blogs/{id}/input(id=${blog.id})}" class="ui mini basic teal button">编辑</a>
+                            <a href="#" th:href="@{/admin/blogs/{id}/delete(id=${blog.id})}" class="ui mini basic red button">删除</a>
                         </td>
                     </tr>
-                </tbody>
-                <tfoot>
+                    </tbody>
+                    <tfoot>
                     <tr>
-                        <th colspan="6">
-                            <div class="ui mini pagination menu">
-                                <a href="#" class="item">上一页</a>
-                                <a href="#" class="item">下一页</a>
+                        <th colspan="7">
+                            <div class="ui mini pagination menu" th:if="${page.totalPages}>1">
+                                <a onclick="page(this)" th:attr="data-page=${page.number-1}" class="item" th:unless="${page.first}">上一页</a>
+                                <a onclick="page(this)" th:attr="data-page=${page.number+1}" class="item" th:unless="${page.last}">下一页</a>
                             </div>
-                            <a href="#" class="ui mini right floated teal basic button">新增</a>
+                            <a href="#" th:href="@{/admin/blogs/input}" class="ui mini right floated teal basic button">新增</a>
                         </th>
                     </tr>
-                </tfoot>
-            </table>
+                    </tfoot>
+                </table>
+
+                <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+                    <i class="close icon"></i>
+                    <div class="header">提示：</div>
+                    <p th:text="${message}">恭喜，操作成功！</p>
+                </div>
+
+
+
+            </div>
 
         </div>
     </div>
@@ -180,7 +200,7 @@
         
     </footer>
 
-    <!--/*/<th:block th:replace="_fragments :: script">/*/-->
+    <!--/*/<th:block th:replace="admin/_fragments :: script">/*/-->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
     <!--/*/</th:block>/*/-->
@@ -194,6 +214,40 @@
     $('.ui.dropdown').dropdown({
         on: 'hover'
     });
+
+    // 消息提示关闭初始化
+    $('.message .close').on('click', function(){
+        $(this).closest('.message').transition('fade');
+        });
+
+    //
+    $('#clear-btn').on('click', function() {
+        $('.ui.type.dropdown').dropdown('clear');
+        });
+
+
+    function page(obj) {
+        $("[name='page']").val($(obj).data("page"));
+        loaddata();
+    }
+
+    //点击事件；page清零，搜索不会查询某一页
+    $("#search-btn").click(function () {
+        $("[name='page']").val(0);
+        loaddata();
+    });
+
+
+    // 用来发送数据
+    function loaddata() {
+        $("#table-container").load(/*[[@{/admin/blogs/search}]]*/"/admin/blogs/search",{
+            title : $("[name='title']").val(),
+            typeId : $("[name='typeId']").val(),
+            recommend : $("[name='recommend']").prop('checked'),
+            page : $("[name='page']").val()
+        });
+    }
+
 </script>
 </body>
 </html>

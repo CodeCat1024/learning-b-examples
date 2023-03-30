@@ -28,8 +28,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Blog> blogs = new ArrayList<>();
 
-    public User() {
-    }
+    public User() { }
 
     @Override
     public String toString() {
@@ -46,13 +45,9 @@ public class User {
                 '}';
     }
 
-    public List<Blog> getBlogs() {
-        return blogs;
-    }
+    public List<Blog> getBlogs() { return blogs; }
 
-    public void setBlogs(List<Blog> blogs) {
-        this.blogs = blogs;
-    }
+    public void setBlogs(List<Blog> blogs) { this.blogs = blogs; }
 
     public Long getId() {
         return id;
@@ -66,17 +61,13 @@ public class User {
         return nickname;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
+    public void setNickname(String nickname) { this.nickname = nickname; }
 
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    public void setUsername(String username) { this.username = username; }
 
     public String getPassword() {
         return password;
@@ -106,9 +97,7 @@ public class User {
         return type;
     }
 
-    public void setType(Integer type) {
-        this.type = type;
-    }
+    public void setType(Integer type) { this.type = type; }
 
     public Date getCreateTime() {
         return createTime;
