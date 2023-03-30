@@ -179,9 +179,7 @@ public class Blog {
         return published;
     }
 
-    public void setPublished(boolean published) {
-        this.published = published;
-    }
+    public void setPublished(boolean published) { this.published = published; }
 
     public boolean isRecommend() {
         return recommend;

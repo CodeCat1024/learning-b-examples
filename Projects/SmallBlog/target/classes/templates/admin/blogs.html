@@ -114,7 +114,7 @@
                         <td th:text="${blog.title}">刻意练习清单</td>
                         <td th:text="${blog.type.name}">认知升级</td>
                         <td th:text="${blog.recommend} ? '是' : '否'">是</td>
-                        <td th:text="${blog.published} ? '草稿' : '发布'">草稿</td>
+                        <td th:text="${blog.published} ? '发布' : '草稿'"></td>
                         <td th:text="${blog.updateTime}">20220-10-20 08:34</td>
                         <td>
                             <a href="#" th:href="@{/admin/blogs/{id}/input(id=${blog.id})}" class="ui mini basic teal button">编辑</a>
