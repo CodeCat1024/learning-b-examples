@@ -1,24 +1,35 @@
+<<<<<<< HEAD
 // finished
 
+=======
+>>>>>>> bfc3e850796c355c9d67ec67bd0d5f7b329cf4e2
 package com.lrm.service;
 
 import com.lrm.NotFoundException;
 import com.lrm.dao.BlogRepository;
 import com.lrm.po.Blog;
 import com.lrm.po.Type;
+<<<<<<< HEAD
 import com.lrm.util.MarkdownUtils;
+=======
+>>>>>>> bfc3e850796c355c9d67ec67bd0d5f7b329cf4e2
 import com.lrm.util.MyBeanUtils;
 import com.lrm.vo.BlogQuery;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+<<<<<<< HEAD
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+=======
+import org.springframework.data.domain.Pageable;
+>>>>>>> bfc3e850796c355c9d67ec67bd0d5f7b329cf4e2
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+<<<<<<< HEAD
 import javax.persistence.criteria.*;
 import java.util.*;
 
@@ -28,6 +39,21 @@ public class BlogServiceImpl implements BlogService {
 
     @Autowired
     private BlogRepository blogRepository;  //注入blogRepository
+=======
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+@Service
+public class BlogServiceImpl implements BlogService{
+
+    @Autowired
+    private BlogRepository blogRepository;
+>>>>>>> bfc3e850796c355c9d67ec67bd0d5f7b329cf4e2
 
     @Override
     public Blog getBlog(Long id) {
@@ -35,6 +61,7 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+<<<<<<< HEAD
     public Blog getAndConvert(Long id) {
         Blog blog = blogRepository.getOne(id);
         if (blog == null) {
@@ -50,6 +77,8 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+=======
+>>>>>>> bfc3e850796c355c9d67ec67bd0d5f7b329cf4e2
     public Page<Blog> listBlog(Pageable pageable, BlogQuery blog) {
         return blogRepository.findAll(new Specification<Blog>() {
             @Override
@@ -70,6 +99,7 @@ public class BlogServiceImpl implements BlogService {
         },pageable);
     }
 
+<<<<<<< HEAD
     @Override
     public Page<Blog> listBlog(Pageable pageable) {
         return blogRepository.findAll(pageable);
@@ -113,6 +143,8 @@ public class BlogServiceImpl implements BlogService {
         return blogRepository.count();
     }
 
+=======
+>>>>>>> bfc3e850796c355c9d67ec67bd0d5f7b329cf4e2
     @Transactional
     @Override
     public Blog saveBlog(Blog blog) {
@@ -139,6 +171,10 @@ public class BlogServiceImpl implements BlogService {
         return blogRepository.save(b);
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> bfc3e850796c355c9d67ec67bd0d5f7b329cf4e2
     @Transactional
     @Override
     public void deleteBlog(Long id) {

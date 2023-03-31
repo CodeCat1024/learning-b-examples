@@ -8,9 +8,12 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
+<<<<<<< HEAD
 /**
  * Created by limi on 2017/10/16.
  */
+=======
+>>>>>>> bfc3e850796c355c9d67ec67bd0d5f7b329cf4e2
 public interface TypeService {
 
     Type saveType(Type type);
@@ -23,9 +26,13 @@ public interface TypeService {
 
     List<Type> listType();
 
+<<<<<<< HEAD
     List<Type> listTypeTop(Integer size);
 
     Type updateType(Long id,Type type);
+=======
+    Type updateType(Long id, Type type);
+>>>>>>> bfc3e850796c355c9d67ec67bd0d5f7b329cf4e2
 
     void deleteType(Long id);
 }

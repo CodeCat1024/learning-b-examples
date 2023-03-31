@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 // finished
 
+=======
+>>>>>>> bfc3e850796c355c9d67ec67bd0d5f7b329cf4e2
 package com.lrm.dao;
 
 import com.lrm.po.Blog;
