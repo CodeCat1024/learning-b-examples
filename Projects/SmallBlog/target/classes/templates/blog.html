@@ -17,7 +17,7 @@
 <body>
 
     <!-- 导航栏 -->
-    <nav th:replace="_fragments :: menu(1)" class="ui inverted attached segment m-padded-tb-mini ">
+    <nav th:replace="_fragments :: menu(0)" class="ui inverted attached segment m-padded-tb-mini ">
         <div class="ui container">
             <div class="ui inverted secondary stackable menu">
                 <h2 class="ui teal header item">博客</h2>
@@ -817,7 +817,7 @@ h5,h6{font-size:1em;}
         position: 'left center'
     });
 
-    // 二维码生成
+     //生成二维码的JS插件，直接复制
     var serurl = /*[[#{blog.serurl}]]*/"127.0.0.1:8080";
     var url = /*[[@{/blog/{id}(id=${blog.id})}]]*/"";
     var qrcode = new QRCode("qrcode", {
