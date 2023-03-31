@@ -3783,3 +3783,33 @@ Caused by: java.lang.NumberFormatException: For input string: "hello"
 2023-03-31 15:17:30.140  INFO 30340 --- [http-nio-8080-exec-1] com.lrm.aspect.LogAspect                 : Result: blog
 2023-03-31 15:17:59.257  INFO 30340 --- [http-nio-8080-exec-3] com.lrm.aspect.LogAspect                 : Request : {url='http://127.0.0.1:8080/blog/33', ip='127.0.0.1', classMethod='com.lrm.web.IndexController.blog', args=[33, {}]} 
 2023-03-31 15:17:59.266  INFO 30340 --- [http-nio-8080-exec-3] com.lrm.aspect.LogAspect                 : Result: blog
+2023-03-31 15:27:37.663  INFO 23604 --- [restartedMain] com.lrm.DemoApplication                  : Starting DemoApplication using Java 1.8.0_192 on LAPTOP-0S6P54MQ with PID 23604 (C:\Users\27208\Desktop\计算机科学\Learning\Projects\SmallBlog\target\classes started by 27208 in C:\Users\27208\Desktop\计算机科学\Learning\Projects\SmallBlog)
+2023-03-31 15:27:37.664  INFO 23604 --- [restartedMain] com.lrm.DemoApplication                  : The following 1 profile is active: "develop"
+2023-03-31 15:27:37.708  INFO 23604 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-03-31 15:27:37.709  INFO 23604 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-03-31 15:27:38.318  INFO 23604 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-03-31 15:27:38.391  INFO 23604 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 66 ms. Found 5 JPA repository interfaces.
+2023-03-31 15:27:39.409  INFO 23604 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-03-31 15:27:39.420  INFO 23604 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-03-31 15:27:39.421  INFO 23604 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-03-31 15:27:39.527  INFO 23604 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-03-31 15:27:39.527  INFO 23604 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1818 ms
+2023-03-31 15:27:39.711  INFO 23604 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-03-31 15:27:39.769  INFO 23604 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-03-31 15:27:39.923  INFO 23604 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-03-31 15:27:40.029  INFO 23604 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-03-31 15:27:40.034  WARN 23604 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2023-03-31 15:27:40.476  INFO 23604 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-03-31 15:27:40.504  INFO 23604 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2023-03-31 15:27:41.390  INFO 23604 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-03-31 15:27:41.401  INFO 23604 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-03-31 15:27:42.229  WARN 23604 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-03-31 15:27:42.476  INFO 23604 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-03-31 15:27:42.965  INFO 23604 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-03-31 15:27:42.992  INFO 23604 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-03-31 15:27:43.000  INFO 23604 --- [restartedMain] com.lrm.DemoApplication                  : Started DemoApplication in 5.803 seconds (JVM running for 6.33)
+2023-03-31 15:27:46.498  INFO 23604 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-03-31 15:27:46.499  INFO 23604 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-03-31 15:27:46.499  INFO 23604 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2023-03-31 15:27:46.533  INFO 23604 --- [http-nio-8080-exec-1] com.lrm.aspect.LogAspect                 : Request : {url='http://127.0.0.1:8080/blog/33', ip='127.0.0.1', classMethod='com.lrm.web.IndexController.blog', args=[33, {}]} 
+2023-03-31 15:27:46.688  INFO 23604 --- [http-nio-8080-exec-1] com.lrm.aspect.LogAspect                 : Result: blog
