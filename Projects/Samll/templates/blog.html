@@ -7,12 +7,12 @@
     <title>详情页</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
 
-    <link rel="stylesheet" href="./static/lib/typo/typo.css">
-    <link rel="stylesheet" href="./static/lib/animate/animate.css">
-    <link rel="stylesheet" href="./static/lib/prism/prism.css">
-    <link rel="stylesheet" href="./static/lib/tocbot/tocbot.css">
+    <link rel="stylesheet" href="../static/lib/typo/typo.css">
+    <link rel="stylesheet" href="../static/lib/animate/animate.css">
+    <link rel="stylesheet" href="../static/lib/prism/prism.css">
+    <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css">
 
-    <link rel="stylesheet" href="./static/styles/me.css">
+    <link rel="stylesheet" href="../static/styles/me.css">
     <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 <script
   src="https://code.jquery.com/jquery-3.1.1.min.js"
@@ -66,7 +66,7 @@
 
             <!-- 图片 -->
             <div class="ui attached segment">
-                <img src="./static/images/Arts-Stream-Subjects.png" alt="" class="ui fluid image rounded">
+                <img src="../static/images/Arts-Stream-Subjects.png" alt="" class="ui fluid image rounded">
             </div>
 
             <!-- 内容 -->
@@ -123,9 +123,9 @@
   其实也是一样的道理，比如说semantic ui框架，我们直接也是直接将它的css文件引入进来我们的开发环境就行了
 </p>
 <p>比如我们可以来看semantic ui的官网上的引用介绍</p>
-<p><img src="./static/images/1679761529561.png" alt="" class="ui rounded image bordered"></p>
+<p><img src="../static/images/1679761529561.png" alt="" class="ui rounded image bordered"></p>
 <p>但是，如果我们直接把这份代码拷贝到自己的文件中，则会出现找不到资源的错误，这是为什么呢？</p>
-<p><img src="./static/images/1679761763772.png" alt="" class="ui image rounded bordered"></p>
+<p><img src="../static/images/1679761763772.png" alt="" class="ui image rounded bordered"></p>
 <p>其实就是因为你没有把代码下载到你本地里，这就像你上面引入./static/styles/my-text-style.css文件，但是这份文件已经被你删除了一样</p>
 <p><b>那么，我们只要把semantic ui官方他的“my-text-style.css”文件下载到本地然后引入就行了，跟我们使用自己的css文件没有任何区别</b></p>
 <h1>三、依赖的依赖</h1>
@@ -134,12 +134,12 @@
 <h1>四、为什么有时候不需要下载源码？</h1>                  
 <pre><code class="js">  src="https://code.jquery.com/jquery-3.1.1.min.js"</code></pre>
 <p>比如semantic引入jQuery时，为啥引入的是网址而不是文件呢？并且还不需要将jQuery的源码下载到本地，这是为什么呢？而且，打开这个网址，发现里面还是一大堆完全看不懂的东西......</p>
-<p><img src="./static/images/1679762615390.png" alt="" class="ui image rounded bordered"></p>
+<p><img src="../static/images/1679762615390.png" alt="" class="ui image rounded bordered"></p>
 <p>其实，这也跟我们将源码下载到本地然后去引用一样的，只是我们将这些源码放到线上而已，这样就不用一直占据我们本地的空间了</p>
 <p>“那为什么这么乱呢？”</p>
 <p>因为这是压缩版，网址上的min就代表这是压缩过后的源代码，这样的话文件更小，加载更快</p>
 <p>不信的话你可以看看去掉这个网址里面的.min，看看没有压缩过的版本</p>
-<p><img src="./static/images/1679762917275.png" alt="" class="ui image rounded bordered"></p>
+<p><img src="../static/images/1679762917275.png" alt="" class="ui image rounded bordered"></p>
 <p><b>而且，我们还可以发现，所谓的压缩，不过就是去掉一些空格和换行而已</b></p>
 <h1>五、我非要下载到本地怎么办？</h1>
 <p>其实，明白了原理之后，我们可以很快地猜出，只要我们把网址上的这个源代码拷贝一下，放到我们本地，然后我们再通过平常我们引用自己css文件的方式去引用就可以了，说到底，跟我们使用自己的css和js文件没有任何区别
@@ -527,11 +527,11 @@ h5,h6{font-size:1em;}
                     <div class="ui orange basic label">
                         <div class="ui images" style="font-size: inherit">
                             <div class="image">
-                                <img src="./static/images/Arts-Stream-Subjects.png" alt="" class="ui image rounded bordered" style="width: 120px; height:120px;">
+                                <img src="../static/images/Arts-Stream-Subjects.png" alt="" class="ui image rounded bordered" style="width: 120px; height:120px;">
                                 <div>支付宝</div>
                             </div>
                             <div class="image">
-                                <img src="./static/images/Arts-Stream-Subjects.png" alt="" class="ui image rounded bordered" style="width: 120px; height:120px;">
+                                <img src="../static/images/Arts-Stream-Subjects.png" alt="" class="ui image rounded bordered" style="width: 120px; height:120px;">
                                 <div>微信</div>
                             </div>
                         </div>
@@ -553,7 +553,7 @@ h5,h6{font-size:1em;}
                         </ui>
                     </div>
                     <div class="five wide column">
-                        <img src="./static/images/Arts-Stream-Subjects.png" alt="" class="ui right floated rounded bordered image" style="width: 120px;">
+                        <img src="../static/images/Arts-Stream-Subjects.png" alt="" class="ui right floated rounded bordered image" style="width: 120px;">
                     </div>
                 </div>
             </div>
@@ -566,7 +566,7 @@ h5,h6{font-size:1em;}
                         <h3 class="ui dividing header">Comments</h3>
                         <div class="comment">
                           <a class="avatar">
-                            <img src="./static/images/Arts-Stream-Subjects.png">
+                            <img src="../static/images/Arts-Stream-Subjects.png">
                           </a>
                           <div class="content">
                             <a class="author">Matt</a>
@@ -581,7 +581,7 @@ h5,h6{font-size:1em;}
                         </div>
                         <div class="comment">
                           <a class="avatar">
-                            <img src="./static/images/Arts-Stream-Subjects.png">
+                            <img src="../static/images/Arts-Stream-Subjects.png">
                           </a>
                           <div class="content">
                             <a class="author">Elliot Fu</a>
@@ -598,7 +598,7 @@ h5,h6{font-size:1em;}
                           <div class="comments">
                             <div class="comment">
                               <a class="avatar">
-                                <img src="./static/images/Arts-Stream-Subjects.png">
+                                <img src="../static/images/Arts-Stream-Subjects.png">
                               </a>
                               <div class="content">
                                 <a class="author">Jenny Hess</a>
@@ -615,7 +615,7 @@ h5,h6{font-size:1em;}
                         </div>
                         <div class="comment">
                           <a class="avatar">
-                            <img src="./static/images/Arts-Stream-Subjects.png">
+                            <img src="../static/images/Arts-Stream-Subjects.png">
                           </a>
                           <div class="content">
                             <a class="author">Joe Henderson</a>
@@ -695,7 +695,7 @@ h5,h6{font-size:1em;}
                 <div class="three wide column">
                     <div class="ui inverted link list">
                         <div class="item">
-                            <img src="./static/images/Arts-Stream-Subjects.png" class="ui rounded image" style="width:150px;" alt="">
+                            <img src="../static/images/Arts-Stream-Subjects.png" class="ui rounded image" style="width:150px;" alt="">
                         </div>
                     </div>
                 </div>
@@ -737,11 +737,11 @@ h5,h6{font-size:1em;}
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
-<script src="./static/lib/prism/prism.js"></script>
-<script src="./static/lib/tocbot/tocbot.js"></script>
-<script src="./static/lib/qrcode/qrcode.js"></script>
-<script src="./static/lib/scrollto/scrollto.js"></script>
-<script src="./static/lib/waypoints/jquery.waypoints.min.js"></script>
+<script src="../static/lib/prism/prism.js"></script>
+<script src="../static/lib/tocbot/tocbot.js"></script>
+<script src="../static/lib/qrcode/qrcode.js"></script>
+<script src="../static/lib/scrollto/scrollto.js"></script>
+<script src="../static/lib/waypoints/jquery.waypoints.min.js"></script>
 <script>
     // 响应式导航栏按钮
     $('.menu.toggle').click(function (){
