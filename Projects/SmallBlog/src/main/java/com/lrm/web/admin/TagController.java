@@ -30,6 +30,7 @@ public class TagController {
     @Autowired
     private TagService tagService;
 
+    // 将标签渲染到页面上
     @GetMapping("/tags")
     public String tags(@PageableDefault(size = 10,sort = {"id"},direction = Sort.Direction.DESC)
                                Pageable pageable, Model model) {
@@ -37,19 +38,21 @@ public class TagController {
         return "admin/tags";
     }
 
+    // 去到标签新增页面
     @GetMapping("/tags/input")
     public String input(Model model) {
         model.addAttribute("tag", new Tag());
         return "admin/tags-input";
     }
 
+    // 去到标签编辑页面
     @GetMapping("/tags/{id}/input")
     public String editInput(@PathVariable Long id, Model model) {
         model.addAttribute("tag", tagService.getTag(id));
         return "admin/tags-input";
     }
 
-
+    // 提交新增标签
     @PostMapping("/tags")
     public String post(@Valid Tag tag,BindingResult result, RedirectAttributes attributes) {
         Tag tag1 = tagService.getTagByName(tag.getName());
@@ -69,6 +72,7 @@ public class TagController {
     }
 
 
+    // 提交编辑过的标签
     @PostMapping("/tags/{id}")
     public String editPost(@Valid Tag tag, BindingResult result,@PathVariable Long id, RedirectAttributes attributes) {
         Tag tag1 = tagService.getTagByName(tag.getName());
