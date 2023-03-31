@@ -22,7 +22,7 @@ public class Blog {
 
     @Basic(fetch = FetchType.LAZY)
     @Lob
-    private String content;
+    private String content; // 需要在数据库中将它设置为长文本形式
     private String firstPicture;
     private String flag;
     private Integer views;

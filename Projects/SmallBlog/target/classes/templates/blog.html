@@ -555,7 +555,6 @@ h5,h6{font-size:1em;}
                     </div>
                 </div>
             </div>
-
             <!--bottom attached:底部是圆角-->
             <div class="ui bottom attached segment" th:if="${blog.commentabled}">
                 <!--留言区-->
@@ -859,7 +858,7 @@ h5,h6{font-size:1em;}
         }
     })
 
-        //评论表单验证
+    //评论表单验证
     $('.ui.form').form({
       fields: {
         title: {
@@ -931,6 +930,7 @@ h5,h6{font-size:1em;}
       $("[name='parentComment.id']").val(commentId);
       $(window).scrollTo($('#comment-form'),500);
     }
+
 </script>
 
 </body>
