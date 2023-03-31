@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // finished
 
 package com.lrm.util;
@@ -87,9 +86,4 @@ public class MarkdownUtils {
         String a = "[imCoding 爱编程](http://www.lirenmi.cn)";
         System.out.println(markdownToHtmlExtensions(a));
     }
-=======
-package com.lrm.util;
-
-public class MarkdownUtils {
->>>>>>> bfc3e850796c355c9d67ec67bd0d5f7b329cf4e2
 }

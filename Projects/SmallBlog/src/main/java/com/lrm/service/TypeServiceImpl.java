@@ -51,7 +51,6 @@ public class TypeServiceImpl implements TypeService{
         return typeRepository.findAll();
     }
 
-<<<<<<< HEAD
     @Override
     public List<Type> listTypeTop(Integer size) {
         Sort sort = Sort.by(Sort.Direction.DESC,"blogs.size");
@@ -59,8 +58,6 @@ public class TypeServiceImpl implements TypeService{
         return typeRepository.findTop(pageable);
     }
 
-=======
->>>>>>> bfc3e850796c355c9d67ec67bd0d5f7b329cf4e2
     @Transactional
     @Override
     public Type updateType(Long id, Type type) {

@@ -22,11 +22,7 @@ public class Blog {
 
     @Basic(fetch = FetchType.LAZY)
     @Lob
-<<<<<<< HEAD
     private String content; // 需要在数据库中将它设置为长文本形式
-=======
-    private String content;
->>>>>>> bfc3e850796c355c9d67ec67bd0d5f7b329cf4e2
     private String firstPicture;
     private String flag;
     private Integer views;
@@ -56,91 +52,11 @@ public class Blog {
     @Transient
     private String tagIds;
 
-<<<<<<< HEAD
     private String description;
 
     public Blog() {
     }
 
-=======
-    //把当前的tagIds转换成字符串
-    public void init() {
-        this.tagIds = tagsToIds(this.getTags());
-    }
-
-    //1,2,3
-    private String tagsToIds(List<Tag> tags) {
-        if (!tags.isEmpty()) {
-            StringBuffer ids = new StringBuffer();
-            boolean flag = false;
-            for (Tag tag : tags) {
-                if (flag) {
-                    ids.append(",");
-                } else {
-                    flag = true;
-                }
-                ids.append(tag.getId());
-            }
-            return ids.toString();
-        } else {
-            return tagIds;
-        }
-    }
-
-    public Blog() {
-    }
-
-    @Override
-    public String toString() {
-        return "Blog{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", firstPicture='" + firstPicture + '\'' +
-                ", flag='" + flag + '\'' +
-                ", views=" + views +
-                ", appreciation=" + appreciation +
-                ", shareStatement=" + shareStatement +
-                ", commentabled=" + commentabled +
-                ", published=" + published +
-                ", recommend=" + recommend +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
-                '}';
-    }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Type getType() {
-        return type;
-    }
-
-    public void setType(Type type) {
-        this.type = type;
-    }
-
-    public List<Tag> getTags() {
-        return tags;
-    }
-
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
-    }
->>>>>>> bfc3e850796c355c9d67ec67bd0d5f7b329cf4e2
     public Long getId() {
         return id;
     }
@@ -217,7 +133,9 @@ public class Blog {
         return published;
     }
 
-    public void setPublished(boolean published) { this.published = published; }
+    public void setPublished(boolean published) {
+        this.published = published;
+    }
 
     public boolean isRecommend() {
         return recommend;
@@ -243,7 +161,6 @@ public class Blog {
         this.updateTime = updateTime;
     }
 
-<<<<<<< HEAD
     public Type getType() {
         return type;
     }
@@ -343,11 +260,6 @@ public class Blog {
                 ", description='" + description + '\'' +
                 '}';
     }
-=======
-    public String getTagIds() { return tagIds; }
-
-    public void setTagIds(String tagIds) { this.tagIds = tagIds; }
->>>>>>> bfc3e850796c355c9d67ec67bd0d5f7b329cf4e2
 }
 
 

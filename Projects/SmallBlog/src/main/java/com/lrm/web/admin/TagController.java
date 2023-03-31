@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 // finished
 
-=======
->>>>>>> bfc3e850796c355c9d67ec67bd0d5f7b329cf4e2
 package com.lrm.web.admin;
 
 import com.lrm.po.Tag;
@@ -22,7 +19,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
-<<<<<<< HEAD
 /**
  * Created by limi on 2017/10/16.
  */
@@ -35,14 +31,6 @@ public class TagController {
     private TagService tagService;
 
     // 将标签渲染到页面上
-=======
-@Controller
-@RequestMapping("/admin")
-public class TagController {
-    @Autowired
-    private TagService tagService;
-
->>>>>>> bfc3e850796c355c9d67ec67bd0d5f7b329cf4e2
     @GetMapping("/tags")
     public String tags(@PageableDefault(size = 10,sort = {"id"},direction = Sort.Direction.DESC)
                                Pageable pageable, Model model) {
@@ -50,31 +38,21 @@ public class TagController {
         return "admin/tags";
     }
 
-<<<<<<< HEAD
     // 去到标签新增页面
-=======
->>>>>>> bfc3e850796c355c9d67ec67bd0d5f7b329cf4e2
     @GetMapping("/tags/input")
     public String input(Model model) {
         model.addAttribute("tag", new Tag());
         return "admin/tags-input";
     }
 
-<<<<<<< HEAD
     // 去到标签编辑页面
-=======
->>>>>>> bfc3e850796c355c9d67ec67bd0d5f7b329cf4e2
     @GetMapping("/tags/{id}/input")
     public String editInput(@PathVariable Long id, Model model) {
         model.addAttribute("tag", tagService.getTag(id));
         return "admin/tags-input";
     }
 
-<<<<<<< HEAD
     // 提交新增标签
-=======
-
->>>>>>> bfc3e850796c355c9d67ec67bd0d5f7b329cf4e2
     @PostMapping("/tags")
     public String post(@Valid Tag tag,BindingResult result, RedirectAttributes attributes) {
         Tag tag1 = tagService.getTagByName(tag.getName());
@@ -94,10 +72,7 @@ public class TagController {
     }
 
 
-<<<<<<< HEAD
     // 提交编辑过的标签
-=======
->>>>>>> bfc3e850796c355c9d67ec67bd0d5f7b329cf4e2
     @PostMapping("/tags/{id}")
     public String editPost(@Valid Tag tag, BindingResult result,@PathVariable Long id, RedirectAttributes attributes) {
         Tag tag1 = tagService.getTagByName(tag.getName());
@@ -122,10 +97,6 @@ public class TagController {
         attributes.addFlashAttribute("message", "删除成功");
         return "redirect:/admin/tags";
     }
-<<<<<<< HEAD
 
 
 }
-=======
-}
->>>>>>> bfc3e850796c355c9d67ec67bd0d5f7b329cf4e2
