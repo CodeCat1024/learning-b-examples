@@ -46,36 +46,37 @@
             <div class="ui top attached segment">
                 <div class="ui horizontal link list">
                     <div class="item">
-                        <img src="https://picsum.photos/id/17/100/100" alt="" class="ui avatar image">
-                        <div class="content"><a href="#" class="header">CodeCat</a></div>
+                        <img src="https://picsum.photos/id/17/100/100" th:src="@{${blog.user.avatar}}" alt="" class="ui avatar image">
+                        <div class="content"><a href="#" class="header" th:text="${blog.user.nickname}">CodeCat</a></div>
                     </div>
                     <div class="item">
-                        <i class="calendar icon"></i> 2023-3-22
+                        <i class="calendar icon"></i>
+                        <span th:text="${#dates.format(blog.updateTime, 'yyyy-MM-dd')}">2022-10-02</span>
                     </div>
                     <div class="item">
-                        <i class="eye icon"></i> 2323
+                        <i class="eye icon"></i> <span th:text="${blog.views}"></span>
                     </div>
                 </div>
             </div>
 
             <!-- 图片 -->
             <div class="ui attached segment">
-                <img src="../static/images/Arts-Stream-Subjects.png" alt="" class="ui fluid image rounded">
+                <img src="../static/images/Arts-Stream-Subjects.png" th:src="@{${blog.firstPicture}}" alt="" class="ui fluid image rounded">
             </div>
 
             <!-- 内容 -->
             <div class="ui  attached padded segment">
                 <!-- 右侧图标 -->
                 <div class="ui right aligned segment basic">
-                    <div class="ui orange basic label">原创</div>
+                    <div class="ui orange basic label" th:text="${blog.flag}">原创</div>
                 </div>
 
                 <!-- 标题 -->
-                <h2 class="ui center aligned header">
+                <h2 class="ui center aligned header" th:text="${blog.title}">
                     聊聊依赖引入
                 </h2>
                 <!-- 文章内容 -->
-                <div id="content" class="m-padded-lr-responsive m-padded-tb-large typo typo-selection js-toc-content">
+                <div id="content" class="m-padded-lr-responsive m-padded-tb-large typo typo-selection js-toc-content" th:text="${blog.content}">
 
 <h1>一、依赖引入</h1>
 
@@ -508,7 +509,7 @@ h5,h6{font-size:1em;}
                 </div>
 
                 <!-- 标签 -->
-                <div class="m-padded-lr-responsive">
+                <div class="m-padded-lr-responsive" th:each="tag : ${blog.tags}" th:text="${tag.name}">
                     <div class="ui basic teal left pointing label">方法论</div>
                 </div>
 
@@ -521,11 +522,11 @@ h5,h6{font-size:1em;}
                     <div class="ui orange basic label">
                         <div class="ui images" style="font-size: inherit">
                             <div class="image">
-                                <img src="../static/images/Arts-Stream-Subjects.png" alt="" class="ui image rounded bordered" style="width: 120px; height:120px;">
+                                <img src="../static/images/Arts-Stream-Subjects.png" th:src="@{/images/Arts-Stream-Subjects.png}" alt="" class="ui image rounded bordered" style="width: 120px; height:120px;">
                                 <div>支付宝</div>
                             </div>
                             <div class="image">
-                                <img src="../static/images/Arts-Stream-Subjects.png" alt="" class="ui image rounded bordered" style="width: 120px; height:120px;">
+                                <img src="../static/images/Arts-Stream-Subjects.png" th:src="@{/images/Arts-Stream-Subjects.png}" alt="" class="ui image rounded bordered" style="width: 120px; height:120px;">
                                 <div>微信</div>
                             </div>
                         </div>
@@ -540,14 +541,14 @@ h5,h6{font-size:1em;}
                 <div class="ui middle aligned grid">
                     <div class="eleven wide column">
                         <ui class="list">
-                            <li>作者：CodeCat（联系作者）</li>
-                            <li>发布时间：2023-3-23 09:34</li>
+                            <li>作者：<span th:text="${blog.user.nickname}">CodeCat</span><a href="#" th:href="@{/about}" target="_blank">（联系作者）</a></li>
+                            <li>发布时间：<span th:text="${#dates.format(blog.updateTime, 'yyyy-MM-dd HH:mm')}">2023-3-23 09:34</span></li>
                             <li>版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）</li>
                             <li>公众号转载：请在文末添加作者公众号二维码</li>
                         </ui>
                     </div>
                     <div class="five wide column">
-                        <img src="../static/images/Arts-Stream-Subjects.png" alt="" class="ui right floated rounded bordered image" style="width: 120px;">
+                        <img src="../static/images/Arts-Stream-Subjects.png" th:src="@{/images/Arts-Stream-Subjects.png}" alt="" class="ui right floated rounded bordered image" style="width: 120px;">
                     </div>
                 </div>
             </div>
@@ -748,7 +749,7 @@ h5,h6{font-size:1em;}
     });
 
     // 赞赏二维码
-    $('#payButton').popup({
+        $('#payButton').popup({
         popup: $('.payQR.popup'),
         on: 'click',
         position: 'bottom center'
