@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../static/styles/me.css">
 </head>
 <body>
-    
+
     <!-- 导航栏 -->
     <nav th:replace="_fragments :: menu(1)" class="ui inverted attached segment m-padded-tb-mini ">
         <div class="ui container">
@@ -47,35 +47,37 @@
                 <div class="ui horizontal link list">
                     <div class="item">
                         <img src="https://picsum.photos/id/17/100/100" alt="" class="ui avatar image">
-                        <div class="content"><a href="#" class="header">CodeCat</a></div>
+<!--                        <img src="https://picsum.photos/id/17/100/100" th:src="@{${blog.user.avatar}}" alt="" class="ui avatar image">-->
+                        <div class="content"><a href="#" th:text="${blog.user.nickname}" class="header">CodeCat</a></div>
                     </div>
                     <div class="item">
-                        <i class="calendar icon"></i> 2023-3-22
+                        <i class="calendar icon"></i> <span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2017-10-01</span>
                     </div>
                     <div class="item">
-                        <i class="eye icon"></i> 2323
+                        <i class="eye icon"></i> <span th:text="${blog.views}">2342</span>
                     </div>
                 </div>
             </div>
 
             <!-- 图片 -->
             <div class="ui attached segment">
-                <img src="../static/images/Arts-Stream-Subjects.png" alt="" class="ui fluid image rounded">
+                <img src="../static/images/Arts-Stream-Subjects.png" th:src="@{${blog.firstPicture}}" alt="" class="ui fluid image rounded">
             </div>
 
             <!-- 内容 -->
             <div class="ui  attached padded segment">
                 <!-- 右侧图标 -->
                 <div class="ui right aligned segment basic">
-                    <div class="ui orange basic label">原创</div>
+                    <!--flag图标的功能没有完成，在博客发布页面需要增加进去-->
+                    <div class="ui orange basic label" th:text="${blog.flag}">原创</div>
                 </div>
 
                 <!-- 标题 -->
-                <h2 class="ui center aligned header">
+                <h2 class="ui center aligned header" th:text="${blog.title}">
                     聊聊依赖引入
                 </h2>
                 <!-- 文章内容 -->
-                <div id="content" class="m-padded-lr-responsive m-padded-tb-large typo typo-selection js-toc-content">
+                <div id="content" class="m-padded-lr-responsive m-padded-tb-large typo typo-selection js-toc-content" th:utext="${blog.content}">
 
 <h1>一、依赖引入</h1>
 
@@ -125,7 +127,7 @@
 <h1>三、依赖的依赖</h1>
 <p><b>那为什么引入了semantic ui之后还需要引入jQuery依赖呢？</b></p>
 <p>其实很好理解，比方说你先使用你的my-text-style框架写了另一份my-slider-style框架，那你以后引入my-slider-style之前就肯定需要先引入my-text-style啦</p>
-<h1>四、为什么有时候不需要下载源码？</h1>                  
+<h1>四、为什么有时候不需要下载源码？</h1>
 <pre><code class="js">  src="https://code.jquery.com/jquery-3.1.1.min.js"</code></pre>
 <p>比如semantic引入jQuery时，为啥引入的是网址而不是文件呢？并且还不需要将jQuery的源码下载到本地，这是为什么呢？而且，打开这个网址，发现里面还是一大堆完全看不懂的东西......</p>
 <p><img src="../static/images/1679762615390.png" alt="" class="ui image rounded bordered"></p>
@@ -509,24 +511,26 @@ h5,h6{font-size:1em;}
 
                 <!-- 标签 -->
                 <div class="m-padded-lr-responsive">
-                    <div class="ui basic teal left pointing label">方法论</div>
+                    <div class="ui basic teal left pointing label"  th:each="tag : ${blog.tags}" th:text="${tag.name}">方法论</div>
                 </div>
 
                 <!-- 赞赏 -->
-                <div class="ui segment basic center aligned">
-                    <button id="payButton" class="ui orange basic circular button">赞赏</button>
-                </div>
-                <!-- 赞赏二维码 -->
-                <div class="ui payQR flowing  popup transition hidden">
-                    <div class="ui orange basic label">
-                        <div class="ui images" style="font-size: inherit">
-                            <div class="image">
-                                <img src="../static/images/Arts-Stream-Subjects.png" alt="" class="ui image rounded bordered" style="width: 120px; height:120px;">
-                                <div>支付宝</div>
-                            </div>
-                            <div class="image">
-                                <img src="../static/images/Arts-Stream-Subjects.png" alt="" class="ui image rounded bordered" style="width: 120px; height:120px;">
-                                <div>微信</div>
+                <div th:if="${blog.appreciation}">
+                    <div class="ui segment basic center aligned">
+                        <button id="payButton" class="ui orange basic circular button">赞赏</button>
+                    </div>
+                    <!-- 赞赏二维码 -->
+                    <div class="ui payQR flowing  popup transition hidden">
+                        <div class="ui orange basic label">
+                            <div class="ui images" style="font-size: inherit">
+                                <div class="image">
+                                    <img src="../static/images/Arts-Stream-Subjects.png" th:src="@{/images/Arts-Stream-Subjects.png}" alt="" class="ui image rounded bordered" style="width: 120px; height:120px;">
+                                    <div>支付宝</div>
+                                </div>
+                                <div class="image">
+                                    <img src="../static/images/Arts-Stream-Subjects.png" th:src="@{/images/Arts-Stream-Subjects.png}" alt="" class="ui image rounded bordered" style="width: 120px; height:120px;">
+                                    <div>微信</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -536,121 +540,263 @@ h5,h6{font-size:1em;}
             </div>
 
             <!-- 信息说明 -->
-            <div class="ui attached positive message">
+            <div class="ui attached positive message" th:if="${blog.shareStatement}">
                 <div class="ui middle aligned grid">
                     <div class="eleven wide column">
                         <ui class="list">
-                            <li>作者：CodeCat（联系作者）</li>
-                            <li>发布时间：2023-3-23 09:34</li>
+                            <li>作者：<span th:text="${blog.user.nickname}">CodeCat</span>（联系作者）</li>
+                            <li>发布时间：<span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd HH:mm')}">2017-10-02 09:08</span></li>
                             <li>版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）</li>
                             <li>公众号转载：请在文末添加作者公众号二维码</li>
                         </ui>
                     </div>
                     <div class="five wide column">
-                        <img src="../static/images/Arts-Stream-Subjects.png" alt="" class="ui right floated rounded bordered image" style="width: 120px;">
+                        <img src="../static/images/Arts-Stream-Subjects.png" th:src="@{/images/Arts-Stream-Subjects.png}" alt="" class="ui right floated rounded bordered image" style="width: 120px;">
                     </div>
                 </div>
             </div>
 
             <!-- 留言区 -->
-            <div id="comment-container" class="ui bottom attached segment">
-                <!-- 评论列表 -->
-                <div class="ui teal segment">
-                    <div class="ui comments">
-                        <h3 class="ui dividing header">Comments</h3>
-                        <div class="comment">
-                          <a class="avatar">
-                            <img src="../static/images/Arts-Stream-Subjects.png">
-                          </a>
-                          <div class="content">
-                            <a class="author">Matt</a>
-                            <div class="metadata">
-                              <span class="date">今天下午 5:42</span>
+<!--            <div  class="ui bottom attached segment" th:if="${blog.commentabled}">-->
+<!--                <div id="comment-container" class="ui attached segment">-->
+<!--                &lt;!&ndash; 评论列表 &ndash;&gt;-->
+<!--                <div class="ui teal segment">-->
+<!--                    <div class="ui comments">-->
+<!--                        <h3 class="ui dividing header">Comments</h3>-->
+<!--                        <div class="comment" th:each="comment : ${comments}">-->
+<!--                          <a class="avatar">-->
+<!--&lt;!&ndash;                              用户头像渲染的部分还没有做好&ndash;&gt;-->
+<!--                            <img src="../static/images/Arts-Stream-Subjects.png">-->
+<!--&lt;!&ndash;                            <img src="../static/images/Arts-Stream-Subjects.png" th:src="@{${comment.avatar}}">&ndash;&gt;-->
+<!--                          </a>-->
+<!--                          <div class="content">-->
+<!--                            <a class="author">Matt</a>-->
+<!--                            <div class="metadata">-->
+<!--                              <span class="date">今天下午 5:42</span>-->
+<!--                            </div>-->
+<!--                            <div class="text">太赞了！ </div>-->
+<!--                            <div class="actions">-->
+<!--                              <a class="reply">Reply</a>-->
+<!--                            </div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                        <div class="comment">-->
+<!--                          <a class="avatar">-->
+<!--                            <img src="../static/images/Arts-Stream-Subjects.png">-->
+<!--                          </a>-->
+<!--                          <div class="content">-->
+<!--                            <a class="author">Elliot Fu</a>-->
+<!--                            <div class="metadata">-->
+<!--                              <span class="date">昨天上午12:30</span>-->
+<!--                            </div>-->
+<!--                            <div class="text">-->
+<!--                              <p>這對我的研究是非常有用.謝謝!</p>-->
+<!--                            </div>-->
+<!--                            <div class="actions">-->
+<!--                              <a class="reply">Reply</a>-->
+<!--                            </div>-->
+<!--                          </div>-->
+<!--                          <div class="comments">-->
+<!--                            <div class="comment">-->
+<!--                              <a class="avatar">-->
+<!--                                <img src="../static/images/Arts-Stream-Subjects.png">-->
+<!--                              </a>-->
+<!--                              <div class="content">-->
+<!--                                <a class="author">Jenny Hess</a>-->
+<!--                                <div class="metadata">-->
+<!--                                  <span class="date">刚刚</span>-->
+<!--                                </div>-->
+<!--                                <div class="text">艾略特你永远是多么正确 :) </div>-->
+<!--                                <div class="actions">-->
+<!--                                  <a class="reply">Reply</a>-->
+<!--                                </div>-->
+<!--                              </div>-->
+<!--                            </div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                        <div class="comment">-->
+<!--                          <a class="avatar">-->
+<!--                            <img src="../static/images/Arts-Stream-Subjects.png">-->
+<!--                          </a>-->
+<!--                          <div class="content">-->
+<!--                            <a class="author">Joe Henderson</a>-->
+<!--                            <div class="metadata">-->
+<!--                              <span class="date">5 天以前</span>-->
+<!--                            </div>-->
+<!--                            <div class="text">老兄，这太棒了。非常感谢。 </div>-->
+<!--                            <div class="actions">-->
+<!--                              <a class="reply">Reply</a>-->
+<!--                            </div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                </div>-->
+<!--                &lt;!&ndash; 留言提交 &ndash;&gt;-->
+<!--                <div class="ui form">-->
+<!--                    &lt;!&ndash; 留言 &ndash;&gt;-->
+<!--                    <div class="field">-->
+<!--                        <textarea name="content"  placeholder="请输入评论信息"></textarea>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash; 提交 &ndash;&gt;-->
+<!--                    <div class="fields">-->
+<!--                        &lt;!&ndash; 姓名 &ndash;&gt;-->
+<!--                        <div class="field m-mobile-wide m-margin-bottom-small">-->
+<!--                            <div class="ui left icon input">-->
+<!--                                <i class="user icon"></i>-->
+<!--                                <input type="text" name="nickname" placeholder="姓名">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; 邮箱 &ndash;&gt;-->
+<!--                        <div class="field m-mobile-wide m-margin-bottom-small">-->
+<!--                            <div class="ui left icon input">-->
+<!--                                <i class="mail icon"></i>-->
+<!--                                <input type="text" name="email" placeholder="邮箱">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; 提交按钮 &ndash;&gt;-->
+<!--                        <div class="field m-margin-bottom-small m-mobile-wide">-->
+<!--                            <button class="ui teal button m-mobile-wide"><i class="edit icon"></i>发布</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            </div>-->
+
+            <div  class="ui bottom attached segment" th:if="${blog.commentabled}">
+                <!--留言区域列表-->
+                <div id="comment-container"  class="ui teal segment">
+                    <div th:fragment="commentList">
+                        <div class="ui threaded comments" style="max-width: 100%;">
+                            <h3 class="ui dividing header">评论</h3>
+                            <div class="comment" th:each="comment : ${comments}">
+                                <a class="avatar">
+                                    <img src="https://unsplash.it/100/100?image=1005">
+<!--                                    <img src="https://unsplash.it/100/100?image=1005" th:src="@{${comment.avatar}}">-->
+                                </a>
+                                <div class="content">
+                                    <a class="author" >
+                                        <span th:text="${comment.nickname}">Matt</span>
+                                        <div class="ui mini basic teal left pointing label m-padded-mini" th:if="${comment.adminComment}">博主</div>
+                                    </a>
+                                    <div class="metadata">
+                                        <span class="date" th:text="${#dates.format(comment.createTime,'yyyy-MM-dd HH:mm')}">Today at 5:42PM</span>
+                                    </div>
+                                    <div class="text" th:text="${comment.content}">
+                                        How artistic!
+                                    </div>
+                                    <div class="actions">
+                                        <a class="reply" data-commentid="1" data-commentnickname="Matt" th:attr="data-commentid=${comment.id},data-commentnickname=${comment.nickname}" onclick="reply(this)">回复</a>
+                                    </div>
+                                </div>
+                                <div class="comments" th:if="${#arrays.length(comment.replyComments)}>0">
+                                    <div class="comment" th:each="reply : ${comment.replyComments}">
+                                        <a class="avatar">
+                                            <img src="https://unsplash.it/100/100?image=1005">
+<!--                                            <img src="https://unsplash.it/100/100?image=1005" th:src="@{${reply.avatar}}">-->
+                                        </a>
+                                        <div class="content">
+                                            <a class="author" >
+                                                <span th:text="${reply.nickname}">小红</span>
+                                                <div class="ui mini basic teal left pointing label m-padded-mini" th:if="${reply.adminComment}">博主</div>
+                                                &nbsp;<span th:text="|@ ${reply.parentComment.nickname}|" class="m-teal">@ 小白</span>
+                                            </a>
+                                            <div class="metadata">
+                                                <span class="date" th:text="${#dates.format(reply.createTime,'yyyy-MM-dd HH:mm')}">Today at 5:42PM</span>
+                                            </div>
+                                            <div class="text" th:text="${reply.content}">
+                                                How artistic!
+                                            </div>
+                                            <div class="actions">
+                                                <a class="reply" data-commentid="1" data-commentnickname="Matt" th:attr="data-commentid=${reply.id},data-commentnickname=${reply.nickname}" onclick="reply(this)">回复</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="text">太赞了！ </div>
-                            <div class="actions">
-                              <a class="reply">Reply</a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="comment">
-                          <a class="avatar">
-                            <img src="../static/images/Arts-Stream-Subjects.png">
-                          </a>
-                          <div class="content">
-                            <a class="author">Elliot Fu</a>
-                            <div class="metadata">
-                              <span class="date">昨天上午12:30</span>
-                            </div>
-                            <div class="text">
-                              <p>這對我的研究是非常有用.謝謝!</p>
-                            </div>
-                            <div class="actions">
-                              <a class="reply">Reply</a>
-                            </div>
-                          </div>
-                          <div class="comments">
+
+                            <!--/*-->
                             <div class="comment">
-                              <a class="avatar">
-                                <img src="../static/images/Arts-Stream-Subjects.png">
-                              </a>
-                              <div class="content">
-                                <a class="author">Jenny Hess</a>
-                                <div class="metadata">
-                                  <span class="date">刚刚</span>
+                                <a class="avatar">
+                                    <img src="https://unsplash.it/100/100?image=1005">
+                                </a>
+                                <div class="content">
+                                    <a class="author">Elliot Fu</a>
+                                    <div class="metadata">
+                                        <span class="date">Yesterday at 12:30AM</span>
+                                    </div>
+                                    <div class="text">
+                                        <p>This has been very useful for my research. Thanks as well!</p>
+                                    </div>
+                                    <div class="actions">
+                                        <a class="reply">回复</a>
+                                    </div>
                                 </div>
-                                <div class="text">艾略特你永远是多么正确 :) </div>
-                                <div class="actions">
-                                  <a class="reply">Reply</a>
+                                <div class="comments">
+                                    <div class="comment">
+                                        <a class="avatar">
+                                            <img src="https://unsplash.it/100/100?image=1005">
+                                        </a>
+                                        <div class="content">
+                                            <a class="author">Jenny Hess</a>
+                                            <div class="metadata">
+                                                <span class="date">Just now</span>
+                                            </div>
+                                            <div class="text">
+                                                Elliot you are always so right :)
+                                            </div>
+                                            <div class="actions">
+                                                <a class="reply">回复</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                              </div>
                             </div>
-                          </div>
+                            <div class="comment">
+                                <a class="avatar">
+                                    <img src="https://unsplash.it/100/100?image=1005">
+                                </a>
+                                <div class="content">
+                                    <a class="author">Joe Henderson</a>
+                                    <div class="metadata">
+                                        <span class="date">5 days ago</span>
+                                    </div>
+                                    <div class="text">
+                                        Dude, this is awesome. Thanks so much
+                                    </div>
+                                    <div class="actions">
+                                        <a class="reply">回复</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--*/-->
+
                         </div>
-                        <div class="comment">
-                          <a class="avatar">
-                            <img src="../static/images/Arts-Stream-Subjects.png">
-                          </a>
-                          <div class="content">
-                            <a class="author">Joe Henderson</a>
-                            <div class="metadata">
-                              <span class="date">5 天以前</span>
-                            </div>
-                            <div class="text">老兄，这太棒了。非常感谢。 </div>
-                            <div class="actions">
-                              <a class="reply">Reply</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                </div>
-                <!-- 留言提交 -->
-                <div class="ui form">
-                    <!-- 留言 -->
-                    <div class="field">
-                        <textarea name="content"  placeholder="请输入评论信息"></textarea>
                     </div>
-                    <!-- 提交 -->
+                </div>
+                <div id="comment-form" class="ui form">
+                    <input type="hidden" name="blog.id" th:value="${blog.id}">
+                    <input type="hidden" name="parentComment.id" value="-1">
+                    <div class="field">
+                        <textarea name="content" placeholder="请输入评论信息..."></textarea>
+                    </div>
                     <div class="fields">
-                        <!-- 姓名 -->
                         <div class="field m-mobile-wide m-margin-bottom-small">
                             <div class="ui left icon input">
                                 <i class="user icon"></i>
-                                <input type="text" name="nickname" placeholder="姓名">
+                                <input type="text" name="nickname" placeholder="姓名" th:value="${session.user}!=null ? ${session.user.nickname}">
                             </div>
                         </div>
-                        <!-- 邮箱 -->
                         <div class="field m-mobile-wide m-margin-bottom-small">
                             <div class="ui left icon input">
                                 <i class="mail icon"></i>
-                                <input type="text" name="email" placeholder="邮箱">
+                                <input type="text" name="email" placeholder="邮箱" th:value="${session.user}!=null ? ${session.user.email}">
                             </div>
                         </div>
-                        <!-- 提交按钮 -->
-                        <div class="field m-margin-bottom-small m-mobile-wide">
-                            <button class="ui teal button m-mobile-wide"><i class="edit icon"></i>发布</button>
+                        <div class="field  m-margin-bottom-small m-mobile-wide">
+                            <button id="commentpost-btn" type="button" class="ui teal button m-mobile-wide"><i class="edit icon"></i>发布</button>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -670,7 +816,7 @@ h5,h6{font-size:1em;}
     <div class="ui toc-container flowing  popup transition hidden" style="width: 250px !important;">
         <ol class="js-toc">
 
-        </ol>        
+        </ol>
     </div>
 
     <!-- 弹出的微信二维码 -->
@@ -703,7 +849,7 @@ h5,h6{font-size:1em;}
                         <a href="#" class="item">blog3</a>
                     </div>
                 </div>
-                
+
                 <!-- 联系我 -->
                 <div class="three wide column">
                     <h4 class="ui inverted header">联系我</h4>
@@ -712,7 +858,7 @@ h5,h6{font-size:1em;}
                         <a href="#" class="item">QQ: 2720883600</a>
                     </div>
                 </div>
-                
+
                 <!-- 介绍 -->
                 <div class="seven wide column">
                     <h4 class="ui inverted header">介绍</h4>
@@ -726,7 +872,7 @@ h5,h6{font-size:1em;}
         </div>
 
         <!-- 分割线 -->
-        
+
     </footer>
 
 
