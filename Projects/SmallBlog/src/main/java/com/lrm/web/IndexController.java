@@ -44,6 +44,7 @@ public class IndexController {
     }
 
 
+    // 将搜索结果渲染到搜索页面上
     @PostMapping("/search")
     public String search(@PageableDefault(size = 8, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,
                          @RequestParam String query, Model model) {
