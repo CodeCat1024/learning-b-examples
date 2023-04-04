@@ -1,0 +1,8 @@
+# ��ǰ���л���
+spring:
+  profiles:
+    active: dev
+
+# ����mybatis xml����·��
+mybatis:
+  mapper-locations: classpath:mybatis/**Mapper.xml
