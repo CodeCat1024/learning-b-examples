@@ -1,4 +1,0 @@
--- 查看数据库
-show databases;
-
--- 创建

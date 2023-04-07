@@ -1,0 +1,135 @@
+-- 测试用户表
+create table userinfo(
+	id int,
+	username varchar(20),
+	password varchar(50), 
+	english int,
+	math int
+);
+
+-- 测试数据
+insert into userinfo(id, username, password, english, math)
+values
+(1, "user1", "password1", 90, 34),
+(2, "user2", "password2", 44, 56),
+(3, "user3", "password3", 77, 89),
+(4, "user4", "password4", 56, 93),
+(5, "user5", "password5", 88, 85),
+(6, "user6", "password6", 88, 53),
+(7, "user6", "password6", 88, 78),
+(8, "Kate", "1111", 76, 63),
+(9, "Hate", "1111", 64, 77);
+
+
+
+-- 全列查询
+select * from userinfo;
+
+
+
+
+-- 指定列查询（只查询id和username）
+select id, username from userinfo;
+
+-- 指定列查询（给列取别名）
+select id as newid, username as newusername from userinfo;
+
+-- 指定列查询（查询字段为表达式）
+select id + 100, username, password from userinfo;
+
+-- 指定列查询（去除username重复的数据）
+select distinct username from userinfo;
+
+
+
+
+-- where子句（ 返回空集）
+select username, password from userinfo where 0;
+
+-- where子句（返回全集）
+select username, password from userinfo where 1;
+
+-- where子句（ = 运算符）
+select username, password from userinfo where id = 2; 
+
+-- where子句（ != / <> 运算符）
+select username, password from userinfo where id != 2; 
+select username, password from userinfo where id <> 2; 
+
+-- where子句（ < 运算符）
+select username, password from userinfo where id > 2; 
+
+-- where子句（ > 运算符）
+select username, password from userinfo where id < 2; 
+
+-- where子句（ <= 运算符）
+select username, password from userinfo where id <= 2; 
+
+-- where子句（ >= 运算符）
+select username, password from userinfo where id >= 2; 
+
+-- where子句（and运算符）
+select username, password from userinfo where username = "user6" and id = 6;
+
+-- where子句（or运算符）
+select username, password from userinfo where id = 2 or id = 3;
+
+-- where子句（not运算符）
+select username, password from userinfo where id not in (2, 3, 4); 
+
+-- where子句 (between运算符）
+select username, password from userinfo where id between 2 and 4; 
+
+-- where子句（in运算符）
+select username, password from userinfo where id in (2, 3, 4); 
+
+-- where子句（is null)
+select username, password from userinfo where id is null;
+
+-- where子句（like模糊查询:%）
+
+-- 查询username以"user"开头的用户数据
+select * from userinfo where username like "user%";
+
+-- 查询username以”ate“结束的用户数据
+select * from userinfo where username like "%ate";
+
+-- 查询username以"at”结束但末尾还有一个未知字符的用户数据
+select * from userinfo where username like "%a_";
+
+-- 查询username以"a”结束但末尾还有两个未知字符的用户数据
+select * from userinfo where username like "%a__";
+
+
+
+
+-- 按照成绩进行排序（默认升序：asc）
+select * from userinfo order by english;
+
+
+-- 按照成绩进行排序（按照降序：desc）
+select * from userinfo order by english desc;
+
+-- 按照英语降序，数学升序的方式进行排序
+select * from userinfo order by english desc, math asc;
+
+
+
+
+-- 只筛选3条结果
+select * from userinfo limit 3;
+
+-- 只筛选3条结果（从4开始）
+select * from userinfo limit 4, 3;
+
+-- 只筛选3条结果（从4开始）
+select * from userinfo limit 4 offset 3;
+
+
+
+
+
+
+
+
+

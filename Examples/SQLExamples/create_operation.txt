@@ -1,0 +1,14 @@
+-- 全列插入（插入单行数据）
+insert into userinfo values (1, "user1", "password1");
+
+-- 全列插入（插入多行数据）
+insert into userinfo values (2, "user2", "password2"), (3, "user2", "password3");
+
+
+
+
+-- 指定列插入（插入单行数据）
+insert into userinfo (username, password, id) values ("user4", "password4", 4);
+
+-- 指定列插入（插入多行数据）
+insert into userinfo (username, password, id) values ("user5", "password5", 5), ("user6", "password6", 6);
