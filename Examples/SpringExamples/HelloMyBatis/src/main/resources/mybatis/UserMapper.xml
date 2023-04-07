@@ -2,7 +2,41 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--要设置实现接口的具体包加类名-->
 <mapper namespace="com.zjt.demo.mapper.UserMapper">
+
+    <!--  -->
+    <select id="login" resultType="com.zjt.demo.model.UserInfo">
+        select * from userinfo where username='${username}' and password='${password}'
+    </select>
+
+    <!-- 根据id查询用户 -->
     <select id="getUserById" resultType="com.zjt.demo.model.UserInfo">
         select * from userInfo where id = ${id}
     </select>
+
+    <select id="getOrderList" resultType="com.zjt.demo.model.UserInfo">
+    <!-- 传递SQL关键字时，就使用${}，而使用预处理就会出错 -->
+    <!-- 当不得不使用${}时，一定要在业务代码中对传递过来的值进行安全校验-->
+        select * from userinfo order by createtime ${order}
+    </select>
+
+    <!-- 根据用户id修改名称 -->
+    <update id="update">
+        update userinfo set username=#{username} where id=#{id}
+    </update>
+
+    <!-- 根据id删除用户 -->
+    <delete id="del">
+        delete from userinfo where id=#{id}
+    </delete>
+
+    <!-- 添加用户 -->
+    <insert id="add">
+        insert into userinfo(username, password, photo) values (#{username}, #{password}, #{photo})
+    </insert>
+
+    <!-- 添加用户并返回id -->
+    <insert id="addGetId" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into userinfo(username, password, photo) values (#{username}, #{password}, #{photo})
+    </insert>
+
 </mapper>

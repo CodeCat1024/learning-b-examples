@@ -1,8 +1,8 @@
-# µ±Ç°ÔËĞĞ»·¾³
 spring:
   profiles:
     active: dev
 
-# ÅäÖÃmybatis xml±£´æÂ·¾¶
+
+# è¿™æ˜¯ä¸€äº›ä¸­æ–‡æ³¨é‡Š
 mybatis:
   mapper-locations: classpath:mybatis/**Mapper.xml

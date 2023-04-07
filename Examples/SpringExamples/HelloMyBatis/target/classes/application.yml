@@ -1,8 +1,8 @@
-# ��ǰ���л���
 spring:
   profiles:
     active: dev
 
-# ����mybatis xml����·��
+
+# 这是一些中文注释
 mybatis:
   mapper-locations: classpath:mybatis/**Mapper.xml
