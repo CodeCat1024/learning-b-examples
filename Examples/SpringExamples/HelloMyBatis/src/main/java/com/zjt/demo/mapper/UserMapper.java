@@ -9,6 +9,9 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
 
+    // 根据名称进行模糊查询
+    public List<UserInfo> getListByName(@Param("username") String username);
+
     // 登录功能
     public UserInfo login(@Param("username") String username,
                           @Param("password") String password);

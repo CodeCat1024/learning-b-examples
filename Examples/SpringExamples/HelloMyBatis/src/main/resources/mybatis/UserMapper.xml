@@ -3,21 +3,22 @@
 <!--要设置实现接口的具体包加类名-->
 <mapper namespace="com.zjt.demo.mapper.UserMapper">
 
-    <!--  -->
-    <select id="login" resultType="com.zjt.demo.model.UserInfo">
-        select * from userinfo where username='${username}' and password='${password}'
-    </select>
+    <!-- 普通操作 -->
 
     <!-- 根据id查询用户 -->
-    <select id="getUserById" resultType="com.zjt.demo.model.UserInfo">
-        select * from userInfo where id = ${id}
-    </select>
+<!--    <select id="getUserById" resultType="com.zjt.demo.model.UserInfo">-->
+<!--        select * from userInfo where id = #{id}-->
+<!--    </select>-->
 
-    <select id="getOrderList" resultType="com.zjt.demo.model.UserInfo">
-    <!-- 传递SQL关键字时，就使用${}，而使用预处理就会出错 -->
-    <!-- 当不得不使用${}时，一定要在业务代码中对传递过来的值进行安全校验-->
-        select * from userinfo order by createtime ${order}
-    </select>
+    <!-- 添加用户 -->
+    <insert id="add">
+        insert into userinfo(username, password, photo) values (#{username}, #{password}, #{photo})
+    </insert>
+
+    <!-- 添加用户并返回id -->
+    <insert id="addGetId" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into userinfo(username, password, photo) values (#{username}, #{password}, #{photo})
+    </insert>
 
     <!-- 根据用户id修改名称 -->
     <update id="update">
@@ -29,14 +30,53 @@
         delete from userinfo where id=#{id}
     </delete>
 
-    <!-- 添加用户 -->
-    <insert id="add">
-        insert into userinfo(username, password, photo) values (#{username}, #{password}, #{photo})
-    </insert>
 
-    <!-- 添加用户并返回id -->
-    <insert id="addGetId" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
-        insert into userinfo(username, password, photo) values (#{username}, #{password}, #{photo})
-    </insert>
+
+
+    <!-- SQL注入问题 -->
+
+    <!-- 像这种情况如果使用#就会出现SQL注入问题   -->
+    <select id="login" resultType="com.zjt.demo.model.UserInfo">
+        select * from userinfo where username=#{username} and password=#{password}
+        <!-- select * from userinfo where username='${username}' and password= '${password}' -->
+    </select>
+
+    <!-- 不过当传递SQL关键字时，就使用${}，而使用预处理就会出错 -->
+    <!-- 当不得不使用${}时，一定要在业务代码中对传递过来的值进行安全校验，解决SQL注入问题-->
+    <select id="getOrderList" resultType="com.zjt.demo.model.UserInfo">
+        select * from userinfo order by createtime ${order}
+    </select>
+
+    <!-- 模糊查询：使用#{}报错，而使用${}在业务层的值又不能穷举，不过我们可以使用concat -->
+    <select id="getListByName" resultType="com.zjt.demo.model.UserInfo">
+        <!-- select * from userinfo where username like '%${username}%'  -->
+        select * from userinfo where username like concat('%', #{username}, '%')
+    </select>
+
+
+
+<!-- 如果出现数据库字段和对象属性名不同则可以使用resultMap，平时使用resultType就行 -->
+<!-- 还有在进行多表查询的时候也会用到resultMap，这个时候记得要把所有属性写全 -->
+    <resultMap id="BaseMap" type="com.zjt.demo.model.UserInfo">
+        <!-- 主键映射 -->
+        <id column="id" property="id"></id>
+        <!-- 普通属性映射 -->
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+        <result column="photo" property="photo"></result>
+        <result column="createtime" property="createtime"></result>
+        <result column="updatetime" property="updatetime"></result>
+        <result column="state" property="state"></result>
+    </resultMap>
+
+    <select id="getUserById" resultMap="BaseMap">
+        select * from userinfo where id = #{id}
+    </select>
+
+
+
+
+
+
 
 </mapper>

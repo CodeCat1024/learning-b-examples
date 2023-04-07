@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--要设置实现接口的具体包加类名-->
+<mapper namespace="com.zjt.demo.mapper.ArticleMapper">
+
+    <!-- 多表查询 -->
+    <!-- 通过resultType的话没法拿到userinfo-->
+    <!-- 根据文章id获取文章 -->
+<!--    <select id="getArticleById" resultType="com.zjt.demo.model.ArticleInfo">-->
+<!--        select * from articleinfo where id = #{id}-->
+<!--    </select>-->
+
+    <resultMap id="BaseMap" type="com.zjt.demo.model.ArticleInfo">
+        <id column="id" property="id"></id>
+        <result column="title" property="title"></result>
+        <result column="content" property="content"></result>
+        <result column="createtime" property="createtime"></result>
+        <result column="updatetime" property="updatetime"></result>
+        <result column="uid" property="uid"></result>
+        <result column="rcount" property="rcount"></result>
+        <result column="state" property="state"></result>
+        <!-- 但是还差用户表的映射, 这里要注意，它只会找到在另一个BashMap中已经建立映射的属性 -->
+        <association property="userInfo"
+                     resultMap="com.zjt.demo.mapper.UserMapper.BaseMap"
+                     columnPrefix="u_"> <!-- 也就是重命名第二张表的字段，相当于没法直接该数据库的数据，但是我们可以起别名 -->
+        </association>
+
+    </resultMap>
+    <!---->
+    <select id="getArticleById" resultMap="BaseMap">
+        <!-- 如果只查了一张表的话，那还是不行的，因为它会拿原先的表的数据放上去，只是假数据 -->
+        <!-- select * from articleinfo where id = #{id} -->
+
+        <!-- 在进行多表联查的时候，如果两个表存在相同的字段，那么第二张表中的字段将会被第一张表的相同字段所覆盖，也就是说如果第一张表的id会伪装成第二张表的id -->
+        <!-- select a.*,u.* from articleinfo a left join userinfo u on a.uid=u.id where a.id=#{id} -->
+
+        <!-- 通过加前缀解决数据覆盖的问题，这才是完整的关联查询 -->
+        select a.*,u.id u_id, u.username u_username, u.password u_password from articleinfo a left join userinfo u on a.uid=u.id where a.id=#{id}
+
+    </select>
+</mapper>

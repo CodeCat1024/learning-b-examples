@@ -79,4 +79,11 @@ class UserMapperTest {
         UserInfo userInfo = userMapper.login(username, password);
         System.out.println("用户信息" + userInfo);
     }
+
+    @Test
+    void getListByName() {
+        String username = "a";
+        List<UserInfo> list = userMapper.getListByName(username);
+        System.out.println("用户列表：" + list);
+    }
 }
