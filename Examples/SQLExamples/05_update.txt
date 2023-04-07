@@ -1,0 +1,11 @@
+-- 将Kate的英语成绩更改为80
+update userinfo set english = 80 where username = "Kate";
+
+-- 将Kate的英语成绩和数学成绩更改为80
+update userinfo set english = 80, math = 80 where username = "Kate";
+
+-- 将所有同学的英语成绩加10
+update userinfo set english = english + 10;
+
+-- 将总成绩倒数前三的3位同学的数学成绩加10
+update userinfo set math = math + 10 order by english + math limit 3;

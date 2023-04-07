@@ -1,0 +1,8 @@
+-- 删除用户名为Kate的用户数据
+delete from userinfo where username = "Kate";
+
+-- 删除总成绩倒数前三的用户数据
+delete from userinfo order by english + math limit 3;
+
+-- 删除整张表的数据
+delete from userinfo;
