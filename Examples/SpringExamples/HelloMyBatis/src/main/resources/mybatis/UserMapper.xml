@@ -33,6 +33,7 @@
 
 
 
+
     <!-- SQL注入问题 -->
 
     <!-- 像这种情况如果使用#就会出现SQL注入问题   -->
@@ -55,8 +56,33 @@
 
 
 
-<!-- 如果出现数据库字段和对象属性名不同则可以使用resultMap，平时使用resultType就行 -->
-<!-- 还有在进行多表查询的时候也会用到resultMap，这个时候记得要把所有属性写全 -->
+
+
+    <!-- 多表查询：一对一 -->
+
+    <!-- 如果出现数据库字段和对象属性名不同则可以使用resultMap，平时使用resultType就行 -->
+    <!-- 还有在进行多表查询的时候也会用到resultMap，这个时候记得要把所有属性写全 -->
+<!--    <resultMap id="BaseMap" type="com.zjt.demo.model.UserInfo">-->
+<!--        &lt;!&ndash; 主键映射 &ndash;&gt;-->
+<!--        <id column="id" property="id"></id>-->
+<!--        &lt;!&ndash; 普通属性映射 &ndash;&gt;-->
+<!--        <result column="username" property="username"></result>-->
+<!--        <result column="password" property="password"></result>-->
+<!--        <result column="photo" property="photo"></result>-->
+<!--        <result column="createtime" property="createtime"></result>-->
+<!--        <result column="updatetime" property="updatetime"></result>-->
+<!--        <result column="state" property="state"></result>-->
+<!--    </resultMap>-->
+
+    <!-- 根据id查询用户 resultMap版 -->
+    <select id="getUserById" resultMap="BaseMap">
+        select * from userinfo where id = #{id}
+    </select>
+
+
+
+
+    <!-- 多表查询：一对多 -->
     <resultMap id="BaseMap" type="com.zjt.demo.model.UserInfo">
         <!-- 主键映射 -->
         <id column="id" property="id"></id>
@@ -67,15 +93,18 @@
         <result column="createtime" property="createtime"></result>
         <result column="updatetime" property="updatetime"></result>
         <result column="state" property="state"></result>
+        <collection property="articleInfoList"
+                    resultMap="com.zjt.demo.mapper.ArticleMapper.BaseMap"
+                    columnPrefix="a_">
+
+        </collection>
     </resultMap>
 
-    <select id="getUserById" resultMap="BaseMap">
-        select * from userinfo where id = #{id}
+    <select id="getUserAndArticleByUid" resultMap="BaseMap">
+        select u.*,a.id a_id, a.title a_title, a.content a_content,
+        a.createtime a_createtime, a.updatetime a_updatetime
+        from userinfo u left join articleinfo a on u.id=a.uid where u.id=#{uid}      
     </select>
-
-
-
-
 
 
 

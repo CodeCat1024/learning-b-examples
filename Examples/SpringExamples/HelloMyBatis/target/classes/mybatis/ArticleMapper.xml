@@ -3,13 +3,14 @@
 <!--要设置实现接口的具体包加类名-->
 <mapper namespace="com.zjt.demo.mapper.ArticleMapper">
 
-    <!-- 多表查询 -->
+    <!-- 多表查询 ：一对一实现 -->
     <!-- 通过resultType的话没法拿到userinfo-->
     <!-- 根据文章id获取文章 -->
 <!--    <select id="getArticleById" resultType="com.zjt.demo.model.ArticleInfo">-->
 <!--        select * from articleinfo where id = #{id}-->
 <!--    </select>-->
 
+    <!-- 必须通过resultMap才能进行多表查询 -->
     <resultMap id="BaseMap" type="com.zjt.demo.model.ArticleInfo">
         <id column="id" property="id"></id>
         <result column="title" property="title"></result>
@@ -24,9 +25,8 @@
                      resultMap="com.zjt.demo.mapper.UserMapper.BaseMap"
                      columnPrefix="u_"> <!-- 也就是重命名第二张表的字段，相当于没法直接该数据库的数据，但是我们可以起别名 -->
         </association>
-
     </resultMap>
-    <!---->
+
     <select id="getArticleById" resultMap="BaseMap">
         <!-- 如果只查了一张表的话，那还是不行的，因为它会拿原先的表的数据放上去，只是假数据 -->
         <!-- select * from articleinfo where id = #{id} -->
@@ -36,6 +36,24 @@
 
         <!-- 通过加前缀解决数据覆盖的问题，这才是完整的关联查询 -->
         select a.*,u.id u_id, u.username u_username, u.password u_password from articleinfo a left join userinfo u on a.uid=u.id where a.id=#{id}
-
     </select>
+
+
+
+
+
+    <!-- 多表查询：一对多实现 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
 </mapper>

@@ -19,6 +19,9 @@ public interface UserMapper {
     // 根据用户id查询用户
     public UserInfo getUserById(@Param("id") Integer id);
 
+    // 根据用户id查询用户及用户发表的所有文章
+    public UserInfo getUserAndArticleByUid(@Param("uid") Integer id);
+
     // 获取列表，根据创建时间进行倒序或正序
     public List<UserInfo> getOrderList(@Param("order") String order);
 

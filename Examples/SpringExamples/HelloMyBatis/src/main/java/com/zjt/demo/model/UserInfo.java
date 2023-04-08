@@ -4,6 +4,8 @@ import lombok.Data;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
+import java.util.List;
+
 /**
  *  普通实体类
  */
@@ -16,4 +18,5 @@ public class UserInfo {
     private String createtime;
     private String updatetime;
     private int state;
+    private List<ArticleInfo> articleInfoList;
 }

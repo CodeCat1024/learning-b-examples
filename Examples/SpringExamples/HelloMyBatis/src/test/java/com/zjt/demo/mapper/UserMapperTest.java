@@ -86,4 +86,10 @@ class UserMapperTest {
         List<UserInfo> list = userMapper.getListByName(username);
         System.out.println("用户列表：" + list);
     }
+
+    @Test
+    void getUserAndArticleByUid() {
+        UserInfo userInfo = userMapper.getUserAndArticleByUid(1);
+        System.out.println("用户详情：" + userInfo);
+    }
 }
