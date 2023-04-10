@@ -38,4 +38,17 @@ public interface UserMapper {
     // 添加用户，并返回自增id
     public int addGetId(UserInfo userInfo);
 
+    // 添加用户，返回受影响的行数（photo是非必传参数）
+    public int add2(UserInfo userInfo);
+
+    // 添加用户，其中 username，password，photo 都是非必传参数
+    // 但至少会传递一个
+    public int add3(UserInfo userInfo);
+
+    public UserInfo getUserById2(@Param("id")Integer id);
+
+    //public int update2(UserInfo userInfo);
+
+    public int update2(UserInfo userInfo);
+
 }

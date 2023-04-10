@@ -34,6 +34,19 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- SQL注入问题 -->
 
     <!-- 像这种情况如果使用#就会出现SQL注入问题   -->
@@ -53,6 +66,24 @@
         <!-- select * from userinfo where username like '%${username}%'  -->
         select * from userinfo where username like concat('%', #{username}, '%')
     </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -80,8 +111,6 @@
     </select>
 
 
-
-
     <!-- 多表查询：一对多 -->
     <resultMap id="BaseMap" type="com.zjt.demo.model.UserInfo">
         <!-- 主键映射 -->
@@ -103,8 +132,108 @@
     <select id="getUserAndArticleByUid" resultMap="BaseMap">
         select u.*,a.id a_id, a.title a_title, a.content a_content,
         a.createtime a_createtime, a.updatetime a_updatetime
-        from userinfo u left join articleinfo a on u.id=a.uid where u.id=#{uid}      
+        from userinfo u left join articleinfo a on u.id=a.uid where u.id=#{uid}
     </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 动态SQL: if标签 -->
+    <insert id="add2">
+        insert into userinfo (username, password
+        <!-- 直接写photo就行了，不需要写userinfo.photo -->
+        <if test="photo != null">
+            , photo
+        </if>
+        ) values (#{username}, #{password}
+        <if test="photo != null">
+            , #{photo}
+        </if>
+        )
+    </insert>
+
+
+    <!-- 动态SQL：trim标签（主要用来去SQL语句前后多余的字符） -->
+    <insert id="add3">
+        inset into userinfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                name,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="photo != null">
+                photo
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                #{name},
+            </if>
+            <if test="password != null">
+                #{password},
+            </if>
+            <if test="photo != null">
+                #{photo}
+            </if>
+        </trim>
+    </insert>
+
+
+    <!-- 动态SQL： where标签 如果没有任何条件，会隐藏where之类的SQL语句，并且前面的and也会去除（所以要把and写到前面） -->
+    <select id="getUserById2" resultMap="BaseMap">
+        select * from userinfo
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+        </where>
+    </select>
+
+
+    <!-- 动态SQL：set标签 （可以去除最后的逗号）  -->
+    <update id="update2">
+        update userinfo
+        <set>
+            <if test="username != null">
+                username = #{username},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="photo != null">
+                photo = #{photo}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+
+    <!-- 动态SQL：foreach标签 对集合进行循环（比方说批量删除的时候） -->
+    
 
 
 
