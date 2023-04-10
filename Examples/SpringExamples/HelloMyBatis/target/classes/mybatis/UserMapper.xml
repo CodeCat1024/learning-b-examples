@@ -31,22 +31,6 @@
     </delete>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- SQL注入问题 -->
 
     <!-- 像这种情况如果使用#就会出现SQL注入问题   -->
@@ -233,7 +217,13 @@
 
 
     <!-- 动态SQL：foreach标签 对集合进行循环（比方说批量删除的时候） -->
-    
+    <delete id="delByIds">
+        delete from userinfo where id in 
+        <foreach collection="ids" open="(" close=")" item="id" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
 
 
 

@@ -51,4 +51,7 @@ public interface UserMapper {
 
     public int update2(UserInfo userInfo);
 
+    // 根据id进行批量删除
+    int delByIds(List<Integer> ids);
+
 }

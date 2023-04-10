@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -129,5 +130,15 @@ class UserMapperTest {
         //userInfo.setPhoto("MVP");
         int result = userMapper.update2(userInfo);
         System.out.println("update2 修改的结果为：" + result);
+    }
+
+    @Test
+    void delByIds() {
+        List<Integer> list = new ArrayList<>();
+        list.add(12);
+        list.add(13);
+        list.add(14);
+        int result = userMapper.delByIds(list);
+        System.out.println("结果为：" + result);
     }
 }
