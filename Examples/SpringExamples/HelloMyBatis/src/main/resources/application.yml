@@ -3,6 +3,6 @@ spring:
     active: dev
 
 
-# 这是一些中文注释
+# mybatis xml保存路径
 mybatis:
   mapper-locations: classpath:mybatis/**Mapper.xml
