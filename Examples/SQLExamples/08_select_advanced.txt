@@ -17,16 +17,9 @@ select max(chinese) from student;
 -- min
 select min(chinese) from student;
 
+-- groud by
 
-
-
-
-
-
-
-
-
-
+-- 测试数据
 create table emp (
 	id int,
 	name varchar(20),
@@ -43,7 +36,6 @@ insert into emp values
 (6, "太上老君", "老板", 11000),
 (7, "如来佛祖", "老板", 11000);
 
-
 -- group by（求出每个岗位的平均薪资）
 select role, avg(salary) from emp group by role;
 
@@ -59,22 +51,71 @@ select role, avg(salary) from emp group by role having role != "老板";
 
 
 
--- 联合查询：把多个表联合到一起进行查询
-
---  笛卡尔积：就是一种排列组合，将两张表的记录尽可能排列组合出N中情况
 
 
 
+--  基于笛卡尔积 + 条件进行查询，此时就是 多表查询 / 联合查询
 
+-- 联合查询（多表查询）：把多个表联合到一起进行查询，针对子表进行插入数据 / 修改数据，都需要去父表中查询一次，当父表的数据太多时，开销就会很大。为了让查询操作更快，可以给父表对应的列设置“索引”，相当于不再遍历，而是利用特定的结构加快速度
 
+-- 分为内连接，外连接，自连接，子查询，合并查询
 
-
-
-
+--  笛卡尔积：将两张表的记录尽可能排列组合出N中情况，也就是得到了更大的表，列数是两表之和，行数是两表之积
 
 
 
 
+-- 内连接（inner join)
+
+-- 查询许仙同学的成绩
+select student.name, score.score from stduent, score where student.id = score.student_id and student.name = "许仙";
+
+select student.name, score.score from stduent join score on student.id = score.student_id and student.name = "许仙";
+
+
+-- 查询所有同学的总成绩及同学的个人信息
+select student.name, sum(score.score) from student, score where student.id = score.student_id groud by student.id;
+
+
+-- 查询所有同学的成绩及同学的个人信息
+select student.name, course.name, score.score from student, course, score where student.id = score.student_id and course.id = score.course_id;
+
+
+
+
+
+-- 外连接（join）
+
+-- 测试数据
+create table student(
+	id int,
+	name varchar(20)
+);
+create table score(
+	student_id int,
+	score int
+);
+insert into student values(1, "张三"), (2, "李四"), (3, "王五");
+insert into score values (1, 90), (2, 80), (3, 70);
+
+
+-- 当前情况下，这两张表的数据是一一对应的，所以内连接和外连接的查询结果是相同的
+-- select name, score from student join score on student.id = score.student.id;
+
+
+-- 但如果两个表的数据不是一一对应的话，内连接的结果就只有两个表都有体现的数据
+-- 这个时候如果使用左外连接，就是以左侧的表为准，左侧表中所有的数据都可以体现出来
+
+-- update score set student_id = 4 where score = 70;
+-- select name, score from student join score on student.id = score.student_id;
+
+
+-- 左外连接
+-- select name, score from student left join score on student.id = score.student.id;
+
+
+-- 右外连接
+-- select name, score from student right join score on student.id = score.student.id;
 
 
 
