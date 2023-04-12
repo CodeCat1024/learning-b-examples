@@ -43,6 +43,7 @@ select distinct username from userinfo;
 
 
 
+
 -- where子句（ 返回空集）
 select username, password from userinfo where 0;
 
@@ -52,8 +53,10 @@ select username, password from userinfo where 1;
 -- where子句（ = 运算符）
 select username, password from userinfo where id = 2; 
 
--- where子句（ != / <> 运算符）
+-- where子句（ != 运算符）
 select username, password from userinfo where id != 2; 
+
+-- where子句（ <> 运算符）
 select username, password from userinfo where id <> 2; 
 
 -- where子句（ < 运算符）
@@ -83,10 +86,13 @@ select username, password from userinfo where id between 2 and 4;
 -- where子句（in运算符）
 select username, password from userinfo where id in (2, 3, 4); 
 
--- where子句（is null)
+-- where子句（is运算符)
 select username, password from userinfo where id is null;
 
--- where子句（like模糊查询:%）
+-- where子句（<=>运算符）
+select username, password from userinfo where id <=> null;
+
+-- where子句（like模糊查询:%表示多个字符，_表示一个字符）
 
 -- 查询username以"user"开头的用户数据
 select * from userinfo where username like "user%";
@@ -99,6 +105,8 @@ select * from userinfo where username like "%a_";
 
 -- 查询username以"a”结束但末尾还有两个未知字符的用户数据
 select * from userinfo where username like "%a__";
+
+
 
 
 

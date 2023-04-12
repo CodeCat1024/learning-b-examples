@@ -1,7 +1,4 @@
--- 显示所有表
-show tables;
-
--- 创建用户表
+-- 创建用户表（包含所有数据类型）
 create table userinfo(
 	id int,
 	name varchar(20),
@@ -9,6 +6,33 @@ create table userinfo(
 	description text,
 	createtime datetime
 ); 
+
+
+
+
+
+-- 创建用户表（包含所有约束）
+create table class(
+	classId int primary key auto_increment, 
+	className varchar(20)
+);
+create table student(
+	id int primary key auto_increment,  -- 自增主键可以手动指定，也可以让mysql分配
+	name varchar(20) unique,
+	password varchar(50) default "123456",
+	sex varchar(10) not null,
+	classId int, 
+	foreign key (classId) references class(classId)
+	-- 还差一个check约束，不过mysql里面不支持
+);
+
+
+
+
+
+
+-- 显示所有表
+show tables;
 
 -- 查看表结构
 desc userinfo;

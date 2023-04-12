@@ -1,0 +1,18 @@
+-- 测试数据
+create table student1(
+	id int,
+	name varchar(20)
+);
+
+create table student1(
+	id int,
+	name varchar(20)
+);
+
+insert into student1 values (1, "张三"), (2, "李四"),  (3, "王五");
+
+
+
+
+-- 查询结果，得到的列数，类型需要和插入的表和列数，类型匹配
+insert into student2 select * from student1;
