@@ -1,0 +1,88 @@
+-- 聚合查询：查询过程中，表的行和行之间进行一定的运算（不是列和列）依赖聚合函数（SQL里面的库函数）
+
+--  count
+select count(*) from student;
+
+-- sum（只对数字有效，会自动跳过结果为null的行）
+select sum(chinese) from student;
+
+-- avg
+select avg(chinese) from student;
+
+select avg(chinese + math + english) from student;
+
+-- max
+select max(chinese) from student;
+
+-- min
+select min(chinese) from student;
+
+
+
+
+
+
+
+
+
+
+
+create table emp (
+	id int,
+	name varchar(20),
+	role varchar(20),
+	salary int
+);
+
+insert into emp values
+(1, "孙悟空", "讲师", 10000),
+(2, "猪悟能", "讲师", 11000),
+(3, "沙悟净", "讲师", 11000),
+(4, "刘玄德", "学管师", 11000),
+(5, "曹孟德", "学管师", 11000),
+(6, "太上老君", "老板", 11000),
+(7, "如来佛祖", "老板", 11000);
+
+
+-- group by（求出每个岗位的平均薪资）
+select role, avg(salary) from emp group by role;
+
+-- group by（求出每个岗位的平均薪资（除去孙悟空的薪资）） 分组前
+select role, avg(salary) from emp where name !="孙悟空" group by role;
+
+-- group by（求出每个岗位的平均薪资（除去老板的薪资）） 分组后
+select role, avg(salary) from emp group by role having role != "老板";
+
+
+
+
+
+
+
+-- 联合查询：把多个表联合到一起进行查询
+
+--  笛卡尔积：就是一种排列组合，将两张表的记录尽可能排列组合出N中情况
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
