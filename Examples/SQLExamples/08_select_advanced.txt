@@ -54,7 +54,7 @@ select role, avg(salary) from emp group by role having role != "老板";
 
 
 
---  基于笛卡尔积 + 条件进行查询，此时就是 多表查询 / 联合查询
+--  多表查询（联合查询）：基于笛卡尔积 + 条件进行查询询
 
 -- 联合查询（多表查询）：把多个表联合到一起进行查询，针对子表进行插入数据 / 修改数据，都需要去父表中查询一次，当父表的数据太多时，开销就会很大。为了让查询操作更快，可以给父表对应的列设置“索引”，相当于不再遍历，而是利用特定的结构加快速度
 
@@ -104,18 +104,52 @@ insert into score values (1, 90), (2, 80), (3, 70);
 
 
 -- 但如果两个表的数据不是一一对应的话，内连接的结果就只有两个表都有体现的数据
--- 这个时候如果使用左外连接，就是以左侧的表为准，左侧表中所有的数据都可以体现出来
 
 -- update score set student_id = 4 where score = 70;
 -- select name, score from student join score on student.id = score.student_id;
 
 
--- 左外连接
+-- 左外连接，以左侧的表为准，左侧表中的数据都可以体现出来
 -- select name, score from student left join score on student.id = score.student.id;
 
 
--- 右外连接
+-- 右外连接，以右侧的表为准，右侧表中的数据都可以体现出来
 -- select name, score from student right join score on student.id = score.student.id;
+
+
+
+
+
+-- 自连接：本质上是把行转成列，自己和自己做笛卡尔积
+
+-- 显示所有计算机原理成绩比Java成绩高的数据
+select * from score as s1, score as s2 where s1.student_id = s2.student_id and s1.course_id = 1 and s2.course_id = 3 and s1.score < s2.score;
+
+
+
+
+
+-- 子查询：把多个查询语句合并到一起
+
+-- 单行子查询：查询与”不想毕业“同学的同班同学
+select name from student where classes_id = (select classes_id from student where name = "不想毕业");
+
+-- 多行子查询：查询”语文“或”英语“课程的成绩信息
+-- IN关键字
+select * from score where course_id in (select id from course where name = "语文" or name = "英文");
+
+-- EXISTS关键字
+
+
+
+
+--  合并查询：把两个查询语句的结果合并在一起
+
+-- 查询id<3，或者名字为“英文”的课程
+-- or只能针对一个表，union可以把多个表的查询结果合并（union会自动去重，union all不会去重）
+select * from course where id < 3 or name = "英文";
+select * from course where id < 3 union select * from course where name = "英文";
+
 
 
 
