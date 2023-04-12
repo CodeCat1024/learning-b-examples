@@ -26,6 +26,12 @@ public class UserController {
 
     @RequestMapping("/index")
     public String index(HttpServletRequest request, String username, String password) {
+        // 算术异常测试
+        // int a = 4 / 0;
+
+        // 空指针异常测试
+        Object obj = null;
+        System.out.println(obj.hashCode());
         return "Hello Index";
     }
 }
