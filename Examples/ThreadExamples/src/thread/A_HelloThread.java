@@ -14,7 +14,7 @@ class MyThread2 extends Thread {
     }
 }
 
-public class ThreadExample {
+public class A_HelloThread {
     public static void main(String[] args) {
         Thread t = new MyThread2();
         t.start();
