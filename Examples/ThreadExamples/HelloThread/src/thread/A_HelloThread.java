@@ -1,6 +1,10 @@
 package thread;
 
-class MyThread2 extends Thread {
+/**
+ * 演示两个线程交替执行任务
+ */
+
+class ThreadExample extends Thread {
     @Override
     public void run() {
         while(true) {
@@ -16,7 +20,7 @@ class MyThread2 extends Thread {
 
 public class A_HelloThread {
     public static void main(String[] args) {
-        Thread t = new MyThread2();
+        Thread t = new ThreadExample();
         t.start();
 
         while (true) {

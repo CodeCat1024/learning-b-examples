@@ -1,5 +1,8 @@
 package thread;
 
+/**
+ *  演示线程的五种创建方式
+ */
 
 class MyThread extends Thread {
     @Override
@@ -8,6 +11,10 @@ class MyThread extends Thread {
         System.out.println("Hello Thread1");
     }
 }
+/**
+ *  通常认为Runnable这种写法更好一些，可以做到要执行的任务之间更好的解耦
+ *  它只是描述了一个任务，要给进程，线程，线程池还是协程执行不关它事
+ */
 
 class MyRunnable implements Runnable {
     @Override
@@ -16,10 +23,7 @@ class MyRunnable implements Runnable {
     }
 }
 
-/**
- * 通常认为Runnable这种写法更好一些，可以做到要执行的任务之间更好的解耦
- * 它只是描述了一个任务，要给进程，线程，线程池还是协程执行不关它事
- */
+
 public class B_CreateThread {
     public static void main(String[] args) {
 

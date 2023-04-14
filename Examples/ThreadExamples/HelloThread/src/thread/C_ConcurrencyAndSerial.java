@@ -1,5 +1,9 @@
 package thread;
 
+/**
+ * 演示并发的串行的效率差别
+ */
+
 public class C_ConcurrencyAndSerial {
     private static final long count = 10_0000_0000;
     // private static final long count = 100_0000_0000L;

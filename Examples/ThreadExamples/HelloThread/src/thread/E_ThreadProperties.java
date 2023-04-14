@@ -1,5 +1,9 @@
 package thread;
 
+/**
+ * 打印出线程的所有属性
+ */
+
 public class E_ThreadProperties {
 
     public static void main(String[] args) {

@@ -20,7 +20,8 @@ public class B_MemoryVisibility {
     public static void main(String[] args) {
         Thread t = new Thread(() -> {
            while (isQuit == 0) {
-
+               // 如果加上这个，编译器就不进行优化了，这是个很模糊的事情
+               // Thread.sleep(1000):
            }
             System.out.println("循环结束：t线程退出！");
         });
