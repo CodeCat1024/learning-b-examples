@@ -3,6 +3,9 @@ package thread;
 import java.util.Scanner;
 
 /**
+ * 内存可见性，是属于编译器优化范围内比较玄学的一个典型案例
+ * 编译器优化本身是一个比较玄学的问题，啥时候优化，啥时候不优化，都比较难说
+ *
  * 1.使用 synchronized 关键字，synchronized 不光能保证指令的原子性，同时也能保证内存可见性
  *   被 synchronized 不光能保证指令的原子性，同时也能保证内存可见性，被 synchronized 包裹起来的代码
  *   编译器不敢轻易地做出优化（相当于手动禁止了编译器的优化）
@@ -28,5 +31,4 @@ public class B_MemoryVisibility {
         isQuit = scanner.nextInt();
         System.out.println("main线程执行完毕");
     }
-
 }
