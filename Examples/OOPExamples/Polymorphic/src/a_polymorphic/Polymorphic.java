@@ -1,3 +1,9 @@
+package a_polymorphic;
+
+/**
+ * 继承和多态示例
+ */
+
 abstract class Shape {
     public abstract void draw();
 }
