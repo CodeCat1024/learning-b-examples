@@ -1,3 +1,4 @@
+import book.BookList;
 import user.AdminUser;
 import user.NormalUser;
 import user.User;
@@ -22,7 +23,14 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        BookList bookList = new BookList();
         User user = login();
-        int choice = user.menu(); // 动态绑定
+
+        while (true) {
+            int choice = user.menu(); // 动态绑定
+            // 接下来根据 choice 和 user 来确定到底要调用哪个对象的哪个操作
+            user.doWork(choice, bookList);
+        }
+
     }
 }

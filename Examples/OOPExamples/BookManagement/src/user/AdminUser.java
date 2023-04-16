@@ -1,11 +1,20 @@
 package user;
 
+import operations.*;
+
 import java.util.Scanner;
 
 public class AdminUser extends User{
 
     public AdminUser(String name) {
         super(name);
+        this.ioPerations = new IOPeration[] {
+                new Exit(),
+                new Find(),
+                new Add(),
+                new Del(),
+                new Display(),
+        };
     }
 
     @Override

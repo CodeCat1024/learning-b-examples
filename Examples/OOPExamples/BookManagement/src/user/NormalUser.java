@@ -1,11 +1,19 @@
 package user;
 
+import operations.*;
+
 import java.util.Scanner;
 
 public class NormalUser extends User{
 
     public NormalUser(String name) {
         super(name);
+        this.ioPerations = new IOPeration[] {
+                new Exit(),
+                new Find(),
+                new Borrow(),
+                new Return()
+        };
     }
     @Override
     public int menu() {
