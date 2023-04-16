@@ -8,7 +8,7 @@ public class BookList {
 
     public BookList() {
         books[0] = new Book("三国演义", "罗贯中", 89, "小说");
-        books[1] = new Book("三国演义", "罗贯中", 89, "小说");
+        books[1] = new Book("毛选", "毛泽东", 49, "军事");
         this.usedSize = 2;
     }
 
@@ -19,6 +19,10 @@ public class BookList {
     public void setBook(Book book) {
         this.books[usedSize] = book;
 
+    }
+
+    public void setBook(int pos, Book book) {
+        this.books[pos] = book;
     }
 
     // 原生的set方法不满足我们的需求
