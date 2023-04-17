@@ -40,4 +40,9 @@ public class UserService {
     public int update(UserInfo userInfo) {
         return userMapper.update(userInfo);
     }
+
+    // 删除单个用户
+    public int del(Integer uid) {
+        return userMapper.del(uid);
+    }
 }

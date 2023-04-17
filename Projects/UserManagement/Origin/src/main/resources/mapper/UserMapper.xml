@@ -11,6 +11,10 @@
         where uid = #{uid}
     </update>
 
+    <delete id="del">
+        delete from userinfo where uid = #{uid}
+    </delete>
+
     <select id="login" resultType="com.demo.usermanager.model.UserInfo">
         select * from userinfo where loginname = #{loginname} and password = #{password} and isadmin = 1
     </select>

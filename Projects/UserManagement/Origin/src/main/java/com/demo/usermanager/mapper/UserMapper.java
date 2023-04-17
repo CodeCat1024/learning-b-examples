@@ -27,4 +27,9 @@ public interface UserMapper {
 
     // 修改用户信息
     int update(UserInfo userInfo);
+
+    // 删除单个用户
+    int del(@Param("uid") Integer uid);
+
+
 }

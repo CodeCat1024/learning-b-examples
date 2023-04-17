@@ -87,6 +87,7 @@ public class UserController {
         return userInfo;
     }
 
+    // 修改用户信息
     @RequestMapping("/update")
     public int update(UserInfo userInfo, HttpServletRequest request) {
         int result = 0;
@@ -111,6 +112,16 @@ public class UserController {
         return result;
     }
 
+    // 删除单个用户
+    @RequestMapping("/del")
+    public int del(Integer uid) {
+        if (uid == null) return 0;
+        return userService.del(uid);
+    }
+
+    // 删除多个用户
+
+    // 查询功能
 
 
 }
