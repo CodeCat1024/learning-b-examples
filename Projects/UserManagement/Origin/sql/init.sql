@@ -5,7 +5,7 @@ use usermanager;
 create table userinfo(
     uid int primary key auto_increment,
     username varchar(250) not null,
-    loginname varchar(250) not null,
+    loginname varchar(250) unique not null,
     password varchar(65) not null,
     sex varchar(2) default '男',
     age int default 0,

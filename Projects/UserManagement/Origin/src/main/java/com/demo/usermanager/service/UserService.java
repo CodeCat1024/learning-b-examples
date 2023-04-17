@@ -22,4 +22,22 @@ public class UserService {
         return userMapper.getAll();
     }
 
+    // 添加用户
+    public int add(UserInfo userInfo) {
+        System.out.println("已经走到service这里了");
+        return userMapper.add(userInfo);
+    }
+
+    // 根据登录名查询用户
+    public UserInfo getUserByLoginName(String loginname) {
+        return userMapper.getUserByLoginName(loginname);
+    }
+
+    // 根据uid返回用户
+    public UserInfo getUserByUid(Integer uid) { return userMapper.getUserByUid(uid);}
+
+    // 修改用户信息
+    public int update(UserInfo userInfo) {
+        return userMapper.update(userInfo);
+    }
 }

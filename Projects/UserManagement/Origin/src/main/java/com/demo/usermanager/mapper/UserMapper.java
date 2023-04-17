@@ -15,4 +15,16 @@ public interface UserMapper {
 
     // 查询所有的用户信息
     List<UserInfo> getAll();
+
+    // 添加用户
+    int add(UserInfo userInfo);
+
+    // 根据登录名查询用户信息（非模糊查询）
+    UserInfo getUserByLoginName(@Param("loginname") String loignname);
+
+    // 根据uid查询用户信息
+    UserInfo getUserByUid(@Param("uid") Integer uid);
+
+    // 修改用户信息
+    int update(UserInfo userInfo);
 }

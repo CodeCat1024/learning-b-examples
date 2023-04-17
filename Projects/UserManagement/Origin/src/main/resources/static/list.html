@@ -104,7 +104,7 @@
                         listDiv += '<th>' + userinfo.email + '</th>';
                         listDiv += '<th>' + (userinfo.isadmin == true ? "是" : "否") + '</th>';
                         listDiv += '<th>';
-                        listDiv += '<a class="btn btn-default btn-sm" href="update.hytml?id=' + userinfo.uid + '">修改</a>';
+                        listDiv += '<a class="btn btn-default btn-sm" href="update.html?uid=' + userinfo.uid + '">修改</a>';
                         listDiv += '<a class="btn btn-default btn-sm" href="javascript:mydel('+ userinfo.uid + ');">删除</a>';
                         listDiv += '</th></tr>';
 
@@ -124,23 +124,6 @@
     }
 
 
-    // function mydel(uid){
-    //     if(confirm("确认删除？")){
-    //        jQuery.ajax({
-    //         url:"del",
-    //         type:"POST",
-    //         data:{"uid":uid},
-    //         success:function(result){
-    //             if(result!=null && result.data>0){
-    //                 alert("恭喜：删除成功！");
-    //                 location.href = location.href;
-    //             }else{
-    //                 alert("抱歉：删除失败，请您稍后再试！"); 
-    //             }
-    //         }
-    //        }); 
-    //     }
-    // }
 
 </script>
 </body>

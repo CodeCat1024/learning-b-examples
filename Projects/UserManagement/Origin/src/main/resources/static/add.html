@@ -15,13 +15,13 @@
 <div class="container" style="width: 400px;">
     <h3 style="text-align: center;">添加用户</h3>
     <div class="form-group">
-        <label for="username">登录名：</label>
-        <input type="text" class="form-control" id="username" name="username" placeholder="请输入登录名"/>
+        <label for="loginname">登录名：</label>
+        <input type="text" class="form-control" id="loginname" name="loginname" placeholder="请输入登录名"/>
     </div>
 
     <div class="form-group">
-        <label for="name">姓名：</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="请输入姓名"/>
+        <label for="username">用户名：</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="请输入姓名"/>
     </div>
 
     <div class="form-group">
@@ -31,7 +31,7 @@
 
     <div class="form-group">
         <label for="password2">确认密码：</label>
-        <input type="password2" class="form-control" id="password2" name="password" placeholder="请输入密码"/>
+        <input type="password" class="form-control" id="password2" name="password2" placeholder="请输入密码"/>
     </div>
 
     <div class="form-group">
@@ -72,7 +72,7 @@
         <input type="text" id="email" class="form-control" name="email" placeholder="请输入邮箱地址"/>
     </div>
 
-    <div class="form-group" id="adminDiv" style="display: none;">
+    <div class="form-group" id="adminDiv">
         <label for="email">管理员：</label>
         <input id="admin_yes" type="radio" name="isadmin" value="1"/>是
         &nbsp;&nbsp;&nbsp;
@@ -83,7 +83,86 @@
         <input id="btn_sub" class="btn btn-primary" type="button" value="提交" onclick="mysub()"/>
         <input id="btn_back" class="btn btn-default" type="button" value="返回" onclick="location.href='list.html'"/>
     </div>
-
 </div>
+<script>
+    // 进行添加操作
+    function mysub() {
+        var loginname = jQuery("#loginname");
+        var username = jQuery("#username");
+        var password = jQuery("#password");
+        var password2 = jQuery("#password2");
+        var sex = jQuery("input[name=sex]:checked").val();
+        var age = jQuery("#age").val();
+        var address = jQuery("#address").val();
+        var qq = jQuery("#qq").val();
+        var email = jQuery("#email").val();
+        var isadmin = jQuery("input[name=isadmin]:checked").val();
+
+
+        // 非空校验
+        if (jQuery.trim(loginname.val()) == "") {
+            alert("请先输入登录名！");
+            loginname.focus();
+            return false;
+        }
+        if (jQuery.trim(username.val()) == "") {
+            alert("请先输入用户名！");
+            username.focus();
+            return false;
+        }
+        if (jQuery.trim(password.val()) == "") {
+            alert("请先输入密码！");
+            password.focus();
+            return false;
+        }
+        if (jQuery.trim(password2.val()) == "") {
+            alert("请先输入确认密码！");
+            password2.focus();
+            return false;
+        }
+
+        // 确认两次输入的密码是一致的
+        if (password.val() != password2.val() ){
+            alert("两次输入密码不一致，请先检查！");
+            password.focus();
+            return false;
+        }
+    
+        // 将当前的数据提交给后端
+        jQuery.ajax({
+            url: "add",
+            type: "POST",
+            data: {
+                "username": username.val(),
+                "loginname": loginname.val(),
+                "password": password.val(),
+                "sex": sex,
+                "age": age,
+                "address": address,
+                "qq": qq,
+                "email": email,
+                "isadmin": isadmin
+            }, success:function(result) {
+                alert("数据构造已经成功了，但是没有返回！");
+                alert("返回的结果为" + result.data);
+                if(result != null && result.data > 0) {
+                    alert("恭喜，添加成功！")
+                    if(confirm("是否继续添加？")){
+                        location.href = location.href;
+                    } else {
+                        location.href = "list.html";
+                    }
+                }
+            }
+        });
+
+
+
+
+
+
+    }
+
+</script>
 </body>
 </html>
