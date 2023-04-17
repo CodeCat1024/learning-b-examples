@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--要设置实现接口的具体包加类名-->
+<mapper namespace="com.demo.usermanager.mapper.UserMapper">
+
+    <select id="login" resultType="com.demo.usermanager.model.UserInfo">
+        select * from userinfo where loginname = #{loginname} and password = #{password}
+    </select>
+
+    <select id="getAll" resultType="com.demo.usermanager.model.UserInfo">
+        select * from userinfo;
+    </select>
+
+</mapper>

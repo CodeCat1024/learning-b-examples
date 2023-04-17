@@ -1,4 +1,5 @@
-package com.demo.usermanager.model;
+package com.zjt.usermanager.model;
+
 
 import lombok.Data;
 
@@ -18,3 +19,4 @@ public class UserInfo {
     private String createtime;
     private String updatetime;
 }
+

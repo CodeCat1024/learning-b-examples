@@ -1,41 +1,38 @@
-package com.demo.usermanager.controller;
+package com.zjt.usermanager.controller;
 
-import com.demo.usermanager.model.UserInfo;
-import com.demo.usermanager.service.UserService;
-import com.demo.usermanager.util.ConstVariable;
+import com.zjt.usermanager.util.ConstVariable;
+import com.zjt.usermanager.model.UserInfo;
+import com.zjt.usermanager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
-@RestController
+@Controller
 public class UserController {
 
     @Autowired
     private UserService userService;
 
     @RequestMapping("/login")
-    public boolean login(HttpServletRequest request, String loginname, String password){
-        // 先做非空校验
+    public String login(HttpServletRequest request, String loginname, String password) {
+        // 先进行非空校验
         if (StringUtils.hasLength(loginname) && StringUtils.hasLength(password)) {
+            // 根据用户名和密码去数据库里查找对应的信息，并用userInfo接收返回的对象（如果在数据库中查不到该对象则会返回null）
             UserInfo userInfo = userService.login(loginname, password);
-            if(userInfo != null && userInfo.getUid() > 0)  {
-                // 存储 session
+            if (userInfo != null && userInfo.getUid() > 0) {
+                // 存储用户的session
                 HttpSession session = request.getSession(true);
                 session.setAttribute(ConstVariable.USER_SESSION_KEY, userInfo);
-                return true;
+
+                // 进入主页面
+                return "list.html";
             }
         }
-        return false;
-    }
-
-    @RequestMapping("/list")
-    public List<UserInfo> getAll() {
-        return userService.getAll();
+        // 登录失败
+        return "login.html";
     }
 }
