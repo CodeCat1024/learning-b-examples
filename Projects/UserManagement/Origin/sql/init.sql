@@ -23,3 +23,9 @@ values ('超级管理员', 'admin', 'admin', 1);
 
 insert into userinfo(username, loginname, password, isadmin)
 values ('普通用户', 'Kate', 'Kate', 0);
+
+insert into userinfo(username, loginname, password, isadmin)
+values ('Paul', 'Paul', 'Paul', 0);
+
+insert into userinfo(username, loginname, password, isadmin)
+values ('King', 'King', 'King', 0);

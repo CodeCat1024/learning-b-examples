@@ -75,10 +75,10 @@
 </div>
 <script>
 
-    // 获取用户列表
+    // 从后端获取用户列表
     function getList(){
         jQuery.ajax({
-            url:"listbypage",
+            url:"list",
             type:"GET",
             data:{
                 // "pindex":pindex,
@@ -87,61 +87,60 @@
                 // "address":address,
                 // "email":email
 
-                "username":ipt_name
-
             },
-            success:function(result){
-                if(result!=null && result.data!=null){
-                    //totalCount = result.data.count;
-                    //totalPage = Math.ceil(parseInt(totalCount)/psize);
-                    //jQuery("#pageinfo").html("共 "+totalCount+" 条记录，共 "+totalPage+" 页");
+            success:function(result) {
+                if (result != null && result.data.length > 0) {
                     var listDiv = "";
-                    if(result.data.list.length>0){
-                        for(var i=0;i<result.data.list.length;i++){
-                            var userinfo = result.data.list[i];
-                            listDiv +='<tr>';
-                            listDiv +='<th>';
-                            listDiv +='<input id="'+userinfo.uid+'" type="checkbox"></th>';
-                            listDiv +='<th>'+userinfo.uid+'</th>';
-                            listDiv +='<th>'+userinfo.username+'</th>';
-                            listDiv +='<th>'+userinfo.sex+'</th>';
-                            listDiv +='<th>'+userinfo.age+'</th>';
-                            listDiv +='<th>'+userinfo.address+'</th>';
-                            listDiv +='<th>'+userinfo.qq+'</th>';
-                            listDiv +='<th>'+userinfo.email+'</th>';
-                            listDiv +='<th>'+(userinfo.isadmin==true?"是":"否")+'</th>';
-                            listDiv +='<th>';
-                            listDiv +='<a class="btn btn-default btn-sm" href="update.html?uid='+userinfo.uid+'">修改</a>';
-                            listDiv +='<a class="btn btn-default btn-sm" href="javascript:mydel('+userinfo.uid+');">删除</a>';
-                            listDiv +='</th></tr>';
-                        }
+                    for (var i = 0; i < result.data.length; i++) {
+                        var userinfo = result.data[i];
+                        listDiv += '<tr><th>';
+                        listDiv += '<input id="1" type="checkbox"></th>';
+                        listDiv += '<th>' + userinfo.uid + '</th>';
+                        listDiv += '<th>' + userinfo.username + '</th>';
+                        listDiv += '<th>' + userinfo.sex + '</th>';
+                        listDiv += '<th>' + userinfo.age + '</th>';
+                        listDiv += '<th>' + userinfo.address + '</th>';
+                        listDiv += '<th>' + userinfo.qq + '</th>';
+                        listDiv += '<th>' + userinfo.email + '</th>';
+                        listDiv += '<th>' + (userinfo.isadmin == true ? "是" : "否") + '</th>';
+                        listDiv += '<th>';
+                        listDiv += '<a class="btn btn-default btn-sm" href="update.hytml?id=' + userinfo.uid + '">修改</a>';
+                        listDiv += '<a class="btn btn-default btn-sm" href="javascript:mydel('+ userinfo.uid + ');">删除</a>';
+                        listDiv += '</th></tr>';
+
                     }
                     jQuery("#info").html(listDiv);
                 }
             }
+        
         });
     }
     
     getList();
 
     // 删除方法
-    function mydel(uid){
-        if(confirm("确认删除？")){
-           jQuery.ajax({
-            url:"del",
-            type:"POST",
-            data:{"uid":uid},
-            success:function(result){
-                if(result!=null && result.data>0){
-                    alert("恭喜：删除成功！");
-                    location.href = location.href;
-                }else{
-                    alert("抱歉：删除失败，请您稍后再试！"); 
-                }
-            }
-           }); 
-        }
+    function mydel(uid) {
+        alert(uid);
     }
+
+
+    // function mydel(uid){
+    //     if(confirm("确认删除？")){
+    //        jQuery.ajax({
+    //         url:"del",
+    //         type:"POST",
+    //         data:{"uid":uid},
+    //         success:function(result){
+    //             if(result!=null && result.data>0){
+    //                 alert("恭喜：删除成功！");
+    //                 location.href = location.href;
+    //             }else{
+    //                 alert("抱歉：删除失败，请您稍后再试！"); 
+    //             }
+    //         }
+    //        }); 
+    //     }
+    // }
 
 </script>
 </body>

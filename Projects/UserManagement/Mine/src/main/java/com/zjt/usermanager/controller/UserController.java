@@ -17,6 +17,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    // 登录功能
     @RequestMapping("/login")
     public String login(HttpServletRequest request, String loginname, String password) {
         // 先进行非空校验
@@ -35,4 +36,7 @@ public class UserController {
         // 登录失败
         return "login.html";
     }
+
+    // 用户列表页展示
+    @RequestMapping
 }
