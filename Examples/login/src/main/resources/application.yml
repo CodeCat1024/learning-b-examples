@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    active: dev
+
+
+# mybatis xml保存路径
+mybatis:
+
+  # mapper-locations: classpath:mybatis/**Mapper.xml
+  mapper-locations: classpath:mapper/**Mapper.xml
