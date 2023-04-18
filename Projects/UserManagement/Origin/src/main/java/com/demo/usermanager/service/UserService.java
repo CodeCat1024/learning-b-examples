@@ -45,4 +45,9 @@ public class UserService {
     public int del(Integer uid) {
         return userMapper.del(uid);
     }
+
+    // 删除多个用户
+    public int dels(List<Integer> ids) {
+        return userMapper.dels(ids);
+    }
 }

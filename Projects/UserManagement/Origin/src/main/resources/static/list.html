@@ -94,7 +94,7 @@
                     for (var i = 0; i < result.data.length; i++) {
                         var userinfo = result.data[i];
                         listDiv += '<tr><th>';
-                        listDiv += '<input id="1" type="checkbox"></th>';
+                        listDiv += '<input id=" '+userinfo.uid + ' " type="checkbox"></th>';
                         listDiv += '<th>' + userinfo.uid + '</th>';
                         listDiv += '<th>' + userinfo.username + '</th>';
                         listDiv += '<th>' + userinfo.sex + '</th>';
@@ -118,7 +118,7 @@
     
     getList();
 
-    // 删除方法
+    // 删除单个用户
     function mydel(uid) {
         if(confirm("确认删除？")) {
             jQuery.ajax({
@@ -138,6 +138,35 @@
             });
         }
     }
+
+    // 删除多条用户信息
+    function delByIds(){
+        if(confirm("确认删除？")){
+            var ids = "";
+            jQuery("#info").find("tr").each(function(i){
+                if(jQuery(this).find("th:first").find("input").prop("checked")==true){
+                    ids += (jQuery(this).find("th:first").find("input").attr("id")+",");
+                }
+            });
+            if(ids!=""){
+                jQuery.ajax({
+                    url:"delbyids",
+                    type:"POST",
+                    data:{"ids":ids},
+                    success:function(result){
+                        alert("进来是进来了");
+                        if(result!=null && result.data>0){
+                            alert("恭喜：删除成功！");
+                            location.href = location.href;
+                        }else{
+                            alert("抱歉：删除失败，请您稍后再试！");
+                        }
+                    }
+                });
+            }
+        }
+    }
+
 
 
 

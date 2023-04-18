@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -120,8 +121,42 @@ public class UserController {
     }
 
     // 删除多个用户
+    @RequestMapping("/delbyids")
+    public int dels(String ids, HttpServletRequest request) {
+        System.out.println("进来了吗？");
+        if (!StringUtils.hasLength(ids)) return 0;
+        String[] idsArr = ids.split(",");
+        if (idsArr == null || idsArr.length <= 0) return 0;
+        List<Integer> idsList = new ArrayList<>();
+        // 得到当前登录用户的id
+        HttpSession session = request.getSession(false);
+        System.out.println("不然判断走进去了吗？");
+        System.out.println("来看看ids长什么样吧先" + ids);
+
+        if (session == null || session.getAttribute(ConstVariable.USER_SESSION_KEY) == null) return 0;
+        int uid = ((UserInfo) session.getAttribute(ConstVariable.USER_SESSION_KEY)).getUid();
+        System.out.println("再看看uid长什么样" +uid);
+        for (String item : idsArr) {
+            if (StringUtils.hasLength(item)) {
+                // todo: 问题就出在这一行！！！
+                item = item.trim();
+                int thisUid = Integer.valueOf(item);
+
+                // 删除之前，要判断删除的数据中不包含当前登录的用户
+                if (uid == thisUid) {
+                    System.out.println("不能删除管理员！");
+                    return 0;
+                }
+                idsList.add(thisUid);
+                System.out.println("以及最重要的idsList" + idsList);
+            }
+        }
+        System.out.println("走到这个方法了吗？");
+        int result = userService.dels(idsList);
+        System.out.println("删除多条数据结果：" + result);
+        return result;
+    }
 
     // 查询功能
-
 
 }

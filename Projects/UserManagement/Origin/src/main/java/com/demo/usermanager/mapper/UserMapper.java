@@ -31,5 +31,7 @@ public interface UserMapper {
     // 删除单个用户
     int del(@Param("uid") Integer uid);
 
+    // 删除多个用户
+    int dels(List<Integer> ids);
 
 }
