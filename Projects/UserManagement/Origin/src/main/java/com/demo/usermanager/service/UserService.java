@@ -22,6 +22,20 @@ public class UserService {
         return userMapper.getAll();
     }
 
+    public List<UserInfo> getListByPage(String username,
+                                        String address,
+                                        String email,
+                                        Integer limit,
+                                        Integer offset) {
+        return userMapper.getListByPage(username, address, email, limit, offset);
+    }
+
+    public int getListByPageCount(String username,
+                                  String address,
+                                  String email) {
+        return userMapper.getListByPageCount(username, address, email);
+    }
+
     // 添加用户
     public int add(UserInfo userInfo) {
         System.out.println("已经走到service这里了");

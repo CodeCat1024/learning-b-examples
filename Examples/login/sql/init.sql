@@ -1,6 +1,6 @@
-drop database if exists usermanager;
-create database usermanager character set 'utf8mb4';
-use usermanager;
+drop database if exists usermanager2;
+create database usermanager2 character set 'utf8mb4';
+use usermanager2;
 
 create table userinfo(
   uid int primary key auto_increment,

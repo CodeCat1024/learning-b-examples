@@ -67,56 +67,130 @@
                 <li><a href="javascript:beforePage();">上一页</a></li>
                 <li><a href="javascript:nextPage();">下一页</a></li>
                 <li><a href="javascript:lastPage();">末页</a></li>
-                <span id="pageinfo" style="font-size: 20px;margin-left: 10px;">
-                                  </span>
+                <span id="pageinfo" style="font-size: 20px;margin-left: 10px;"></span>
             </ul>
         </nav>
     </div>
 </div>
 <script>
 
-    // 从后端获取用户列表
+    // 查询 url 中的某个参数的值
+    function getParamValue(key){
+        var url = location.search;
+        if(url!=""){
+            url = url.substr(1);
+            var kvs = url.split("&");
+            for(var i=0;i<kvs.length;i++){
+                var kv = kvs[i].split("=");
+                if(key==kv[0]) return kv[1];
+            }
+        }
+        return "";
+    }
+
+    // 定义参数
+    var username ="";
+    var address ="";
+    var email ="";
+    // todo: 或许这个totalPage可以改为0
+    var totalPage = 0; // 总页数
+    var totalCount = 0; // 总条数
+    var pindex = 1; // 当前页码
+    var psize = 5; // 每页显示条数
+
+    // 获取用户列表
     function getList(){
         jQuery.ajax({
-            url:"list",
+            url:"listbypage",
             type:"GET",
             data:{
-                // "pindex":pindex,
-                // "psize":psize,
-                // "username": username;
-                // "address":address,
-                // "email":email
-
+                "pindex":pindex,
+                "psize":psize,
+                "username":username,
+                "address":address,
+                "email":email
             },
-            success:function(result) {
-                if (result != null && result.data.length > 0) {
+            success:function(result){
+                if(result!=null && result.data!=null){
+                    totalCount = result.data.count;
+                    totalPage = Math.ceil(parseInt(totalCount)/psize);
+                    jQuery("#pageinfo").html("共 "+totalCount+" 条记录，共 "+totalPage+" 页");
                     var listDiv = "";
-                    for (var i = 0; i < result.data.length; i++) {
-                        var userinfo = result.data[i];
-                        listDiv += '<tr><th>';
-                        listDiv += '<input id=" '+userinfo.uid + ' " type="checkbox"></th>';
-                        listDiv += '<th>' + userinfo.uid + '</th>';
-                        listDiv += '<th>' + userinfo.username + '</th>';
-                        listDiv += '<th>' + userinfo.sex + '</th>';
-                        listDiv += '<th>' + userinfo.age + '</th>';
-                        listDiv += '<th>' + userinfo.address + '</th>';
-                        listDiv += '<th>' + userinfo.qq + '</th>';
-                        listDiv += '<th>' + userinfo.email + '</th>';
-                        listDiv += '<th>' + (userinfo.isadmin == true ? "是" : "否") + '</th>';
-                        listDiv += '<th>';
-                        listDiv += '<a class="btn btn-default btn-sm" href="update.html?uid=' + userinfo.uid + '">修改</a>';
-                        listDiv += '<a class="btn btn-default btn-sm" href="javascript:mydel('+ userinfo.uid + ');">删除</a>';
-                        listDiv += '</th></tr>';
-
+                    if(result.data.list.length>0){
+                        for(var i=0;i<result.data.list.length;i++){
+                            var userinfo = result.data.list[i];
+                            listDiv +='<tr>';
+                            listDiv +='<th>';
+                            listDiv +='<input id="'+userinfo.uid+'" type="checkbox"></th>';
+                            listDiv +='<th>'+userinfo.uid+'</th>';
+                            listDiv +='<th>'+userinfo.username+'</th>';
+                            listDiv +='<th>'+userinfo.sex+'</th>';
+                            listDiv +='<th>'+userinfo.age+'</th>';
+                            listDiv +='<th>'+userinfo.address+'</th>';
+                            listDiv +='<th>'+userinfo.qq+'</th>';
+                            listDiv +='<th>'+userinfo.email+'</th>';
+                            listDiv +='<th>'+(userinfo.isadmin==true?"是":"否")+'</th>';
+                            listDiv +='<th>';
+                            listDiv +='<a class="btn btn-default btn-sm" href="update.html?uid='+userinfo.uid+'">修改</a>';
+                            listDiv +='<a class="btn btn-default btn-sm" href="javascript:mydel('+userinfo.uid+');">删除</a>';
+                            listDiv +='</th></tr>';
+                        }
                     }
                     jQuery("#info").html(listDiv);
                 }
             }
-        
         });
     }
-    
-    getList();
+    // 初始化页面
+    function initPage(){
+        username = getParamValue("username");
+        address = getParamValue("address");
+        email = getParamValue("email");
+        pindex= getParamValue("pindex");
+        if(pindex==null || pindex==""){
+            pindex = 1;
+        }
+        getList();
+    }
+    initPage();
+
+    // 点击查询按钮
+    function mysearch(){
+        var username_input = jQuery.trim(jQuery("#ipt_name").val());
+        var addres_input = jQuery.trim(jQuery("#ipt_address").val());
+        var emai_input = jQuery.trim(jQuery("#ipt_email").val());
+        username = username_input;
+        address = addres_input;
+        email = emai_input;
+        getList();
+    }
+
+    // 点击首页
+    function firstPage(){
+        location.href = "list.html?pindex=1&username=" +username+ "&address="+address+"&email="+email;
+    }
+    // 点击末页
+    function lastPage(){
+        location.href = "list.html?pindex=" +totalPage+ "&username=" +username+ "&address=" +address+ "&email=" +email;
+    }
+    // 点击上一页
+    function beforePage(){
+        if(pindex > 1){
+            pindex = parseInt(pindex) - 1;
+            location.href = "list.html?pindex="+pindex+"&username="+username+"&address="+address+"&email="+email;
+        } else {
+            alert("已经是首页了");
+        }
+    }
+    // 点击下一页
+    function nextPage(){
+        if(pindex>=totalPage){
+            alert("已经是最后一页了");
+            return false;
+        }
+        pindex = parseInt(pindex)+1;
+        location.href = "list.html?pindex="+pindex+"&username="+username+"&address="+address+"&email="+email;
+    }
 
     // 删除单个用户
     function mydel(uid) {

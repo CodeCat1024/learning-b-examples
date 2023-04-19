@@ -29,3 +29,28 @@ values ('Paul', 'Paul', 'Paul', 0);
 
 insert into userinfo(username, loginname, password, isadmin)
 values ('King', 'King', 'King', 0);
+
+insert into userinfo(username, loginname, password, isadmin)
+values ('King1', 'King1', 'King1', 0);
+
+insert into userinfo(username, loginname, password, isadmin)
+values ('King2', 'King2', 'King2', 0);
+
+insert into userinfo(username, loginname, password, isadmin)
+values ('King3', 'King3', 'King3', 0);
+
+insert into userinfo(username, loginname, password, isadmin)
+values ('King4', 'King4', 'King4', 0);
+
+insert into userinfo(username, loginname, password, isadmin)
+values ('King5', 'King5', 'King5', 0);
+
+insert into userinfo(username, loginname, password, isadmin)
+values ('King6', 'King6', 'King6', 0);
+
+insert into userinfo(username, loginname, password, isadmin)
+values ('King7', 'King7', 'King7', 0);
+
+insert into userinfo(username, loginname, password, isadmin)
+values ('King8', 'King8', 'King8', 0);
+

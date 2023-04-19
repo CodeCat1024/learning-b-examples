@@ -32,7 +32,7 @@
 
     <insert id="add">
         insert into userinfo(username, loginname, password, sex, age, address, qq, email, isadmin)
-        values (#{username}, #{{loginname}, #{password}, #{sex}, #{age}, #{address}, #{qq}, #{email}, #{isadmin})
+        values (#{username}, #{loginname}, #{password}, #{sex}, #{age}, #{address}, #{qq}, #{email}, #{isadmin})
     </insert>
 
     <select id="getUserByLoginName" resultType="com.demo.usermanager.model.UserInfo">
@@ -41,6 +41,36 @@
 
     <select id="getUserByUid" resultType="com.demo.usermanager.model.UserInfo">
         select * from userinfo where uid = #{uid}
+    </select>
+
+    <select id="getListByPage" resultType="com.demo.usermanager.model.UserInfo">
+        select * from userinfo
+        <where>
+            <if test="username!=null">
+                username=#{username}
+            </if>
+            <if test="address!=null">
+                and address=#{address}
+            </if>
+            <if test="email!=null">
+                and email=#{email}
+            </if>
+        </where>
+        limit #{limit} offset #{offset}
+    </select>
+    <select id="getListByPageCount" resultType="java.lang.Integer">
+        select count(*) from userinfo
+        <where>
+            <if test="username!=null">
+                username=#{username}
+            </if>
+            <if test="address!=null">
+                and address=#{address}
+            </if>
+            <if test="email!=null">
+                and email=#{email}
+            </if>
+        </where>
     </select>
 
 </mapper>

@@ -34,4 +34,14 @@ public interface UserMapper {
     // 删除多个用户
     int dels(List<Integer> ids);
 
+    List<UserInfo> getListByPage(@Param("username") String username,
+                                 @Param("address") String address,
+                                 @Param("email") String email,
+                                 @Param("limit") Integer limit,
+                                 @Param("offset") Integer offset);
+
+    int getListByPageCount(@Param("username") String username,
+                           @Param("address") String address,
+                           @Param("email") String email);
+
 }
