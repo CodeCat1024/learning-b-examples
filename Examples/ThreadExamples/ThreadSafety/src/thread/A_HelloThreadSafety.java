@@ -14,21 +14,12 @@ class Counter {
 
     public int count;
 
-    // 初始内容
     // public void increase() { count++; }
-
 
     // 使用 synchronized 进行修正方法1
     synchronized public void increase() {
         count++;
     }
-
-    // 使用 synchronized 进行修正方法2
-//    public void increase() {
-//        synchronized (this) {
-//            count++;
-//        }
-//    }
 
 
 }
