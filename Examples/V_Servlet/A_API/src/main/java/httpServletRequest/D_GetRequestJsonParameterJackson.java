@@ -1,3 +1,5 @@
+package httpServletRequest;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.servlet.ServletException;
@@ -14,8 +16,8 @@ class JsonData {
 }
 
 
-@WebServlet("/JsonByJackson")
-public class JsonByJackson extends HttpServlet {
+@WebServlet("/getRequestJsonParameterJackson")
+public class D_GetRequestJsonParameterJackson extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html; charset=utf-8");

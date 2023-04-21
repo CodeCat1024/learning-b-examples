@@ -8,22 +8,21 @@
 </head>
 <body>
 
-    <!--send the parameter by form-->
-    <form action="PostParameter1" method="POST">
-        <input type="text" name="userId">
-        <input type="text" name="classId">
-        <input type="submit" value="通过form表单发送POST请求">
-    </form>
+    <h3>记得查看控制台里返回的参数</h3>
 
-    <!--send the parameter in json format-->
+    <input type="text" name="userId" placeholder="请输入userId"><br>
+    <input type="text" name="classId" placeholder="请输入classId"><br>
     <button onclick="sendJson()">发送JSON格式POST请求</button>
+
     <script>
+
+        // 发送 json 参数的方法
         function sendJson() {
             ajax({
-
-                url: 'JsonByJackson', //And you can type "PostParameterJson"
+                url: 'getRequestJsonParameterJackson', //And you can type "httpServletRequest.PostParameterJson"
                 method: 'POST',
                 contentType: 'application/json; charset=utf-8',
+                // todo:这里的userId 和 classId需要换成上面的对象
                 body: JSON.stringify({userId: 123, classId: 456}),
                 callback: function(body, status) {
                     console.log(body);
@@ -32,20 +31,20 @@
         }
 
         function ajax(args) {
-            //Create an XMLHttpRequest object
+            // 创建XMLHttpRequest对象
             var xhr = new XMLHttpRequest();
 
-            //Define a callback function
+            // 定义回调方法
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4) {
                     args.callback(xhr.responseText, xhr.status)
                 }
             }
 
-            //Open the XMLHttpRequest object
+            // 发送请求
             xhr.open(args.method, args.url);
 
-            //Send a Request to a server by the contentType
+            // 设置类型
             if (args.contentType) {
                 xhr.setRequestHeader('Content-type', args.contentType);
             }

@@ -1,3 +1,5 @@
+package httpServletRequest;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -6,16 +8,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 
-//Handle the json data
-@WebServlet("/PostParameterJson")
-public class PostParameterJson extends HttpServlet {
+@WebServlet("/getRequestJsonParameter")
+public class C_GetRequestJsonParameter extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("Hello Post Parameter Json");
         resp.setContentType("application/json; charset=utf-8");
-        String body =readBody(req);
+        String body = readBody(req);
         resp.getWriter().write(body);
     }
+
     private String readBody(HttpServletRequest req) throws IOException {
         int contentLength = req.getContentLength();
         byte[] buffer = new byte[contentLength];
