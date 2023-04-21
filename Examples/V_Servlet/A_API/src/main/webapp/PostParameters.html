@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!--send the parameter by form-->
+    <form action="PostParameter1" method="POST">
+        <input type="text" name="userId">
+        <input type="text" name="classId">
+        <input type="submit" value="通过form表单发送POST请求">
+    </form>
+
+    <!--send the parameter in json format-->
+    <button onclick="sendJson()">发送JSON格式POST请求</button>
+    <script>
+        function sendJson() {
+            ajax({
+
+                url: 'JsonByJackson', //And you can type "PostParameterJson"
+                method: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                body: JSON.stringify({userId: 123, classId: 456}),
+                callback: function(body, status) {
+                    console.log(body);
+                }
+            });
+        }
+
+        function ajax(args) {
+            //Create an XMLHttpRequest object
+            var xhr = new XMLHttpRequest();
+
+            //Define a callback function
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                    args.callback(xhr.responseText, xhr.status)
+                }
+            }
+
+            //Open the XMLHttpRequest object
+            xhr.open(args.method, args.url);
+
+            //Send a Request to a server by the contentType
+            if (args.contentType) {
+                xhr.setRequestHeader('Content-type', args.contentType);
+            }
+            if (args.body) {
+                xhr.send(args.body);
+            } else {
+                xhr.send();
+            }
+        }
+    </script>
+</body>
+</html>
