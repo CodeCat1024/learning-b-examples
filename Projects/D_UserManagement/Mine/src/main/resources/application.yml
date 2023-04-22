@@ -1,8 +1,0 @@
-# 选择使用的配置文件
-spring:
-  profiles:
-    active: dev
-
-# mybatis保存路径
-mybatis:
-  mapper-locations: classpath:mapper/**Mapper.xml
