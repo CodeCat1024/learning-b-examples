@@ -59,6 +59,17 @@ class MyThreadPool {
 }
 
 public class B_MyThreadPool {
+    public static void main(String[] args) {
+        MyThreadPool pool = new MyThreadPool(10);
+        for (int i = 0; i < 100; i++) {
+            pool.submit(new Runnable() {
+                @Override
+                public void run() {
+                    System.out.println("Hello MyThreadPool");
+                }
+            });
+        }
+    }
 }
 
 
