@@ -1,4 +1,4 @@
-package b_tcp;
+package b_tcp.b_concurrent;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,10 +11,10 @@ import java.util.Scanner;
 /**
  * 两个socket，一个专门负责建立连接，一个负责数据通信
  */
-public class TcpEchoServer {
+public class TcpThreadEchoServer {
     private ServerSocket serverSocket = null;
 
-    public TcpEchoServer(int port) throws IOException {
+    public TcpThreadEchoServer(int port) throws IOException {
         serverSocket = new ServerSocket(port);
     }
 
@@ -24,7 +24,12 @@ public class TcpEchoServer {
             // 需要先建立连接（如果没有客户端来建立连接，当前的 accept() 就会阻塞）
             // accept 返回了一个 socket 对象，称为 clientSocket，后续和客户端之间的的沟通，都是通过 clientSocket 来完成的
             Socket clientSocket = serverSocket.accept();
-            processConnection(clientSocket);
+
+            // 【改进方法】每次 accept成功，都创建一个新的，由新线程负责执行这个 processConnection方法
+            Thread t = new Thread(() -> {
+               processConnection(clientSocket);
+            });
+            t.start();
         }
     }
 
@@ -38,7 +43,7 @@ public class TcpEchoServer {
                 Scanner scanner = new Scanner(inputStream);
                 while (true) {
                     // 1.读取请求
-                    if (!scanner.hasNextLine()) {
+                    if (!scanner.hasNext()) {
                         System.out.printf("[%s:%d] 客户端断开连接！", clientSocket.getInetAddress(), clientSocket.getPort());
                         break;
                     }
@@ -77,7 +82,7 @@ public class TcpEchoServer {
 
 
     public static void main(String[] args) throws IOException {
-        TcpEchoServer server = new TcpEchoServer(9090);
+        TcpThreadEchoServer server = new TcpThreadEchoServer(9090);
         server.start();
     }
 }

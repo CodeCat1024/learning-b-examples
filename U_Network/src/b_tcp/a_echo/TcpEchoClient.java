@@ -1,4 +1,4 @@
-package b_tcp;
+package b_tcp.a_echo;
 
 import java.io.IOException;
 import java.io.InputStream;
