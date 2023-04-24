@@ -1,4 +1,4 @@
-package a_;
+package a_udp.a_echo;
 
 import java.io.IOException;
 import java.net.DatagramPacket;

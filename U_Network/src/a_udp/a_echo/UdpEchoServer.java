@@ -1,4 +1,4 @@
-package a_;
+package a_udp.a_echo;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -38,7 +38,7 @@ public class UdpEchoServer {
         }
     }
 
-    private String process(String request) {
+    protected String process(String request) {
         return request;
     }
 
