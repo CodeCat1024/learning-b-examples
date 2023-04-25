@@ -2,6 +2,10 @@ package b_arraylist;
 
 import java.util.ArrayList;
 
+/**
+ *  删除s1中的字符，这些字符都是s2中出现的
+ *  要求结果为："wl t bit"
+ */
 public class D_DeleteCharacter {
     public static void main(String[] args) {
         ArrayList<Character> list = new ArrayList<>();

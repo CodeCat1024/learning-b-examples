@@ -8,6 +8,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class TcpEchoClient {
+
     private Socket socket = null;
 
     public TcpEchoClient(String serverIP, int serverPort) throws IOException {
@@ -44,5 +45,7 @@ public class TcpEchoClient {
     public static void main(String[] args) throws IOException {
         TcpEchoClient client = new TcpEchoClient("127.0.0.1", 9090);
         client.start();
+
+
     }
 }
