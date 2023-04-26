@@ -1,4 +1,4 @@
-package c_linkedlist;
+package c_linkedlist.mysinglelist;
 
 public class MySingleList {
 
@@ -280,7 +280,6 @@ public class MySingleList {
         return true;
     }
     // 以 x 将链表分为两部分，将所有小于 x 的节点排在其余节点之前（且不能改变原来的顺序）
-    // todo:想想这个方法要怎么去测试
     public ListNode partition(int x) {
         ListNode bs = null;
         ListNode be = null;
@@ -320,10 +319,93 @@ public class MySingleList {
         }
         return bs;
     }
+    // 创建环
+    public void createLoop() {
+        ListNode cur = head;
+        while (cur.next != null) {
+            cur = cur.next;
+        }
+        cur.next = head.next.next;
+    }
+    // 判断链表中是否有环，不能仅仅判断是否有null，因为可能链表会很长（追及问题）
+    public boolean hasCycle() {
+        ListNode fast = head;
+        ListNode slow = head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
-    public static void main(String[] args) {
 
+
+    // todo: 写一下测试该方法的代码
+    // 找出两个链表的第一个公共节点
+    public static void main6(String[] args) {
+
+    }
+    // todo: 写一下测试该方法的代码
+    // 根据 x 进行分割
+    public static void main5(String[] args) {
+    }
+    // 合并两个链表并排序
+    public static void main4(String[] args) {
+        MySingleList mySingleList1 = new MySingleList();
+        mySingleList1.addLast(11);
+        mySingleList1.addLast(21);
+        mySingleList1.addLast(31);
+        mySingleList1.addLast(41);
+        System.out.println("链表1为：");
+        mySingleList1.display();
+
+        MySingleList mySingleList2 = new MySingleList();
+        mySingleList2.addLast(8);
+        mySingleList2.addLast(15);
+        mySingleList2.addLast(25);
+        mySingleList2.addLast(30);
+        System.out.println("链表2为：");
+        mySingleList2.display();
+
+        MySingleList.ListNode ret2 =
+                mergeTwoLists(mySingleList1.head,mySingleList2.head);
+        System.out.println("合并后的链表为：");
+        mySingleList2.display(ret2);
+    }
+    // 判断是否为回文
+    public static void main3(String[] args) {
+        MySingleList mySingleList3 = new MySingleList();
+        mySingleList3.addLast(10);
+        mySingleList3.addLast(20);
+        mySingleList3.addLast(30);
+        mySingleList3.addLast(20);
+        mySingleList3.addLast(10);
+        System.out.println("要判断的链表为：");
+        mySingleList3.display();
+        System.out.println("是否为回文列表：" + mySingleList3.checkPalindrome());
+    }
+    // 判断是否存在环 && 返回入环的第一个节点
+    public static void main2(String[] args) {
+        // 判断是否存在环
+        MySingleList mySingleList1 = new MySingleList();
+        mySingleList1.addLast(11);
+        mySingleList1.addLast(21);
+        mySingleList1.addLast(31);
+        mySingleList1.addLast(41);
+        System.out.println("链表1为：");
+        mySingleList1.display();
+        mySingleList1.createLoop();
+        System.out.println(mySingleList1.hasCycle());
+
+        // 返回入环的第一个节点
+
+    }
+    // 基础测试
+    public static void main1(String[] args) {
         MySingleList mySingleList = new MySingleList();
         mySingleList.createLink();
         mySingleList.display();
@@ -345,45 +427,12 @@ public class MySingleList {
         System.out.println(mySingleList.middleNode().val);
         mySingleList.display(mySingleList.findKthTail(5));
 
-
-        MySingleList mySingleList1 = new MySingleList();
-        mySingleList1.addLast(11);
-        mySingleList1.addLast(21);
-        mySingleList1.addLast(31);
-        mySingleList1.addLast(41);
-        System.out.println("链表1为：");
-        mySingleList1.display();
-
-
-        MySingleList mySingleList2 = new MySingleList();
-        mySingleList2.addLast(8);
-        mySingleList2.addLast(15);
-        mySingleList2.addLast(25);
-        mySingleList2.addLast(30);
-        System.out.println("链表2为：");
-        mySingleList2.display();
-
-        MySingleList.ListNode ret2 =
-                mergeTwoLists(mySingleList1.head,mySingleList2.head);
-        System.out.println("合并后的链表为：");
-        mySingleList2.display(ret2);
-
-        MySingleList mySingleList3 = new MySingleList();
-        mySingleList3.addLast(10);
-        mySingleList3.addLast(20);
-        mySingleList3.addLast(30);
-        mySingleList3.addLast(20);
-        mySingleList3.addLast(10);
-        System.out.println("要判断的链表为：");
-        mySingleList3.display();
-
-        System.out.println("是否为回文列表：" + mySingleList3.checkPalindrome());
-
-        mySingleList3.head =  mySingleList3.partition(15);
-        mySingleList3.display();
-
-
     }
+
+
+
+
+
     // 合并两个有序链表，返回为新的升序链表
     public static MySingleList.ListNode mergeTwoLists
     (MySingleList.ListNode head1, MySingleList.ListNode head2) {
@@ -408,7 +457,6 @@ public class MySingleList {
         }
         return newHead.next;
     }
-
     // 找出两个链表的第一个公共节点
     public static MySingleList.ListNode getIntersectionNode
             (MySingleList.ListNode headA, MySingleList.ListNode headB) {
@@ -457,8 +505,5 @@ public class MySingleList {
         return pl;*/
         return pl;
     }
-
-    // 判断链表中是否有环
-
 
 }

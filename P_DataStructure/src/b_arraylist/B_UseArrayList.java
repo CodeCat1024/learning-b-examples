@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * 演示了ArrayList的基本使用
  */
-public class B_Use {
+public class B_UseArrayList {
     public static void main(String[] args) {
         List<String> list = new ArrayList<>();
 
