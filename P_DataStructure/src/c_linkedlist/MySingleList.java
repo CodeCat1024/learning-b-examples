@@ -239,6 +239,87 @@ public class MySingleList {
         }
         return slow;
     }
+    // 判断链表是否为回文结构
+    public boolean checkPalindrome() {
+        if (head == null) {
+            return false;
+        }
+        if (head.next == null) {
+            return true;
+        }
+
+        ListNode fast = head;
+        ListNode slow = head;
+        // 找到中间节点
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+
+        // 反转
+        ListNode cur = slow.next; // 代表当前需要反转的节点
+        while (cur != null) {
+            ListNode curNext = cur.next;
+            cur.next = slow;
+            // 都往后走
+            slow = cur;
+            cur = curNext;
+        }
+        // 一个从前往后，一个从后往前
+        while (slow != head) {
+            if (head.val != slow.val) {
+                return false;
+            }
+            // 偶数情况的判断
+            if (head.next == slow) {
+                return true;
+            }
+            slow = slow.next;
+            head = head.next;
+        }
+        return true;
+    }
+    // 以 x 将链表分为两部分，将所有小于 x 的节点排在其余节点之前（且不能改变原来的顺序）
+    // todo:想想这个方法要怎么去测试
+    public ListNode partition(int x) {
+        ListNode bs = null;
+        ListNode be = null;
+        ListNode as = null;
+        ListNode ae = null;
+
+        ListNode cur = head;
+        while (cur != null) {
+            if(cur.val < x) {
+                if(bs == null) {
+                    bs = cur;
+                    be = cur;
+                }else {
+                    be.next = cur;
+                    be = be.next;
+                }
+            }else {
+                if(as == null) {
+                    as = cur;
+                    ae = cur;
+                }else {
+                    ae.next = cur;
+                    ae = ae.next;
+                }
+            }
+            cur = cur.next;
+        }
+        // 有可能不会同时存在小于x 和 大于等于x 的数据
+        if(bs == null) {
+            return as;
+        }
+        //第一段不为空
+        be.next = as;
+        //第2个段为空不为空的问题
+        if(as != null) {
+            ae.next = null;
+        }
+        return bs;
+    }
 
 
     public static void main(String[] args) {
@@ -287,6 +368,19 @@ public class MySingleList {
         System.out.println("合并后的链表为：");
         mySingleList2.display(ret2);
 
+        MySingleList mySingleList3 = new MySingleList();
+        mySingleList3.addLast(10);
+        mySingleList3.addLast(20);
+        mySingleList3.addLast(30);
+        mySingleList3.addLast(20);
+        mySingleList3.addLast(10);
+        System.out.println("要判断的链表为：");
+        mySingleList3.display();
+
+        System.out.println("是否为回文列表：" + mySingleList3.checkPalindrome());
+
+        mySingleList3.head =  mySingleList3.partition(15);
+        mySingleList3.display();
 
 
     }
@@ -315,6 +409,56 @@ public class MySingleList {
         return newHead.next;
     }
 
-    // 判断链表是否为回文结构
+    // 找出两个链表的第一个公共节点
+    public static MySingleList.ListNode getIntersectionNode
+            (MySingleList.ListNode headA, MySingleList.ListNode headB) {
+
+        if(headA == null && headB == null) {
+            return null;
+        }
+
+        //1、分别求两个链表的长度
+        int lenA = 0;
+        int lenB = 0;
+        MySingleList.ListNode pl = headA;
+        MySingleList.ListNode ps = headB;
+        while (pl != null) {
+            lenA++;
+            pl = pl.next;
+        }
+        while (ps != null) {
+            lenB++;
+            ps = ps.next;
+        }
+        //2. 要指回来
+        pl = headA;
+        ps = headB;
+        int len = lenA - lenB;//大小
+        //3、根据Length的值 修改指向
+        if(len < 0) {
+            pl = headB;
+            ps = headA;
+            len = lenB-lenA;
+        }
+        //1. len一定是一个正数  2.pl指向的链表一定是最长的  ps 指向的链表一定是最短的
+
+        while (len != 0) {
+            pl = pl.next;
+            len--;
+        }
+        while (pl != ps) {
+            pl = pl.next;
+            ps = ps.next;
+        }
+        //pl == ps
+       /* if(pl == null) {
+            return null;
+        }
+        return pl;*/
+        return pl;
+    }
+
+    // 判断链表中是否有环
+
 
 }
