@@ -2,9 +2,7 @@ package d_stack;
 
 import java.util.Arrays;
 class EmptyException extends RuntimeException{
-    public EmptyException() {
-
-    }
+    public EmptyException() { }
     public EmptyException(String msg) {
         super(msg);
     }
@@ -56,7 +54,8 @@ public class B_MyStack {
         b_myStack.push(3);
         b_myStack.push(4);
         System.out.println(b_myStack.peek());
-        b_myStack.pop();
+        int a = b_myStack.pop();
+        System.out.println(a);
         System.out.println(b_myStack.peek());
         System.out.println(b_myStack.isEmpty());
     }

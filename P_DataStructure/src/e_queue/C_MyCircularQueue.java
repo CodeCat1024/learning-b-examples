@@ -1,6 +1,6 @@
 package e_queue;
 
-// 实现循环队列（数组）
+// 实现普通队列（顺序存储，循环）
 public class C_MyCircularQueue {
     private int[] elem;
     private int front; // 表示队列的头

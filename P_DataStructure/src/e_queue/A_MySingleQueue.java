@@ -2,7 +2,7 @@ package e_queue;
 
 import b_arraylist.myarraylist.EmptyException;
 
-// 实现队列（单向链表）
+// 实现普通队列（链式存储，单向）
 public class A_MySingleQueue {
     static class Node {
         public int val;
