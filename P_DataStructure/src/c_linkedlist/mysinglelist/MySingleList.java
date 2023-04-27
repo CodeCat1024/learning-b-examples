@@ -1,5 +1,10 @@
 package c_linkedlist.mysinglelist;
 
+import java.util.Stack;
+
+/**
+ * 无头单向非循环链表实现
+ */
 public class MySingleList {
 
     // 加不加 static 都可以
@@ -173,14 +178,43 @@ public class MySingleList {
         }
     }
     // 清空链表
-
-    // ------------------------- 在线Oj题目----------------
-
     public void clear() {
         // 其他节点都会被自动回收
         // 没有被指向的对象都会被JVM回收的
         head = null;
     }
+
+    // ----------------------- 队列的应用 ----------------
+    // 使用递归打印链表
+    public void display2(ListNode pHead) {
+        if (pHead == null) {
+            return;
+        }
+        if (pHead.next == null) {
+            System.out.print(pHead.val + " ");
+            return;
+        }
+        display2(pHead.next);
+        System.out.print(pHead.val + " ");
+    }
+    // 使用栈打印链表
+    public void display3() {
+        Stack<ListNode> stack = new Stack<>();
+        ListNode cur = head;
+        while (cur != null) {
+            stack.push(cur);
+            cur = cur.next;
+        }
+        // 遍历栈
+        while (!stack.isEmpty()) {
+            ListNode top = stack.pop();
+            System.out.print(top.val + " ");
+        }
+        System.out.println();
+    }
+
+    // ------------------------- 在线Oj题目----------------
+
     // 链表反转
     public ListNode reverseList() {
         if (head == null){
@@ -340,7 +374,27 @@ public class MySingleList {
         }
         return false;
     }
-
+    // 返回第一个入环节点
+    public ListNode detectCycle() {
+        ListNode fast = head;
+        ListNode slow = head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow) {
+                break;
+            }
+        }
+        if (fast == null || fast.next == null){
+            return null;
+        }
+        slow = head;
+        while (fast != slow) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        return fast;
+    }
 
 
 
@@ -389,7 +443,7 @@ public class MySingleList {
         System.out.println("是否为回文列表：" + mySingleList3.checkPalindrome());
     }
     // 判断是否存在环 && 返回入环的第一个节点
-    public static void main2(String[] args) {
+    public static void main(String[] args) {
         // 判断是否存在环
         MySingleList mySingleList1 = new MySingleList();
         mySingleList1.addLast(11);
@@ -397,11 +451,14 @@ public class MySingleList {
         mySingleList1.addLast(31);
         mySingleList1.addLast(41);
         System.out.println("链表1为：");
-        mySingleList1.display();
+        mySingleList1.display2(mySingleList1.head);
+        mySingleList1.display3();
         mySingleList1.createLoop();
         System.out.println(mySingleList1.hasCycle());
 
         // 返回入环的第一个节点
+        System.out.println(mySingleList1.detectCycle().val);
+
 
     }
     // 基础测试
