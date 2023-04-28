@@ -1,6 +1,6 @@
 package e_queue;
 
-import b_arraylist.myarraylist.EmptyException;
+import b_arraylist.a_myArrayList.EmptyException;
 
 // 实现普通队列（链式存储，单向）
 public class A_MySingleQueue {
