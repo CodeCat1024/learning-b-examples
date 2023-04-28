@@ -17,8 +17,9 @@ public class C_Traversing {
         list.add(4);
         list.add(5);
         list.add(6);
+        System.out.println(list);
 
-        // 1.for循环
+        // 1. get() 方法
         System.out.println("1.for循环遍历的结果：");
         for (int i = 0; i < list.size(); i++) {
             System.out.print(list.get(i) + " ");
@@ -39,6 +40,7 @@ public class C_Traversing {
             System.out.print(it.next() + " ");
         }
         System.out.println("\n");
+
 
     }
 }

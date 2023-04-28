@@ -5,9 +5,11 @@ import java.util.List;
 
 /**
  * 演示了ArrayList的基本使用
+ * add(), get(), set(), size(), remove(), contains(), indexOf(), lastIndexOf(), subList(), clear(), isEmpty()
  */
 public class B_UseArrayList {
     public static void main(String[] args) {
+
         List<String> list = new ArrayList<>();
 
         // 新增元素
@@ -16,6 +18,8 @@ public class B_UseArrayList {
         list.add("JavaEE");
         list.add("JVM");
         System.out.println(list);
+
+        System.out.println(list.isEmpty());
 
         // 根据下标新增元素
         list.add(1, "数据结构");
@@ -48,7 +52,8 @@ public class B_UseArrayList {
         // 从后往前找
         System.out.println(list.lastIndexOf("数据结构"));
 
-        // 使用list中[0, 4)之间的元素构成一个新的SubList返回,但是和ArrayList共用一个elementData数组
+        // 使用list中[0, 4)之间的元素构成一个新的subList返回,但是和ArrayList共用一个elementData数组
+        // 还是不太明白这个 subList
         List<String> ret = list.subList(0, 4);
         System.out.println(ret);
 
