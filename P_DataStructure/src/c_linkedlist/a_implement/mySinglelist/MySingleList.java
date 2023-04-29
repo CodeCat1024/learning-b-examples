@@ -166,7 +166,6 @@ public class MySingleList {
         // 删除 key 所在节点
         pre.next = cur.next;
     }
-
     // todo:这里再写一个 remove2
     public void remove2(int key) {
         // 链表为空
@@ -200,7 +199,6 @@ public class MySingleList {
         // 没有要删除的节点
         return null;
     }
-
     // 删除所有值为 key 的节点
     // todo:需要反复多做几遍
     public void removeAllKeys(int key) {
@@ -239,6 +237,39 @@ public class MySingleList {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class MySingleList2 {
 
     // 加不加 static 都可以
@@ -447,61 +478,7 @@ class MySingleList2 {
         System.out.println();
     }
 
-    // ------------------------- 在线Oj题目----------------
-
-    // 链表反转
-    public ListNode reverseList() {
-        if (head == null){
-            return null;
-        }
-        // 说明只有一个节点
-        if (head.next == null) {
-            return head;
-        }
-        ListNode cur = head.next;
-        head.next = null;
-        // 逐个反转
-        while (cur != null) {
-            ListNode curNext = cur.next;
-            // 头插法 插入cur
-            cur.next = head;
-            head = cur;
-            cur = curNext;
-        }
-        return head;
-    }
-    // 返回链表的中间节点（若有两个中间节点，则返回第二个）
-    public ListNode middleNode() {
-        ListNode fast = head;
-        ListNode slow = head;
-        while (fast != null && fast.next != null) {
-            fast = fast.next.next;
-            slow = slow.next;
-        }
-        return slow;
-    }
-    // 输出链表中倒数第 k 个节点
-    public ListNode findKthTail(int k) {
-        if (k <= 0 || head == null) {
-            return null;
-        }
-        ListNode fast = head;
-        ListNode slow = head;
-        // fast 走 k-1 步
-        while (k-1 != 0) {
-            fast = fast.next;
-            if (fast == null) {
-                return null;
-            }
-            k--;
-        }
-        // 一起走
-        while (fast.next != null) {
-            fast = fast.next;
-            slow = slow.next;
-        }
-        return slow;
-    }
+    // --------------- 在线OJ题目 ---------------
 
     // 判断链表是否为回文结构
     public boolean checkPalindrome() {
@@ -625,81 +602,6 @@ class MySingleList2 {
         }
         return fast;
     }
-
-
-
-    // todo: 写一下测试该方法的代码
-    // 找出两个链表的第一个公共节点
-    public static void main6(String[] args) {
-
-    }
-    // todo: 写一下测试该方法的代码
-    // 根据 x 进行分割
-    public static void main5(String[] args) {
-    }
-    // 合并两个链表并排序
-    public static void main4(String[] args) {
-        MySingleList mySingleList1 = new MySingleList();
-        mySingleList1.addLast(11);
-        mySingleList1.addLast(21);
-        mySingleList1.addLast(31);
-        mySingleList1.addLast(41);
-        System.out.println("链表1为：");
-        mySingleList1.display();
-
-        MySingleList mySingleList2 = new MySingleList();
-        mySingleList2.addLast(8);
-        mySingleList2.addLast(15);
-        mySingleList2.addLast(25);
-        mySingleList2.addLast(30);
-        System.out.println("链表2为：");
-        mySingleList2.display();
-
-        MySingleList.ListNode ret2 =
-                mergeTwoLists(mySingleList1.head,mySingleList2.head);
-        System.out.println("合并后的链表为：");
-        mySingleList2.display(ret2);
-    }
-    // 判断是否为回文
-    public static void main3(String[] args) {
-        MySingleList2 mySingleList3 = new MySingleList2();
-        mySingleList3.addLast(10);
-        mySingleList3.addLast(20);
-        mySingleList3.addLast(30);
-        mySingleList3.addLast(20);
-        mySingleList3.addLast(10);
-        System.out.println("要判断的链表为：");
-        mySingleList3.display();
-        System.out.println("是否为回文列表：" + mySingleList3.checkPalindrome());
-    }
-    // 判断是否存在环 && 返回入环的第一个节点
-    public static void main(String[] args) {
-        // 判断是否存在环
-        MySingleList2 mySingleList1 = new MySingleList2();
-        mySingleList1.addLast(11);
-        mySingleList1.addLast(21);
-        mySingleList1.addLast(31);
-        mySingleList1.addLast(41);
-        System.out.println("链表1为：");
-        mySingleList1.display2(mySingleList1.head);
-        mySingleList1.display3();
-        mySingleList1.createLoop();
-        System.out.println(mySingleList1.hasCycle());
-
-        // 返回入环的第一个节点
-        System.out.println(mySingleList1.detectCycle().val);
-
-
-    }
-    // 基础测试
-    public static void main1(String[] args) {
-
-    }
-
-
-
-
-
     // 合并两个有序链表，返回为新的升序链表
     public static MySingleList.ListNode mergeTwoLists
     (MySingleList.ListNode head1, MySingleList.ListNode head2) {

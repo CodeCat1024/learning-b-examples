@@ -1,4 +1,4 @@
-package com.example.demo.a_get;
+package com.example.demo.b_get;
 
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;

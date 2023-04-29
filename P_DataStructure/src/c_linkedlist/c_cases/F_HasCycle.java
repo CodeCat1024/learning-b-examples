@@ -9,7 +9,7 @@ public class F_HasCycle {
 
     }
     public static boolean hasCycle() {
-
+        return false;
     }
     public static void main(String[] args) {
 

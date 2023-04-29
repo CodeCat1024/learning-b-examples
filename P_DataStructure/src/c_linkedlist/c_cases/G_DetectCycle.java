@@ -7,7 +7,7 @@ import c_linkedlist.a_implement.mySinglelist.MySingleList;
  */
 public class G_DetectCycle {
     public static MySingleList.ListNode detectCycle() {
-
+        return null;
     }
     public static void main(String[] args) {
 

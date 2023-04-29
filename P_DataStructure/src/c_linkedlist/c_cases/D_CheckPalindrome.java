@@ -5,7 +5,7 @@ package c_linkedlist.c_cases;
  */
 public class D_CheckPalindrome {
     public static boolean checkPalindrome() {
-
+        return false;
     }
     public static void main(String[] args) {
 
