@@ -3,6 +3,9 @@ package f_tree.a_implement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 二叉树的实现
+ */
 public class A_BinaryTree {
     static class TreeNode {
         public char val;
@@ -32,7 +35,7 @@ public class A_BinaryTree {
         return A;
     }
 
-    // 前序遍历 根 左子树 右子树
+    // 前序遍历（递归）
     public void preOrder(TreeNode root) {
         if (root == null) {
             return;
@@ -67,7 +70,13 @@ public class A_BinaryTree {
 
         return ret;
     }
-    // 中序遍历 左子树 根 右子树
+    // 前序遍历（非递归）
+    public void preOrder2(TreeNode root) {
+
+    }
+
+
+    // 中序遍历（递归）
     public void inOrder(TreeNode root) {
         if (root == null) {
             return;
@@ -76,8 +85,12 @@ public class A_BinaryTree {
         System.out.print(root.val + " ");
         inOrder(root.right);
     }
+    // 中序遍历（非递归）
+    public void inOrder2(TreeNode root) {
+
+    }
     // 后序遍历 左子树 右子树 根
-    void postOrder(TreeNode root) {
+    public void postOrder(TreeNode root) {
         if (root == null) {
             return;
         }
@@ -85,9 +98,12 @@ public class A_BinaryTree {
         postOrder(root.right);
         System.out.print(root.val + " ");
     }
-    // 获取树中节点的个数
-    // 时间复杂度：O(N)
-    // 空间复杂度：O(logN) （以2为底）
+    // 后序遍历（非递归）
+    public void postOrder2(TreeNode root) {
+
+    }
+
+    // 获取树中节点的个数（时间复杂度O(N)，空间复杂度O(logN)（以2为底））
     public int size(TreeNode root) {
         if (root == null) {
             return 0;
@@ -96,7 +112,7 @@ public class A_BinaryTree {
         int rightSize = size(root.right);
         return leftSize + rightSize + 1;
     }
-    // 获取树中节点的个数（成员变量，但多次遍历的话次数就会叠加）
+    // 获取树中节点的个数2（成员变量，但多次遍历的话次数就会叠加）
     public int nodeSize;
     public void size2(TreeNode root) {
         if (root == null){
@@ -150,9 +166,7 @@ public class A_BinaryTree {
         }
         return (getHeight(root.left) > getHeight(root.right)) ? (getHeight(root.left) + 1) : (getHeight(root.right) + 1);
     }
-    // 获取二叉树的高度 / 深度2
-    // 时间复杂度O(N)
-    // 空间复杂度O(树的高度)
+    // 获取二叉树的高度 / 深度2（时间复杂度O(N)，空间复杂度(输的高度)）
     public int getHeight2(TreeNode root) {
         if (root == null) {
             return 0;
@@ -180,15 +194,6 @@ public class A_BinaryTree {
         }
         return null; // 没有找到
     }
-    // 判断两棵树是否相同
-    //public boolean
-
-
-
-
-
-
-
 
 
     public static void main(String[] args) {
