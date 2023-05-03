@@ -7,7 +7,7 @@ import c_linkedlist.a_implement.mySinglelist.MySingleList;
  */
 public class H_MergeTwoLists {
     public static MySingleList.ListNode mergeTwoLists() {
-
+        return null;
     }
     public static void main(String[] args) {
 

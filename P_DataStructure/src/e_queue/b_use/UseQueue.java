@@ -3,6 +3,9 @@ package e_queue.b_use;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * 普通队列的使用
+ */
 public class UseQueue {
     public static void main(String[] args) {
         Queue<Integer> queue = new LinkedList<>();
@@ -11,10 +14,10 @@ public class UseQueue {
         queue.offer(3);
         queue.offer(4);
         queue.offer(5);
+        System.out.println(queue.isEmpty());
         System.out.println(queue.peek());
         System.out.println(queue.poll());
         System.out.println(queue.peek());
         System.out.println(queue.size());
-        System.out.println(queue.isEmpty());
     }
 }

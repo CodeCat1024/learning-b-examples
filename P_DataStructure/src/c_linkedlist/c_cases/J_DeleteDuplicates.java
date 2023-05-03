@@ -7,7 +7,7 @@ import c_linkedlist.a_implement.mySinglelist.MySingleList;
  */
 public class J_DeleteDuplicates {
     public static MySingleList.ListNode deleteDuplicates(MySingleList.ListNode head) {
-
+        return null;
     }
     public static void main(String[] args) {
 

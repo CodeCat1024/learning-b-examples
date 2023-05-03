@@ -51,6 +51,19 @@ public class MySingleList {
         }
         System.out.println("null");
     }
+    // 递归打印链表
+    // todo:存在一些小问题
+    public void display2() {
+        if (head == null) {
+            return;
+        }
+        if (head.next == null) {
+            System.out.print(head.val + " ");
+            return;
+        }
+        display(head.next);
+        System.out.print(head.val + " ");
+    }
     // 从指定位置开始打印链表
     public void display(ListNode newHead) {
         /*
@@ -234,6 +247,14 @@ public class MySingleList {
     }
 
     public static void main(String[] args) {
+        MySingleList mySingleList = new MySingleList();
+        mySingleList.addFirst(100);
+        mySingleList.addFirst(100);
+        mySingleList.addFirst(100);
+        mySingleList.addFirst(100);
+        mySingleList.addFirst(100);
+        mySingleList.display();
+        mySingleList.display2();
     }
 
 }
@@ -480,6 +501,7 @@ class MySingleList2 {
 
     // --------------- 在线OJ题目 ---------------
 
+    // todo:解决剩下的这些案例
     // 判断链表是否为回文结构
     public boolean checkPalindrome() {
         if (head == null) {
