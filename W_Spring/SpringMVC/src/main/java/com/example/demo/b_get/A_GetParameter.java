@@ -14,10 +14,12 @@ public class A_GetParameter {
     public String getId(String id) {
         return "接收到的id为： " + id;
     }
+
     @RequestMapping("/rename")
     public String reName(@RequestParam("id") String myId) {
         return "接收到的id为： " + myId;
     }
+
     // 设置了参数重命名之后，默认参数必传，使用 required 参数可以设置是否必须传递
     @RequestMapping("/mustpass")
     public String mustPass(@RequestParam(value = "id", required = false) String myId) {

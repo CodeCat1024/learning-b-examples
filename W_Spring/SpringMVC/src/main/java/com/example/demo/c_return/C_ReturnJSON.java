@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 
+/**
+ * 返回 json 对象
+ */
 @RestController
 public class C_ReturnJSON {
     @RequestMapping("/returnjson")

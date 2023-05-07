@@ -4,6 +4,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 获取 URL 中的参数
+ */
 @RestController
 public class E_GerURLParameter {
     @RequestMapping("/geturlparameter/{parameter1}/{parameter2}")
