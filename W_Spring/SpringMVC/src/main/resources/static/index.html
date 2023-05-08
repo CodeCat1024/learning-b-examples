@@ -4,8 +4,27 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
-    <h1>Hello World!</h1>
-    <h1>我是一个网页</h1>
+<body style="text-align:center;">
+    <h1>获取参数的案例</h1>
+    <button onclick="">获取单个参数</button>
+    <h1>返回数据的案例</h1>
+    <script>
+        // 发送请求
+        jQuery.ajax({
+          url: "login",
+          type: "GET",
+          data: {
+            "loginname": loginname.val(),
+            "password": password.val()
+          },
+          success:function(result) {
+            if (result == true) {
+              location.href = "index.html"
+            } else {
+              alert("抱歉，用户名或密码错误，请重新输入！");
+            }
+          }
+        });
+    </script>
 </body>
 </html>
