@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 接收 JSON 对象
+ * JSON 对象只能存放在 POST 请求的 body 中
+ * 所以我们可以使用 @RequestBody
  */
 @RestController
 public class D_GerJsonParameter {
