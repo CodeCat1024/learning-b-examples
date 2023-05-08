@@ -31,5 +31,4 @@ public class Mapping {
     public String sayHi3() {
         return "Hello Post";
     }
-
 }
