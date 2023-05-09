@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="jquery-2.1.0.min.js"></script>
 </head>
 <body style="text-align:center;">
     <h1>获取参数的案例</h1>
@@ -11,11 +12,11 @@
     <script>
         // 发送请求
         jQuery.ajax({
-          url: "login",
-          type: "GET",
+          url: "/getparameters?username=1111&password=2222",
+          type: "POST",
           data: {
-            "loginname": loginname.val(),
-            "password": password.val()
+            "username": "1111",
+            "password": "2222"
           },
           success:function(result) {
             if (result == true) {

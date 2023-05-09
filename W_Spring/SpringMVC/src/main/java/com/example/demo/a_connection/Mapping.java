@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
  * GetMapping 只能接收 Get方法，PostMapping 只能接收 Post 方法
  */
 
-// 1.收到来信  2.处理来信  3.写回信并寄出
 @Controller
 public class Mapping {
     @RequestMapping("/request")

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @ResponseBody // 加上该注解则表示返回非静态页面，也就是直接返回字符串
 @Controller
 public class B_ReturnText {
-    @RequestMapping("/returntext")
+    @RequestMapping("/return-text")
     public String returnText() {
         return "<h1>Hello World!</h1>";
     }
