@@ -11,6 +11,6 @@ import java.io.IOException;
 public class C_Redirect extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("https://www.google.com");
+        resp.sendRedirect("https://www.baidu.com");
     }
 }
