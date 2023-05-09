@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 所以我们可以使用 @RequestBody
  */
 @RestController
-public class D_GetJsonParameter {
+public class E_GetJsonParameter {
     @RequestMapping("/getjsonparameter")
     public String getJsonParameter(@RequestBody UserInfo userInfo) {
         return "接收到的JSON对象为： " + userInfo;

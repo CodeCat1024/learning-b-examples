@@ -13,6 +13,7 @@ public class D_Forward {
     @RequestMapping("/forward")
     public String forward() {
         //return "forward:/index.html";
+        //return "index.html";
         //return "forward:/hello";
         return "/hello";
     }
