@@ -1,4 +1,4 @@
-package com.example.demo.c_return;
+package com.example.demo.b_return;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,4 +1,4 @@
-package com.example.demo.b_get;
+package com.example.demo.c_get;
 
 import lombok.Data;
 

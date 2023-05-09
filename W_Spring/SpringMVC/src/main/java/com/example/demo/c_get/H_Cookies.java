@@ -1,14 +1,12 @@
-package com.example.demo.b_get;
+package com.example.demo.c_get;
 
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * 为啥前面 get-header 中已经能获取到 cookie了，这里还要继续获取 cookie 呢？

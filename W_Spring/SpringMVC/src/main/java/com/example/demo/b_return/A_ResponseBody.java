@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.b_return;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,11 +21,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * 13. 所以现在我们回头看一下之前在浏览器中打开我们写好的页面的原理是怎样的，就跟上面是一样的，不信的话可以抓个包
  * 14. 这里还有最后一个要学习的东西：重定向
  * 14. 那为什么明明就没有连网，我们也可以通过 HTTP协议 进行通信呢？还可以进行收信和回信呢。。。。。。
+ *  * 请求转发，发生在服务端，在客户端看不出区别
+ *  * 服务器收到请求后，从一个服务器资源跳转到另一个服务器资源，forward:可以省略不写
+ *  * 也就是拿到服务器的来信之后，再把信转交给别人
  */
 
 @Controller
 @ResponseBody
-public class HelloMVC {
+public class A_ResponseBody {
     @RequestMapping("hello")
     public String hello() {
         //return "forward:/index.html";
