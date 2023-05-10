@@ -1,17 +1,4 @@
--- 创建用户表（包含所有数据类型）
-create table userinfo(
-	id int,
-	name varchar(20),
-	password varchar(50),
-	description text,
-	createtime datetime
-); 
-
-
-
-
-
--- 创建用户表（包含所有约束）
+-- 创建用户表（包含所有约束和字段说明，字段说明相当于注释）
 create table class(
 	classId int primary key auto_increment, 
 	className varchar(20)
@@ -21,14 +8,9 @@ create table student(
 	name varchar(20) unique,
 	password varchar(50) default "123456",
 	sex varchar(10) not null,
-	classId int, 
-	foreign key (classId) references class(classId)
-	-- 还差一个check约束，不过mysql里面不支持
+	classId int comment "这是外键", 
+	foreign key (classId) references class(classId)	
 );
-
-
-
-
 
 
 -- 显示所有表
@@ -43,6 +25,5 @@ drop table userinfo;
 -- 删除表（如果存在的话）
 drop table if exists userinfo;
 
--- 增加字段说明
 
 

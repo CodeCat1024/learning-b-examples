@@ -8,7 +8,7 @@ create database testdatabase;
 create database if not exists testdatabase;
 
 -- 创建数据库（使用utf8mb4字符集）
-create database if not exists default character set utf8mb4;
+create database if not exists testdatabase default character set utf8mb4;
 
 -- 使用数据库
 use testdatabase;
