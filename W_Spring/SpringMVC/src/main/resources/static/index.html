@@ -8,27 +8,13 @@
 <body style="text-align:center;">
     
     <!-- 上传文件 -->
-    <form action="">
-
+    <form action="getfile" method="post" enctype="multipart/form-data">
+        请选择您要上传的文件: <input type="file" name="fname"><br>
+        <input type="submit" value="提交">
     </form>
 
     <script>
-        // 发送请求
-        jQuery.ajax({
-          url: "/getparameters?username=1111&password=2222",
-          type: "POST",
-          data: {
-            "username": "1111",
-            "password": "2222"
-          },
-          success:function(result) {
-            if (result == true) {
-              location.href = "index.html"
-            } else {
-              alert("抱歉，用户名或密码错误，请重新输入！");
-            }
-          }
-        });
+
     </script>
 </body>
 </html>

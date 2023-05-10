@@ -17,10 +17,10 @@ public class I_Session {
     public String setSession(HttpServletRequest request) {
         // 创建（ true 表示没有 session 则新创建一个，false 表示没有 session 则返回 null）
         HttpSession session = request.getSession(true);
-        // 设置
+        // 设置Session中的信息
         session.setAttribute("username", "Kate");
         session.setAttribute("age", "120");
-        // 获取
+        // 获取Session中的信息
         return "session中的username为：" + session.getAttribute("username") + "<br>" +
                 "session中的age为：" + session.getAttribute("age") + "<br>";
     }

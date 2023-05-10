@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.UUID;
 
 /**
  * 接收文件
@@ -14,13 +15,13 @@ import java.io.IOException;
 @RestController
 public class F_GetFile {
     @PostMapping("/getfile")
-    public String getFile(Integer id, @RequestPart("添加一小段正文文字.png") MultipartFile file) {
+    public String getFile(Integer id, @RequestPart("fname") MultipartFile file) {
         try {
             // 1.获取源文件名
             String fileName = file.getOriginalFilename();
 
             // 2.生成唯一文件名
-            //fileName = UUID.randomUUID().toString() + fileName.substring(fileName.lastIndexOf("."));
+            fileName = UUID.randomUUID().toString() + fileName.substring(fileName.lastIndexOf("."));
 
             // 3.将文件存放到本地中
             file.transferTo(new File("D:\\" + fileName));
