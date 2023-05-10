@@ -26,11 +26,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @ResponseBody
 public class A_ResponseBody {
-    @RequestMapping("heliilo")
-    public String hello() {
-        //return "forward:/index.html";
-        //return "index.html";
-        //return "forward:/hello";
-        return "lyx";
+    @RequestMapping("responsebody")
+    public String responseBody() {
+        return "Hello Spring MVC";
     }
 }
