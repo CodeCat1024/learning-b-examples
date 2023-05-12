@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+    <button onclick="getUserById()">根据 id 获取用户信息</button>
+    <div id="userinfo">
+
+    </div>
+    <script>
+        function getUserById() {
+            jQuery.ajax({
+                url: "getuserbyid",
+                type: "GET",
+                data: {
+                    "id": 1
+                },
+                success:function(result) {
+                    var userinfo = "";
+                    userinfo += "用户名为：" + result.username;
+                    userinfo += "<br>";
+                    userinfo += "密码为：" + result.password;
+                    jQuery("#userinfo").html(userinfo);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
