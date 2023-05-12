@@ -47,24 +47,59 @@ public class Heap {
     }
     // 向上调整
     private void shiftUp(int child) {
-        int parent = (child - 1) / 2;
-        while (child > 0) {
-
+        int parent = (child-1) / 2;
+        while (child > 0) {//parent >= 0
+            if (elem[child] > elem[parent]) {
+                int tmp = elem[child];
+                elem[child] = elem[parent];
+                elem[parent] = tmp;
+                child = parent;
+                parent = (child-1)/2;
+            }else {
+                break;
+            }
         }
     }
     // 插入数据（向上调整）
+    // 向上调整建堆的时间复杂度： N * logN
     public void offer(int val) {
         if (isFull()) {
             // 扩容
-            Arrays.copyOf(elem, 2 * elem.length);
+            elem = Arrays.copyOf(elem, 2 * elem.length);
         }
         elem[usedSize++] = val;
         // 进行向上调整
+        shiftUp(usedSize - 1);
+    }
+    // 弹出数据
+    public int pop() {
+        if(isEmpty()) {
+            return -1;
+        }
+        int tmp = elem[0];
+        elem[0] = elem[usedSize-1];
+        elem[usedSize-1] = tmp;
+        usedSize--;
+        //保证他仍然是一棵大根堆
+        shiftDown(0, usedSize);
+        return tmp;
+    }
+    // 获取数据
+    public int peek() {
+        if(isEmpty()) {
+            return -1;
+        }
+        return elem[0];
     }
     // 是否已满
     public boolean isFull() {
         return usedSize == elem.length;
     }
+    // 是否为空
+    public boolean isEmpty() {
+        return usedSize == 0;
+    }
+
 
 
     public static void main(String[] args) {
@@ -72,5 +107,8 @@ public class Heap {
         int[] array = {27, 15, 19, 18, 28, 34, 65, 49, 25, 37};
         heap.initElem(array);
         heap.createHeap();
+        heap.offer(100);
+        heap.pop();
+
     }
 }
