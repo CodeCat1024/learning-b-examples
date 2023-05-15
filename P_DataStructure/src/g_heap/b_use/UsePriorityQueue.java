@@ -18,8 +18,6 @@ public class UsePriorityQueue {
         Queue<Integer> priorityQueue3 = new PriorityQueue<>(list);
 
         // 大根堆
-
-
         // PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
 
         priorityQueue.offer(10);
