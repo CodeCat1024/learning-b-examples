@@ -100,8 +100,6 @@ public class Heap {
         return usedSize == 0;
     }
 
-
-
     public static void main(String[] args) {
         Heap heap = new Heap();
         int[] array = {27, 15, 19, 18, 28, 34, 65, 49, 25, 37};

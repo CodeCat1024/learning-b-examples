@@ -14,8 +14,6 @@ public class C_MyCircularQueue {
         if (isFull()) {
             return false;
         }
-
-        // 2.
         elem[rear] = value;
         // rear++ 的话有可能会越界
         rear = (rear + 1) % elem.length;

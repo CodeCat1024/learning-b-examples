@@ -2,7 +2,9 @@ package e_queue.a_implement;
 
 import b_arraylist.a_implement.EmptyException;
 
-// 实现普通队列（链式存储）
+/**
+ * 实现普通队列（链式存储）
+ */
 public class A_MyQueue {
     static class Node {
         public int val;
