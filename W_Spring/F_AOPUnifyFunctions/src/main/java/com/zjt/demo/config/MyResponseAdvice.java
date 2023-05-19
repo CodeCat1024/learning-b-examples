@@ -9,11 +9,11 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import java.util.HashMap;
 
-// 返回统一的数据格式
+/**
+ * 返回统一的数据格式
+ */
 @ControllerAdvice
 public class MyResponseAdvice implements ResponseBodyAdvice {
-
-
     /**
      * 返回一个boolean值
      * true表示返回数据之前对数据进行重写，也就是会进入下面的方法再返回

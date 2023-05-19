@@ -8,9 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
+/**
+ * 实现登录拦截器
+ */
 @Component
 public class LoginIntercept implements HandlerInterceptor {
-
     /**
      * 返回 true 表示拦截判断通过，可以访问后面的接口
      * 返回 false 表示拦截未通过，直接返回结果给前端

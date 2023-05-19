@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.HashMap;
 
+/**
+ * 统一异常处理
+ */
 @RestControllerAdvice
 public class MyExceptionAdvice {
 

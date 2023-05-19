@@ -19,14 +19,16 @@ public class UserAspect {
     }
 
     /**
-     * 切点，也就是规则，满足什么情况就进行拦截（Aspect J 表达式语法）
-     * 拦截该包下的UserController类的所有方法
-     * 最前面的 * 表示拦截所有返回类型的方法
-     * 最后面的 (..) 表示拦截所有类型的参数
+     * 切点（Aspect J 表达式语法）
      * */
     @Pointcut("execution(* com.zjt.aop.controller.UserController.*(..))")
     public void pointcut() {
-        // 规则制定者，可以不写方法体，有那个规则就行了
+        /**
+         * 规则制定者，可以不写方法体，有那个规则就行了
+         * 拦截该包下的UserController类的所有方法
+         * 最前面的 * 表示拦截所有返回类型的方法
+         * 最后面的 (..) 表示拦截所有类型的参数
+         */
     }
 
     /**

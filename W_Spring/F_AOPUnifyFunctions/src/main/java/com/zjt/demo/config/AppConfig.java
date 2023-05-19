@@ -29,7 +29,6 @@ public class AppConfig implements WebMvcConfigurer {
         // registry.addInterceptor();
     }
 
-
     // 拓展：给所有的url加前缀（测试的时候拦截器会干扰到这个功能）
 //    @Override
 //    public void configurePathMatch(PathMatchConfigurer configurer) {
