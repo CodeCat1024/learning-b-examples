@@ -12,6 +12,8 @@ import java.util.HashMap;
 /**
  * 返回统一的数据格式
  */
+
+// 用于定义一个全局的异常处理器和全局的数据绑定
 @ControllerAdvice
 public class MyResponseAdvice implements ResponseBodyAdvice {
     /**
