@@ -3,8 +3,6 @@ import java.util.Arrays;
 
 /**
  * 模拟实现了 ArrayList 类
- * 实现了 ArrayList 的结构
- * 方法包含：打印，新增，是否已满，数组长度，插入，
  */
 
 public class MyArrayList {
@@ -21,7 +19,6 @@ public class MyArrayList {
         }
         System.out.println();
     }
-
     // 插入元素（在末尾插入）
     public void add(int data){
         // 若顺序表已满则进行扩容
@@ -58,14 +55,12 @@ public class MyArrayList {
     }
     // 判断顺序表是否已满
     public boolean isFull() {
-        // todo:这里为啥不是 == 呢？
         return size() >= this.elem.length;
     }
     // 获取有效元素个数
     public int size() {
         return this.usedSize;
     }
-
     // 判断是否包含某个元素
     public boolean contains(int toFind) {
         for (int i = 0; i < size(); i++) {

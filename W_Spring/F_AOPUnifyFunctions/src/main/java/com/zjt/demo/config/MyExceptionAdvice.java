@@ -32,7 +32,7 @@ public class MyExceptionAdvice {
         return result;
     }
 
-    // 但一个一个写太累了，所以我们可以设置所有异常的父类
+    // 设置所有异常的父类，处理所有的异常
     @ExceptionHandler(Exception.class)
     public HashMap<String, Object> exceptionAdvice(Exception e) {
         HashMap<String, Object> result = new HashMap<>();

@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class JDBCTest {
+public class JDBCUpdate {
     public static void main(String[] args) throws SQLException {
         Scanner scanner = new Scanner(System.in);
         //1，创建好数据源，描述了数据库服务器在哪，向上转型

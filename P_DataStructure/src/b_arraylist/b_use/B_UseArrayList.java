@@ -52,8 +52,7 @@ public class B_UseArrayList {
         // 从后往前找
         System.out.println(list.lastIndexOf("数据结构"));
 
-        // 使用list中[0, 4)之间的元素构成一个新的subList返回,但是和ArrayList共用一个elementData数组
-        // 还是不太明白这个 subList
+        // 使用list中[0, 4)之间的元素构成一个新的subList返回,但是和ArrayList共用一个elementData数组（修改一个会影响另一个）
         List<String> ret = list.subList(0, 4);
         System.out.println(ret);
 

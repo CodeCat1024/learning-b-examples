@@ -26,6 +26,9 @@ public class MyResponseAdvice implements ResponseBodyAdvice {
         return true;
     }
 
+    /**
+     * 数据返回之前对数据进行重写
+     */
     @Override
     public Object beforeBodyWrite(Object body,
                                   MethodParameter returnType,
