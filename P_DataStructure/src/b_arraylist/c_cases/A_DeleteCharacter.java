@@ -1,6 +1,7 @@
 package b_arraylist.c_cases;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *  删除s1中的字符，这些字符都是s2中出现的
