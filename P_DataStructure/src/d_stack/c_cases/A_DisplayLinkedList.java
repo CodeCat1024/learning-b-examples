@@ -1,6 +1,6 @@
 package d_stack.c_cases;
 
-import c_linkedlist.a_implement.mySinglelist.MySingleList;
+import c_linkedlist.a_implement.mySingleLinkedList.MySingleList;
 
 import java.util.Stack;
 

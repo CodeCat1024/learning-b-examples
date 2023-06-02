@@ -1,4 +1,4 @@
-package c_linkedlist.a_implement.mySinglelist;
+package c_linkedlist.a_implement.mySingleLinkedList;
 
 import java.util.Stack;
 

@@ -1,7 +1,7 @@
 package c_linkedlist.a_implement.mylinkedlist;
 
 /**
- * 不带头双向非循环链表实现
+ * 不带头双向非循环链表实现（Java集合框架中的 LinkedList ）
  */
 public class MyLinkedList {
     static class ListNode {

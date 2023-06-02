@@ -16,12 +16,14 @@ public class C_Traversing {
             System.out.print(list.get(i) + " ");
         }
         System.out.println();
-        // 1.foreach
+
+        // foreach
         System.out.println("foreach 遍历：");
         for (int e : list) {
             System.out.print(e + " ");
         }
         System.out.println();
+
         // 迭代器 -- 正向遍历
         System.out.println("迭代器正向遍历：");
         ListIterator<Integer> it = list.listIterator();
@@ -29,6 +31,7 @@ public class C_Traversing {
             System.out.print(it.next() + " ");
         }
         System.out.println();
+
         // 迭代器 -- 反向遍历
         System.out.println("迭代器反向遍历：");
         ListIterator<Integer> rit = list.listIterator(list.size());

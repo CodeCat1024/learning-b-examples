@@ -1,6 +1,6 @@
 package c_linkedlist.c_cases;
 
-import c_linkedlist.a_implement.mySinglelist.MySingleList;
+import c_linkedlist.a_implement.mySingleLinkedList.MySingleList;
 
 /**
  * 逆置链表：将 head.next 置空之后，再把 head 后的所有节点以头插的方式进行插入

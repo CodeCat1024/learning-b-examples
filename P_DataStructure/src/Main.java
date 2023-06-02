@@ -1,22 +1,24 @@
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        String str1 = "welcome to bit";
-        String str2 = "come";
-        List<Character> list = new ArrayList<>();
+        List<Integer> list1 = new LinkedList<>();
+        list1.add(1);
+        list1.add(2);
+        list1.add(3);
+        list1.add(4);
+        list1.add(5);
+        list1.add(6);
 
-        // 删除 str1 中跟 str2 相同的字符
-        for (int i = 0; i < str1.length(); i++) {
-            if (!str2.contains(str1.charAt(i) + "")) {
-                list.add(str1.charAt(i));
-            }
-        }
+        List<Integer> list2 = list1.subList(0, 3);
+        System.out.println(list2);
 
-        for(Character i : list) {
-            System.out.print(i);
-        }
+        list2.set(1, 1000);
+
+        System.out.println(list1);
+        System.out.println(list2);
     }
 }

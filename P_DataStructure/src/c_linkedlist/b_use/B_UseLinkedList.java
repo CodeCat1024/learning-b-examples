@@ -43,6 +43,7 @@ public class B_UseLinkedList {
         System.out.println(list);
 
         // 用 list 中[from, to]之间的元素构造一个新的 LinkedList 返回
+        // 改变一个会影响另一个
         List<Integer> copy = list.subList(0, 3);
         System.out.println(list);
         System.out.println(copy);

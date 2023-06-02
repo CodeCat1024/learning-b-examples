@@ -1,6 +1,6 @@
 package c_linkedlist.c_cases;
 
-import c_linkedlist.a_implement.mySinglelist.MySingleList;
+import c_linkedlist.a_implement.mySingleLinkedList.MySingleList;
 
 /**
  * 返回链表的中间节点（若有两个则返回第二个）

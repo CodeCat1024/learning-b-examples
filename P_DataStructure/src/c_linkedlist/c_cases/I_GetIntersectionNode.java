@@ -1,6 +1,6 @@
 package c_linkedlist.c_cases;
 
-import c_linkedlist.a_implement.mySinglelist.MySingleList;
+import c_linkedlist.a_implement.mySingleLinkedList.MySingleList;
 
 /**
  * 找出两个链表的第一个公共节点

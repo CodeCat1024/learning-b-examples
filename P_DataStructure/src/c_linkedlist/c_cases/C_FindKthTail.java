@@ -1,6 +1,6 @@
 package c_linkedlist.c_cases;
 
-import c_linkedlist.a_implement.mySinglelist.MySingleList;
+import c_linkedlist.a_implement.mySingleLinkedList.MySingleList;
 
 /**
  * 输出链表中倒数第 k 个节点

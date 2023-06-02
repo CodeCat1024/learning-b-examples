@@ -14,7 +14,6 @@ public class A_Constructor {
         List<String> list2 = new ArrayList<>();
         list2.add("JavaSE");
         list2.add("JavaWeb");
-
         List<String> list3 = new LinkedList<>(list2);
         System.out.println(list3);
     }
