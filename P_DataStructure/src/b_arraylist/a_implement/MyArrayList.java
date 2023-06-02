@@ -9,6 +9,7 @@ public class MyArrayList {
     private int[] elem;
     private int usedSize;
     private static final int DEFAULT_SIZE = 10;
+    // 创建顺序表
     public MyArrayList() {
         this.elem = new int[10];
     }
@@ -130,8 +131,4 @@ public class MyArrayList {
         // 不需要把所有位置都置空，因为插入的时候会自动对空间进行重置
         this.usedSize = 0;
     }
-
-    public static void main(String[] args) {
-    }
-
 }
