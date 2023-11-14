@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">01_android</string>
+    <string name="text">我是text里面的内容</string>
+    <string name="text2">我是text2里面的内容</string>
+
+</resources>
